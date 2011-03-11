@@ -1,0 +1,1941 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.plugins.feedblog.feedparser</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.plugins.feedblog.feedparser</h1>
+<p>
+Universal feed parser
+</p><p>
+Handles RSS 0.9x, RSS 1.0, RSS 2.0, CDF, Atom 0.3, and Atom 1.0 feeds
+</p><p>
+Visit http://feedparser.org/ for the latest version
+Visit http://feedparser.org/docs/ for the latest documentation
+</p><p>
+Required: Python 2.1 or later
+Recommended: Python 2.3 or later
+Recommended: CJKCodecs and iconv_codec <http://cjkpython.i18n.org/>
+</p>
+<h3>Global Attributes</h3>
+<table>
+<tr><td>ACCEPT_HEADER</td></tr><tr><td>PREFERRED_TIDY_INTERFACES</td></tr><tr><td>PREFERRED_XML_PARSERS</td></tr><tr><td>RESOLVE_RELATIVE_URIS</td></tr><tr><td>SANITIZE_HTML</td></tr><tr><td>SUPPORTED_VERSIONS</td></tr><tr><td>TIDY_MARKUP</td></tr><tr><td>USER_AGENT</td></tr><tr><td>__author__</td></tr><tr><td>__contributors__</td></tr><tr><td>__license__</td></tr><tr><td>__version__</td></tr><tr><td>_additional_timezones</td></tr><tr><td>_cp1252</td></tr><tr><td>_date_handlers</td></tr><tr><td>_debug</td></tr><tr><td>_ebcdic_to_ascii_map</td></tr><tr><td>_greek_date_format_re</td></tr><tr><td>_greek_months</td></tr><tr><td>_greek_wdays</td></tr><tr><td>_hungarian_date_format_re</td></tr><tr><td>_hungarian_months</td></tr><tr><td>_iso8601_matches</td></tr><tr><td>_iso8601_re</td></tr><tr><td>_iso8601_tmpl</td></tr><tr><td>_korean_am</td></tr><tr><td>_korean_day</td></tr><tr><td>_korean_month</td></tr><tr><td>_korean_nate_date_re</td></tr><tr><td>_korean_onblog_date_re</td></tr><tr><td>_korean_pm</td></tr><tr><td>_korean_year</td></tr><tr><td>_mssql_date_re</td></tr><tr><td>_urifixer</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#CharacterEncodingOverride">CharacterEncodingOverride</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#CharacterEncodingUnknown">CharacterEncodingUnknown</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#EndBracketMatch">EndBracketMatch</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FeedParserDict">FeedParserDict</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#NonXMLContentType">NonXMLContentType</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PprintSerializer">PprintSerializer</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Serializer">Serializer</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#TextSerializer">TextSerializer</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#ThingsNobodyCaresAboutButMe">ThingsNobodyCaresAboutButMe</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#UndeclaredNamespace">UndeclaredNamespace</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor">_BaseHTMLProcessor</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin">_FeedParserMixin</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedURLHandler">_FeedURLHandler</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_HTMLSanitizer">_HTMLSanitizer</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_LooseFeedParser">_LooseFeedParser</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser">_MicroformatsParser</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_Options">_Options</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_RelativeURIResolver">_RelativeURIResolver</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_StrictFeedParser">_StrictFeedParser</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr>
+<td><a href="#FeedParserDict">FeedParserDict</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#__extract_date">__extract_date</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#__extract_time">__extract_time</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#__extract_tzd">__extract_tzd</a></td>
+<td>Return the Time Zone Designator as an offset in seconds from UTC.</td>
+</tr><tr>
+<td><a href="#_ebcdic_to_ascii">_ebcdic_to_ascii</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_getCharacterEncoding">_getCharacterEncoding</a></td>
+<td>Get the character encoding of the XML document</td>
+</tr><tr>
+<td><a href="#_open_resource">_open_resource</a></td>
+<td>URL, filename, or string --> stream</td>
+</tr><tr>
+<td><a href="#_parseHTTPContentType">_parseHTTPContentType</a></td>
+<td>takes HTTP Content-Type header and returns (content type, charset)</td>
+</tr><tr>
+<td><a href="#_parseMicroformats">_parseMicroformats</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_parse_date">_parse_date</a></td>
+<td>Parses a variety of date formats into a 9-tuple in GMT</td>
+</tr><tr>
+<td><a href="#_parse_date_greek">_parse_date_greek</a></td>
+<td>Parse a string according to a Greek 8-bit date format.</td>
+</tr><tr>
+<td><a href="#_parse_date_hungarian">_parse_date_hungarian</a></td>
+<td>Parse a string according to a Hungarian 8-bit date format.</td>
+</tr><tr>
+<td><a href="#_parse_date_iso8601">_parse_date_iso8601</a></td>
+<td>Parse a variety of ISO-8601-compatible formats like 20040105</td>
+</tr><tr>
+<td><a href="#_parse_date_mssql">_parse_date_mssql</a></td>
+<td>Parse a string according to the MS SQL date format</td>
+</tr><tr>
+<td><a href="#_parse_date_nate">_parse_date_nate</a></td>
+<td>Parse a string according to the Nate 8-bit date format</td>
+</tr><tr>
+<td><a href="#_parse_date_onblog">_parse_date_onblog</a></td>
+<td>Parse a string according to the OnBlog 8-bit date format</td>
+</tr><tr>
+<td><a href="#_parse_date_perforce">_parse_date_perforce</a></td>
+<td>parse a date in yyyy/mm/dd hh:mm:ss TTT format</td>
+</tr><tr>
+<td><a href="#_parse_date_rfc822">_parse_date_rfc822</a></td>
+<td>Parse an RFC822, RFC1123, RFC2822, or asctime-style date</td>
+</tr><tr>
+<td><a href="#_parse_date_w3dtf">_parse_date_w3dtf</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_resolveRelativeURIs">_resolveRelativeURIs</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_sanitizeHTML">_sanitizeHTML</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_stripDoctype">_stripDoctype</a></td>
+<td>Strips DOCTYPE from XML document, returns (rss_version, stripped_data)</td>
+</tr><tr>
+<td><a href="#_tidy">_tidy</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_tidy_1">_tidy</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_toUTF8">_toUTF8</a></td>
+<td>Changes an XML data stream on the fly to specify a new encoding</td>
+</tr><tr>
+<td><a href="#_urljoin">_urljoin</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_xmlescape">_xmlescape</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#parse">parse</a></td>
+<td>Parse a feed from a URL, file, stream, or string</td>
+</tr><tr>
+<td><a href="#registerDateHandler">registerDateHandler</a></td>
+<td>Register a date handler function (takes string, returns 9-tuple date in GMT)</td>
+</tr><tr>
+<td><a href="#zopeCompatibilityHack">zopeCompatibilityHack</a></td>
+<td></td>
+</tr>
+</table>
+<hr /><hr />
+<a NAME="CharacterEncodingOverride" ID="CharacterEncodingOverride"></a>
+<h2>CharacterEncodingOverride</h2>
+
+<h3>Derived from</h3>
+ThingsNobodyCaresAboutButMe
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="CharacterEncodingUnknown" ID="CharacterEncodingUnknown"></a>
+<h2>CharacterEncodingUnknown</h2>
+
+<h3>Derived from</h3>
+ThingsNobodyCaresAboutButMe
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="EndBracketMatch" ID="EndBracketMatch"></a>
+<h2>EndBracketMatch</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>endbracket</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#EndBracketMatch.search">search</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#EndBracketMatch.start">start</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="EndBracketMatch.search" ID="EndBracketMatch.search"></a>
+<h4>EndBracketMatch.search</h4>
+<b>search</b>(<i>string, index=0</i>)
+<a NAME="EndBracketMatch.start" ID="EndBracketMatch.start"></a>
+<h4>EndBracketMatch.start</h4>
+<b>start</b>(<i>n</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="FeedParserDict" ID="FeedParserDict"></a>
+<h2>FeedParserDict</h2>
+
+<h3>Derived from</h3>
+UserDict
+<h3>Class Attributes</h3>
+<table>
+<tr><td>keymap</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#FeedParserDict.__contains__">__contains__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FeedParserDict.__getattr__">__getattr__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FeedParserDict.__getitem__">__getitem__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FeedParserDict.__setattr__">__setattr__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FeedParserDict.__setitem__">__setitem__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FeedParserDict.get">get</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FeedParserDict.has_key">has_key</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FeedParserDict.setdefault">setdefault</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="FeedParserDict.__contains__" ID="FeedParserDict.__contains__"></a>
+<h4>FeedParserDict.__contains__</h4>
+<b>__contains__</b>(<i>key</i>)
+<a NAME="FeedParserDict.__getattr__" ID="FeedParserDict.__getattr__"></a>
+<h4>FeedParserDict.__getattr__</h4>
+<b>__getattr__</b>(<i>key</i>)
+<a NAME="FeedParserDict.__getitem__" ID="FeedParserDict.__getitem__"></a>
+<h4>FeedParserDict.__getitem__</h4>
+<b>__getitem__</b>(<i>key</i>)
+<a NAME="FeedParserDict.__setattr__" ID="FeedParserDict.__setattr__"></a>
+<h4>FeedParserDict.__setattr__</h4>
+<b>__setattr__</b>(<i>key, value</i>)
+<a NAME="FeedParserDict.__setitem__" ID="FeedParserDict.__setitem__"></a>
+<h4>FeedParserDict.__setitem__</h4>
+<b>__setitem__</b>(<i>key, value</i>)
+<a NAME="FeedParserDict.get" ID="FeedParserDict.get"></a>
+<h4>FeedParserDict.get</h4>
+<b>get</b>(<i>key, default=None</i>)
+<a NAME="FeedParserDict.has_key" ID="FeedParserDict.has_key"></a>
+<h4>FeedParserDict.has_key</h4>
+<b>has_key</b>(<i>key</i>)
+<a NAME="FeedParserDict.setdefault" ID="FeedParserDict.setdefault"></a>
+<h4>FeedParserDict.setdefault</h4>
+<b>setdefault</b>(<i>key, value</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="NonXMLContentType" ID="NonXMLContentType"></a>
+<h2>NonXMLContentType</h2>
+
+<h3>Derived from</h3>
+ThingsNobodyCaresAboutButMe
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="PprintSerializer" ID="PprintSerializer"></a>
+<h2>PprintSerializer</h2>
+
+<h3>Derived from</h3>
+Serializer
+<h3>Class Attributes</h3>
+<table>
+<tr><td>serializer</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#PprintSerializer.write">write</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="PprintSerializer.write" ID="PprintSerializer.write"></a>
+<h4>PprintSerializer.write</h4>
+<b>write</b>(<i>stream=sys.stdout</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Serializer" ID="Serializer"></a>
+<h2>Serializer</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#Serializer.__init__">Serializer</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="Serializer.__init__" ID="Serializer.__init__"></a>
+<h4>Serializer (Constructor)</h4>
+<b>Serializer</b>(<i>results</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="TextSerializer" ID="TextSerializer"></a>
+<h2>TextSerializer</h2>
+
+<h3>Derived from</h3>
+Serializer
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#TextSerializer._writer">_writer</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#TextSerializer.write">write</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="TextSerializer._writer" ID="TextSerializer._writer"></a>
+<h4>TextSerializer._writer</h4>
+<b>_writer</b>(<i>stream, node, prefix</i>)
+<a NAME="TextSerializer.write" ID="TextSerializer.write"></a>
+<h4>TextSerializer.write</h4>
+<b>write</b>(<i>stream=sys.stdout</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="ThingsNobodyCaresAboutButMe" ID="ThingsNobodyCaresAboutButMe"></a>
+<h2>ThingsNobodyCaresAboutButMe</h2>
+
+<h3>Derived from</h3>
+Exception
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="UndeclaredNamespace" ID="UndeclaredNamespace"></a>
+<h2>UndeclaredNamespace</h2>
+
+<h3>Derived from</h3>
+Exception
+<h3>Class Attributes</h3>
+<table>
+<tr><td>UserDict</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#UndeclaredNamespace.dict">dict</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="UndeclaredNamespace.dict" ID="UndeclaredNamespace.dict"></a>
+<h4>UndeclaredNamespace.dict</h4>
+<b>dict</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_BaseHTMLProcessor" ID="_BaseHTMLProcessor"></a>
+<h2>_BaseHTMLProcessor</h2>
+
+<h3>Derived from</h3>
+sgmllib.SGMLParser
+<h3>Class Attributes</h3>
+<table>
+<tr><td>_new_declname_match</td></tr><tr><td>bare_ampersand</td></tr><tr><td>elements_no_end_tag</td></tr><tr><td>special</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#_BaseHTMLProcessor.__init__">_BaseHTMLProcessor</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor._scan_name">_scan_name</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor._shorttag_replace">_shorttag_replace</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.convert_charref">convert_charref</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.convert_entityref">convert_entityref</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.feed">feed</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.handle_charref">handle_charref</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.handle_comment">handle_comment</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.handle_data">handle_data</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.handle_decl">handle_decl</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.handle_entityref">handle_entityref</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.handle_pi">handle_pi</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.normalize_attrs">normalize_attrs</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.output">output</a></td>
+<td>Return processed HTML as a single string</td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.parse_starttag">parse_starttag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.reset">reset</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.unknown_endtag">unknown_endtag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_BaseHTMLProcessor.unknown_starttag">unknown_starttag</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="_BaseHTMLProcessor.__init__" ID="_BaseHTMLProcessor.__init__"></a>
+<h4>_BaseHTMLProcessor (Constructor)</h4>
+<b>_BaseHTMLProcessor</b>(<i>encoding, type</i>)
+<a NAME="_BaseHTMLProcessor._scan_name" ID="_BaseHTMLProcessor._scan_name"></a>
+<h4>_BaseHTMLProcessor._scan_name</h4>
+<b>_scan_name</b>(<i>i, declstartpos</i>)
+<a NAME="_BaseHTMLProcessor._shorttag_replace" ID="_BaseHTMLProcessor._shorttag_replace"></a>
+<h4>_BaseHTMLProcessor._shorttag_replace</h4>
+<b>_shorttag_replace</b>(<i>match</i>)
+<a NAME="_BaseHTMLProcessor.convert_charref" ID="_BaseHTMLProcessor.convert_charref"></a>
+<h4>_BaseHTMLProcessor.convert_charref</h4>
+<b>convert_charref</b>(<i>name</i>)
+<a NAME="_BaseHTMLProcessor.convert_entityref" ID="_BaseHTMLProcessor.convert_entityref"></a>
+<h4>_BaseHTMLProcessor.convert_entityref</h4>
+<b>convert_entityref</b>(<i>name</i>)
+<a NAME="_BaseHTMLProcessor.feed" ID="_BaseHTMLProcessor.feed"></a>
+<h4>_BaseHTMLProcessor.feed</h4>
+<b>feed</b>(<i>data</i>)
+<a NAME="_BaseHTMLProcessor.handle_charref" ID="_BaseHTMLProcessor.handle_charref"></a>
+<h4>_BaseHTMLProcessor.handle_charref</h4>
+<b>handle_charref</b>(<i>ref</i>)
+<a NAME="_BaseHTMLProcessor.handle_comment" ID="_BaseHTMLProcessor.handle_comment"></a>
+<h4>_BaseHTMLProcessor.handle_comment</h4>
+<b>handle_comment</b>(<i>text</i>)
+<a NAME="_BaseHTMLProcessor.handle_data" ID="_BaseHTMLProcessor.handle_data"></a>
+<h4>_BaseHTMLProcessor.handle_data</h4>
+<b>handle_data</b>(<i>text</i>)
+<a NAME="_BaseHTMLProcessor.handle_decl" ID="_BaseHTMLProcessor.handle_decl"></a>
+<h4>_BaseHTMLProcessor.handle_decl</h4>
+<b>handle_decl</b>(<i>text</i>)
+<a NAME="_BaseHTMLProcessor.handle_entityref" ID="_BaseHTMLProcessor.handle_entityref"></a>
+<h4>_BaseHTMLProcessor.handle_entityref</h4>
+<b>handle_entityref</b>(<i>ref</i>)
+<a NAME="_BaseHTMLProcessor.handle_pi" ID="_BaseHTMLProcessor.handle_pi"></a>
+<h4>_BaseHTMLProcessor.handle_pi</h4>
+<b>handle_pi</b>(<i>text</i>)
+<a NAME="_BaseHTMLProcessor.normalize_attrs" ID="_BaseHTMLProcessor.normalize_attrs"></a>
+<h4>_BaseHTMLProcessor.normalize_attrs</h4>
+<b>normalize_attrs</b>(<i>attrs</i>)
+<a NAME="_BaseHTMLProcessor.output" ID="_BaseHTMLProcessor.output"></a>
+<h4>_BaseHTMLProcessor.output</h4>
+<b>output</b>(<i></i>)
+<p>
+Return processed HTML as a single string
+</p><a NAME="_BaseHTMLProcessor.parse_starttag" ID="_BaseHTMLProcessor.parse_starttag"></a>
+<h4>_BaseHTMLProcessor.parse_starttag</h4>
+<b>parse_starttag</b>(<i>i</i>)
+<a NAME="_BaseHTMLProcessor.reset" ID="_BaseHTMLProcessor.reset"></a>
+<h4>_BaseHTMLProcessor.reset</h4>
+<b>reset</b>(<i></i>)
+<a NAME="_BaseHTMLProcessor.unknown_endtag" ID="_BaseHTMLProcessor.unknown_endtag"></a>
+<h4>_BaseHTMLProcessor.unknown_endtag</h4>
+<b>unknown_endtag</b>(<i>tag</i>)
+<a NAME="_BaseHTMLProcessor.unknown_starttag" ID="_BaseHTMLProcessor.unknown_starttag"></a>
+<h4>_BaseHTMLProcessor.unknown_starttag</h4>
+<b>unknown_starttag</b>(<i>tag, attrs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_FeedParserMixin" ID="_FeedParserMixin"></a>
+<h2>_FeedParserMixin</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>_end_abstract</td></tr><tr><td>_end_body</td></tr><tr><td>_end_content_encoded</td></tr><tr><td>_end_copyright</td></tr><tr><td>_end_creativeCommons_license</td></tr><tr><td>_end_dc_author</td></tr><tr><td>_end_dc_creator</td></tr><tr><td>_end_dc_date</td></tr><tr><td>_end_dc_description</td></tr><tr><td>_end_dc_rights</td></tr><tr><td>_end_dc_subject</td></tr><tr><td>_end_dc_title</td></tr><tr><td>_end_dcterms_created</td></tr><tr><td>_end_dcterms_issued</td></tr><tr><td>_end_dcterms_modified</td></tr><tr><td>_end_entry</td></tr><tr><td>_end_feed</td></tr><tr><td>_end_feedburner_browserfriendly</td></tr><tr><td>_end_fullitem</td></tr><tr><td>_end_homepage</td></tr><tr><td>_end_issued</td></tr><tr><td>_end_itunes_author</td></tr><tr><td>_end_itunes_category</td></tr><tr><td>_end_itunes_email</td></tr><tr><td>_end_itunes_name</td></tr><tr><td>_end_itunes_subtitle</td></tr><tr><td>_end_itunes_summary</td></tr><tr><td>_end_keywords</td></tr><tr><td>_end_language</td></tr><tr><td>_end_managingeditor</td></tr><tr><td>_end_modified</td></tr><tr><td>_end_prodlink</td></tr><tr><td>_end_producturl</td></tr><tr><td>_end_pubdate</td></tr><tr><td>_end_tagline</td></tr><tr><td>_end_textInput</td></tr><tr><td>_end_uri</td></tr><tr><td>_end_webmaster</td></tr><tr><td>_end_xhtml_body</td></tr><tr><td>_matchnamespaces</td></tr><tr><td>_start_copyright</td></tr><tr><td>_start_creativeCommons_license</td></tr><tr><td>_start_dc_author</td></tr><tr><td>_start_dc_creator</td></tr><tr><td>_start_dc_date</td></tr><tr><td>_start_dc_description</td></tr><tr><td>_start_dc_rights</td></tr><tr><td>_start_dc_subject</td></tr><tr><td>_start_dc_title</td></tr><tr><td>_start_dcterms_created</td></tr><tr><td>_start_dcterms_issued</td></tr><tr><td>_start_dcterms_modified</td></tr><tr><td>_start_entry</td></tr><tr><td>_start_feedburner_browserfriendly</td></tr><tr><td>_start_feedinfo</td></tr><tr><td>_start_fullitem</td></tr><tr><td>_start_homepage</td></tr><tr><td>_start_issued</td></tr><tr><td>_start_itunes_author</td></tr><tr><td>_start_itunes_email</td></tr><tr><td>_start_itunes_link</td></tr><tr><td>_start_itunes_name</td></tr><tr><td>_start_itunes_subtitle</td></tr><tr><td>_start_itunes_summary</td></tr><tr><td>_start_keywords</td></tr><tr><td>_start_language</td></tr><tr><td>_start_managingeditor</td></tr><tr><td>_start_media_title</td></tr><tr><td>_start_modified</td></tr><tr><td>_start_product</td></tr><tr><td>_start_producturl</td></tr><tr><td>_start_pubdate</td></tr><tr><td>_start_tagline</td></tr><tr><td>_start_textInput</td></tr><tr><td>_start_uri</td></tr><tr><td>_start_webmaster</td></tr><tr><td>_start_xhtml_body</td></tr><tr><td>can_be_relative_uri</td></tr><tr><td>can_contain_dangerous_markup</td></tr><tr><td>can_contain_relative_uris</td></tr><tr><td>html_types</td></tr><tr><td>namespaces</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#_FeedParserMixin.__init__">_FeedParserMixin</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._addTag">_addTag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._addXFN">_addXFN</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._cdf_common">_cdf_common</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_author">_end_author</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_category">_end_category</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_channel">_end_channel</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_content">_end_content</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_contributor">_end_contributor</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_created">_end_created</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_creativecommons_license">_end_creativecommons_license</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_dc_contributor">_end_dc_contributor</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_dc_language">_end_dc_language</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_dc_publisher">_end_dc_publisher</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_description">_end_description</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_email">_end_email</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_expirationdate">_end_expirationdate</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_generator">_end_generator</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_guid">_end_guid</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_height">_end_height</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_image">_end_image</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_info">_end_info</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_item">_end_item</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_itunes_block">_end_itunes_block</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_itunes_explicit">_end_itunes_explicit</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_itunes_keywords">_end_itunes_keywords</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_itunes_owner">_end_itunes_owner</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_link">_end_link</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_media_player">_end_media_player</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_media_thumbnail">_end_media_thumbnail</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_media_title">_end_media_title</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_name">_end_name</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_published">_end_published</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_rights">_end_rights</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_source">_end_source</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_subtitle">_end_subtitle</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_summary">_end_summary</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_textinput">_end_textinput</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_title">_end_title</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_updated">_end_updated</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_url">_end_url</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._end_width">_end_width</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._getAttribute">_getAttribute</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._getContext">_getContext</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._isBase64">_isBase64</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._itsAnHrefDamnIt">_itsAnHrefDamnIt</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._mapToStandardPrefix">_mapToStandardPrefix</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._save">_save</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._save_author">_save_author</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._save_contributor">_save_contributor</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_abstract">_start_abstract</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_admin_errorreportsto">_start_admin_errorreportsto</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_admin_generatoragent">_start_admin_generatoragent</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_author">_start_author</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_body">_start_body</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_category">_start_category</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_cc_license">_start_cc_license</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_channel">_start_channel</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_cloud">_start_cloud</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_content">_start_content</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_content_encoded">_start_content_encoded</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_contributor">_start_contributor</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_created">_start_created</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_creativecommons_license">_start_creativecommons_license</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_dc_contributor">_start_dc_contributor</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_dc_language">_start_dc_language</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_dc_publisher">_start_dc_publisher</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_description">_start_description</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_dlhottitles">_start_dlhottitles</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_email">_start_email</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_enclosure">_start_enclosure</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_expirationdate">_start_expirationdate</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_feed">_start_feed</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_generator">_start_generator</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_guid">_start_guid</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_height">_start_height</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_image">_start_image</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_info">_start_info</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_item">_start_item</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_itunes_category">_start_itunes_category</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_itunes_image">_start_itunes_image</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_itunes_owner">_start_itunes_owner</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_link">_start_link</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_media_content">_start_media_content</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_media_player">_start_media_player</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_media_thumbnail">_start_media_thumbnail</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_name">_start_name</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_prodlink">_start_prodlink</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_published">_start_published</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_rights">_start_rights</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_rss">_start_rss</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_source">_start_source</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_subtitle">_start_subtitle</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_summary">_start_summary</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_textinput">_start_textinput</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_title">_start_title</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_updated">_start_updated</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_url">_start_url</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._start_width">_start_width</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin._sync_author_detail">_sync_author_detail</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.decodeEntities">decodeEntities</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.handle_charref">handle_charref</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.handle_comment">handle_comment</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.handle_data">handle_data</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.handle_decl">handle_decl</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.handle_entityref">handle_entityref</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.handle_pi">handle_pi</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.lookslikehtml">lookslikehtml</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.mapContentType">mapContentType</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.parse_declaration">parse_declaration</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.pop">pop</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.popContent">popContent</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.push">push</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.pushContent">pushContent</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.resolveURI">resolveURI</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.strattrs">strattrs</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.trackNamespace">trackNamespace</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.unknown_endtag">unknown_endtag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedParserMixin.unknown_starttag">unknown_starttag</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="_FeedParserMixin.__init__" ID="_FeedParserMixin.__init__"></a>
+<h4>_FeedParserMixin (Constructor)</h4>
+<b>_FeedParserMixin</b>(<i>baseuri=None, baselang=None, encoding='utf-8'</i>)
+<a NAME="_FeedParserMixin._addTag" ID="_FeedParserMixin._addTag"></a>
+<h4>_FeedParserMixin._addTag</h4>
+<b>_addTag</b>(<i>term, scheme, label</i>)
+<a NAME="_FeedParserMixin._addXFN" ID="_FeedParserMixin._addXFN"></a>
+<h4>_FeedParserMixin._addXFN</h4>
+<b>_addXFN</b>(<i>relationships, href, name</i>)
+<a NAME="_FeedParserMixin._cdf_common" ID="_FeedParserMixin._cdf_common"></a>
+<h4>_FeedParserMixin._cdf_common</h4>
+<b>_cdf_common</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._end_author" ID="_FeedParserMixin._end_author"></a>
+<h4>_FeedParserMixin._end_author</h4>
+<b>_end_author</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_category" ID="_FeedParserMixin._end_category"></a>
+<h4>_FeedParserMixin._end_category</h4>
+<b>_end_category</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_channel" ID="_FeedParserMixin._end_channel"></a>
+<h4>_FeedParserMixin._end_channel</h4>
+<b>_end_channel</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_content" ID="_FeedParserMixin._end_content"></a>
+<h4>_FeedParserMixin._end_content</h4>
+<b>_end_content</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_contributor" ID="_FeedParserMixin._end_contributor"></a>
+<h4>_FeedParserMixin._end_contributor</h4>
+<b>_end_contributor</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_created" ID="_FeedParserMixin._end_created"></a>
+<h4>_FeedParserMixin._end_created</h4>
+<b>_end_created</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_creativecommons_license" ID="_FeedParserMixin._end_creativecommons_license"></a>
+<h4>_FeedParserMixin._end_creativecommons_license</h4>
+<b>_end_creativecommons_license</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_dc_contributor" ID="_FeedParserMixin._end_dc_contributor"></a>
+<h4>_FeedParserMixin._end_dc_contributor</h4>
+<b>_end_dc_contributor</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_dc_language" ID="_FeedParserMixin._end_dc_language"></a>
+<h4>_FeedParserMixin._end_dc_language</h4>
+<b>_end_dc_language</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_dc_publisher" ID="_FeedParserMixin._end_dc_publisher"></a>
+<h4>_FeedParserMixin._end_dc_publisher</h4>
+<b>_end_dc_publisher</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_description" ID="_FeedParserMixin._end_description"></a>
+<h4>_FeedParserMixin._end_description</h4>
+<b>_end_description</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_email" ID="_FeedParserMixin._end_email"></a>
+<h4>_FeedParserMixin._end_email</h4>
+<b>_end_email</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_expirationdate" ID="_FeedParserMixin._end_expirationdate"></a>
+<h4>_FeedParserMixin._end_expirationdate</h4>
+<b>_end_expirationdate</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_generator" ID="_FeedParserMixin._end_generator"></a>
+<h4>_FeedParserMixin._end_generator</h4>
+<b>_end_generator</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_guid" ID="_FeedParserMixin._end_guid"></a>
+<h4>_FeedParserMixin._end_guid</h4>
+<b>_end_guid</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_height" ID="_FeedParserMixin._end_height"></a>
+<h4>_FeedParserMixin._end_height</h4>
+<b>_end_height</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_image" ID="_FeedParserMixin._end_image"></a>
+<h4>_FeedParserMixin._end_image</h4>
+<b>_end_image</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_info" ID="_FeedParserMixin._end_info"></a>
+<h4>_FeedParserMixin._end_info</h4>
+<b>_end_info</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_item" ID="_FeedParserMixin._end_item"></a>
+<h4>_FeedParserMixin._end_item</h4>
+<b>_end_item</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_itunes_block" ID="_FeedParserMixin._end_itunes_block"></a>
+<h4>_FeedParserMixin._end_itunes_block</h4>
+<b>_end_itunes_block</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_itunes_explicit" ID="_FeedParserMixin._end_itunes_explicit"></a>
+<h4>_FeedParserMixin._end_itunes_explicit</h4>
+<b>_end_itunes_explicit</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_itunes_keywords" ID="_FeedParserMixin._end_itunes_keywords"></a>
+<h4>_FeedParserMixin._end_itunes_keywords</h4>
+<b>_end_itunes_keywords</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_itunes_owner" ID="_FeedParserMixin._end_itunes_owner"></a>
+<h4>_FeedParserMixin._end_itunes_owner</h4>
+<b>_end_itunes_owner</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_link" ID="_FeedParserMixin._end_link"></a>
+<h4>_FeedParserMixin._end_link</h4>
+<b>_end_link</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_media_player" ID="_FeedParserMixin._end_media_player"></a>
+<h4>_FeedParserMixin._end_media_player</h4>
+<b>_end_media_player</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_media_thumbnail" ID="_FeedParserMixin._end_media_thumbnail"></a>
+<h4>_FeedParserMixin._end_media_thumbnail</h4>
+<b>_end_media_thumbnail</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_media_title" ID="_FeedParserMixin._end_media_title"></a>
+<h4>_FeedParserMixin._end_media_title</h4>
+<b>_end_media_title</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_name" ID="_FeedParserMixin._end_name"></a>
+<h4>_FeedParserMixin._end_name</h4>
+<b>_end_name</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_published" ID="_FeedParserMixin._end_published"></a>
+<h4>_FeedParserMixin._end_published</h4>
+<b>_end_published</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_rights" ID="_FeedParserMixin._end_rights"></a>
+<h4>_FeedParserMixin._end_rights</h4>
+<b>_end_rights</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_source" ID="_FeedParserMixin._end_source"></a>
+<h4>_FeedParserMixin._end_source</h4>
+<b>_end_source</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_subtitle" ID="_FeedParserMixin._end_subtitle"></a>
+<h4>_FeedParserMixin._end_subtitle</h4>
+<b>_end_subtitle</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_summary" ID="_FeedParserMixin._end_summary"></a>
+<h4>_FeedParserMixin._end_summary</h4>
+<b>_end_summary</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_textinput" ID="_FeedParserMixin._end_textinput"></a>
+<h4>_FeedParserMixin._end_textinput</h4>
+<b>_end_textinput</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_title" ID="_FeedParserMixin._end_title"></a>
+<h4>_FeedParserMixin._end_title</h4>
+<b>_end_title</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_updated" ID="_FeedParserMixin._end_updated"></a>
+<h4>_FeedParserMixin._end_updated</h4>
+<b>_end_updated</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_url" ID="_FeedParserMixin._end_url"></a>
+<h4>_FeedParserMixin._end_url</h4>
+<b>_end_url</b>(<i></i>)
+<a NAME="_FeedParserMixin._end_width" ID="_FeedParserMixin._end_width"></a>
+<h4>_FeedParserMixin._end_width</h4>
+<b>_end_width</b>(<i></i>)
+<a NAME="_FeedParserMixin._getAttribute" ID="_FeedParserMixin._getAttribute"></a>
+<h4>_FeedParserMixin._getAttribute</h4>
+<b>_getAttribute</b>(<i>attrsD, name</i>)
+<a NAME="_FeedParserMixin._getContext" ID="_FeedParserMixin._getContext"></a>
+<h4>_FeedParserMixin._getContext</h4>
+<b>_getContext</b>(<i></i>)
+<a NAME="_FeedParserMixin._isBase64" ID="_FeedParserMixin._isBase64"></a>
+<h4>_FeedParserMixin._isBase64</h4>
+<b>_isBase64</b>(<i>attrsD, contentparams</i>)
+<a NAME="_FeedParserMixin._itsAnHrefDamnIt" ID="_FeedParserMixin._itsAnHrefDamnIt"></a>
+<h4>_FeedParserMixin._itsAnHrefDamnIt</h4>
+<b>_itsAnHrefDamnIt</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._mapToStandardPrefix" ID="_FeedParserMixin._mapToStandardPrefix"></a>
+<h4>_FeedParserMixin._mapToStandardPrefix</h4>
+<b>_mapToStandardPrefix</b>(<i>name</i>)
+<a NAME="_FeedParserMixin._save" ID="_FeedParserMixin._save"></a>
+<h4>_FeedParserMixin._save</h4>
+<b>_save</b>(<i>key, value</i>)
+<a NAME="_FeedParserMixin._save_author" ID="_FeedParserMixin._save_author"></a>
+<h4>_FeedParserMixin._save_author</h4>
+<b>_save_author</b>(<i>key, value, prefix='author'</i>)
+<a NAME="_FeedParserMixin._save_contributor" ID="_FeedParserMixin._save_contributor"></a>
+<h4>_FeedParserMixin._save_contributor</h4>
+<b>_save_contributor</b>(<i>key, value</i>)
+<a NAME="_FeedParserMixin._start_abstract" ID="_FeedParserMixin._start_abstract"></a>
+<h4>_FeedParserMixin._start_abstract</h4>
+<b>_start_abstract</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_admin_errorreportsto" ID="_FeedParserMixin._start_admin_errorreportsto"></a>
+<h4>_FeedParserMixin._start_admin_errorreportsto</h4>
+<b>_start_admin_errorreportsto</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_admin_generatoragent" ID="_FeedParserMixin._start_admin_generatoragent"></a>
+<h4>_FeedParserMixin._start_admin_generatoragent</h4>
+<b>_start_admin_generatoragent</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_author" ID="_FeedParserMixin._start_author"></a>
+<h4>_FeedParserMixin._start_author</h4>
+<b>_start_author</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_body" ID="_FeedParserMixin._start_body"></a>
+<h4>_FeedParserMixin._start_body</h4>
+<b>_start_body</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_category" ID="_FeedParserMixin._start_category"></a>
+<h4>_FeedParserMixin._start_category</h4>
+<b>_start_category</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_cc_license" ID="_FeedParserMixin._start_cc_license"></a>
+<h4>_FeedParserMixin._start_cc_license</h4>
+<b>_start_cc_license</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_channel" ID="_FeedParserMixin._start_channel"></a>
+<h4>_FeedParserMixin._start_channel</h4>
+<b>_start_channel</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_cloud" ID="_FeedParserMixin._start_cloud"></a>
+<h4>_FeedParserMixin._start_cloud</h4>
+<b>_start_cloud</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_content" ID="_FeedParserMixin._start_content"></a>
+<h4>_FeedParserMixin._start_content</h4>
+<b>_start_content</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_content_encoded" ID="_FeedParserMixin._start_content_encoded"></a>
+<h4>_FeedParserMixin._start_content_encoded</h4>
+<b>_start_content_encoded</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_contributor" ID="_FeedParserMixin._start_contributor"></a>
+<h4>_FeedParserMixin._start_contributor</h4>
+<b>_start_contributor</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_created" ID="_FeedParserMixin._start_created"></a>
+<h4>_FeedParserMixin._start_created</h4>
+<b>_start_created</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_creativecommons_license" ID="_FeedParserMixin._start_creativecommons_license"></a>
+<h4>_FeedParserMixin._start_creativecommons_license</h4>
+<b>_start_creativecommons_license</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_dc_contributor" ID="_FeedParserMixin._start_dc_contributor"></a>
+<h4>_FeedParserMixin._start_dc_contributor</h4>
+<b>_start_dc_contributor</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_dc_language" ID="_FeedParserMixin._start_dc_language"></a>
+<h4>_FeedParserMixin._start_dc_language</h4>
+<b>_start_dc_language</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_dc_publisher" ID="_FeedParserMixin._start_dc_publisher"></a>
+<h4>_FeedParserMixin._start_dc_publisher</h4>
+<b>_start_dc_publisher</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_description" ID="_FeedParserMixin._start_description"></a>
+<h4>_FeedParserMixin._start_description</h4>
+<b>_start_description</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_dlhottitles" ID="_FeedParserMixin._start_dlhottitles"></a>
+<h4>_FeedParserMixin._start_dlhottitles</h4>
+<b>_start_dlhottitles</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_email" ID="_FeedParserMixin._start_email"></a>
+<h4>_FeedParserMixin._start_email</h4>
+<b>_start_email</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_enclosure" ID="_FeedParserMixin._start_enclosure"></a>
+<h4>_FeedParserMixin._start_enclosure</h4>
+<b>_start_enclosure</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_expirationdate" ID="_FeedParserMixin._start_expirationdate"></a>
+<h4>_FeedParserMixin._start_expirationdate</h4>
+<b>_start_expirationdate</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_feed" ID="_FeedParserMixin._start_feed"></a>
+<h4>_FeedParserMixin._start_feed</h4>
+<b>_start_feed</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_generator" ID="_FeedParserMixin._start_generator"></a>
+<h4>_FeedParserMixin._start_generator</h4>
+<b>_start_generator</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_guid" ID="_FeedParserMixin._start_guid"></a>
+<h4>_FeedParserMixin._start_guid</h4>
+<b>_start_guid</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_height" ID="_FeedParserMixin._start_height"></a>
+<h4>_FeedParserMixin._start_height</h4>
+<b>_start_height</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_image" ID="_FeedParserMixin._start_image"></a>
+<h4>_FeedParserMixin._start_image</h4>
+<b>_start_image</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_info" ID="_FeedParserMixin._start_info"></a>
+<h4>_FeedParserMixin._start_info</h4>
+<b>_start_info</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_item" ID="_FeedParserMixin._start_item"></a>
+<h4>_FeedParserMixin._start_item</h4>
+<b>_start_item</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_itunes_category" ID="_FeedParserMixin._start_itunes_category"></a>
+<h4>_FeedParserMixin._start_itunes_category</h4>
+<b>_start_itunes_category</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_itunes_image" ID="_FeedParserMixin._start_itunes_image"></a>
+<h4>_FeedParserMixin._start_itunes_image</h4>
+<b>_start_itunes_image</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_itunes_owner" ID="_FeedParserMixin._start_itunes_owner"></a>
+<h4>_FeedParserMixin._start_itunes_owner</h4>
+<b>_start_itunes_owner</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_link" ID="_FeedParserMixin._start_link"></a>
+<h4>_FeedParserMixin._start_link</h4>
+<b>_start_link</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_media_content" ID="_FeedParserMixin._start_media_content"></a>
+<h4>_FeedParserMixin._start_media_content</h4>
+<b>_start_media_content</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_media_player" ID="_FeedParserMixin._start_media_player"></a>
+<h4>_FeedParserMixin._start_media_player</h4>
+<b>_start_media_player</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_media_thumbnail" ID="_FeedParserMixin._start_media_thumbnail"></a>
+<h4>_FeedParserMixin._start_media_thumbnail</h4>
+<b>_start_media_thumbnail</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_name" ID="_FeedParserMixin._start_name"></a>
+<h4>_FeedParserMixin._start_name</h4>
+<b>_start_name</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_prodlink" ID="_FeedParserMixin._start_prodlink"></a>
+<h4>_FeedParserMixin._start_prodlink</h4>
+<b>_start_prodlink</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_published" ID="_FeedParserMixin._start_published"></a>
+<h4>_FeedParserMixin._start_published</h4>
+<b>_start_published</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_rights" ID="_FeedParserMixin._start_rights"></a>
+<h4>_FeedParserMixin._start_rights</h4>
+<b>_start_rights</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_rss" ID="_FeedParserMixin._start_rss"></a>
+<h4>_FeedParserMixin._start_rss</h4>
+<b>_start_rss</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_source" ID="_FeedParserMixin._start_source"></a>
+<h4>_FeedParserMixin._start_source</h4>
+<b>_start_source</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_subtitle" ID="_FeedParserMixin._start_subtitle"></a>
+<h4>_FeedParserMixin._start_subtitle</h4>
+<b>_start_subtitle</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_summary" ID="_FeedParserMixin._start_summary"></a>
+<h4>_FeedParserMixin._start_summary</h4>
+<b>_start_summary</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_textinput" ID="_FeedParserMixin._start_textinput"></a>
+<h4>_FeedParserMixin._start_textinput</h4>
+<b>_start_textinput</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_title" ID="_FeedParserMixin._start_title"></a>
+<h4>_FeedParserMixin._start_title</h4>
+<b>_start_title</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_updated" ID="_FeedParserMixin._start_updated"></a>
+<h4>_FeedParserMixin._start_updated</h4>
+<b>_start_updated</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_url" ID="_FeedParserMixin._start_url"></a>
+<h4>_FeedParserMixin._start_url</h4>
+<b>_start_url</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._start_width" ID="_FeedParserMixin._start_width"></a>
+<h4>_FeedParserMixin._start_width</h4>
+<b>_start_width</b>(<i>attrsD</i>)
+<a NAME="_FeedParserMixin._sync_author_detail" ID="_FeedParserMixin._sync_author_detail"></a>
+<h4>_FeedParserMixin._sync_author_detail</h4>
+<b>_sync_author_detail</b>(<i>key='author'</i>)
+<a NAME="_FeedParserMixin.decodeEntities" ID="_FeedParserMixin.decodeEntities"></a>
+<h4>_FeedParserMixin.decodeEntities</h4>
+<b>decodeEntities</b>(<i>element, data</i>)
+<a NAME="_FeedParserMixin.handle_charref" ID="_FeedParserMixin.handle_charref"></a>
+<h4>_FeedParserMixin.handle_charref</h4>
+<b>handle_charref</b>(<i>ref</i>)
+<a NAME="_FeedParserMixin.handle_comment" ID="_FeedParserMixin.handle_comment"></a>
+<h4>_FeedParserMixin.handle_comment</h4>
+<b>handle_comment</b>(<i>text</i>)
+<a NAME="_FeedParserMixin.handle_data" ID="_FeedParserMixin.handle_data"></a>
+<h4>_FeedParserMixin.handle_data</h4>
+<b>handle_data</b>(<i>text, escape=1</i>)
+<a NAME="_FeedParserMixin.handle_decl" ID="_FeedParserMixin.handle_decl"></a>
+<h4>_FeedParserMixin.handle_decl</h4>
+<b>handle_decl</b>(<i>text</i>)
+<a NAME="_FeedParserMixin.handle_entityref" ID="_FeedParserMixin.handle_entityref"></a>
+<h4>_FeedParserMixin.handle_entityref</h4>
+<b>handle_entityref</b>(<i>ref</i>)
+<a NAME="_FeedParserMixin.handle_pi" ID="_FeedParserMixin.handle_pi"></a>
+<h4>_FeedParserMixin.handle_pi</h4>
+<b>handle_pi</b>(<i>text</i>)
+<a NAME="_FeedParserMixin.lookslikehtml" ID="_FeedParserMixin.lookslikehtml"></a>
+<h4>_FeedParserMixin.lookslikehtml</h4>
+<b>lookslikehtml</b>(<i>str</i>)
+<a NAME="_FeedParserMixin.mapContentType" ID="_FeedParserMixin.mapContentType"></a>
+<h4>_FeedParserMixin.mapContentType</h4>
+<b>mapContentType</b>(<i>contentType</i>)
+<a NAME="_FeedParserMixin.parse_declaration" ID="_FeedParserMixin.parse_declaration"></a>
+<h4>_FeedParserMixin.parse_declaration</h4>
+<b>parse_declaration</b>(<i>i</i>)
+<a NAME="_FeedParserMixin.pop" ID="_FeedParserMixin.pop"></a>
+<h4>_FeedParserMixin.pop</h4>
+<b>pop</b>(<i>element, stripWhitespace=1</i>)
+<a NAME="_FeedParserMixin.popContent" ID="_FeedParserMixin.popContent"></a>
+<h4>_FeedParserMixin.popContent</h4>
+<b>popContent</b>(<i>tag</i>)
+<a NAME="_FeedParserMixin.push" ID="_FeedParserMixin.push"></a>
+<h4>_FeedParserMixin.push</h4>
+<b>push</b>(<i>element, expectingText</i>)
+<a NAME="_FeedParserMixin.pushContent" ID="_FeedParserMixin.pushContent"></a>
+<h4>_FeedParserMixin.pushContent</h4>
+<b>pushContent</b>(<i>tag, attrsD, defaultContentType, expectingText</i>)
+<a NAME="_FeedParserMixin.resolveURI" ID="_FeedParserMixin.resolveURI"></a>
+<h4>_FeedParserMixin.resolveURI</h4>
+<b>resolveURI</b>(<i>uri</i>)
+<a NAME="_FeedParserMixin.strattrs" ID="_FeedParserMixin.strattrs"></a>
+<h4>_FeedParserMixin.strattrs</h4>
+<b>strattrs</b>(<i>attrs</i>)
+<a NAME="_FeedParserMixin.trackNamespace" ID="_FeedParserMixin.trackNamespace"></a>
+<h4>_FeedParserMixin.trackNamespace</h4>
+<b>trackNamespace</b>(<i>prefix, uri</i>)
+<a NAME="_FeedParserMixin.unknown_endtag" ID="_FeedParserMixin.unknown_endtag"></a>
+<h4>_FeedParserMixin.unknown_endtag</h4>
+<b>unknown_endtag</b>(<i>tag</i>)
+<a NAME="_FeedParserMixin.unknown_starttag" ID="_FeedParserMixin.unknown_starttag"></a>
+<h4>_FeedParserMixin.unknown_starttag</h4>
+<b>unknown_starttag</b>(<i>tag, attrs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_FeedURLHandler" ID="_FeedURLHandler"></a>
+<h2>_FeedURLHandler</h2>
+
+<h3>Derived from</h3>
+urllib2.HTTPDigestAuthHandler, urllib2.HTTPRedirectHandler, urllib2.HTTPDefaultErrorHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>http_error_300</td></tr><tr><td>http_error_303</td></tr><tr><td>http_error_307</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#_FeedURLHandler.http_error_301">http_error_301</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedURLHandler.http_error_302">http_error_302</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedURLHandler.http_error_401">http_error_401</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_FeedURLHandler.http_error_default">http_error_default</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="_FeedURLHandler.http_error_301" ID="_FeedURLHandler.http_error_301"></a>
+<h4>_FeedURLHandler.http_error_301</h4>
+<b>http_error_301</b>(<i>req, fp, code, msg, headers</i>)
+<a NAME="_FeedURLHandler.http_error_302" ID="_FeedURLHandler.http_error_302"></a>
+<h4>_FeedURLHandler.http_error_302</h4>
+<b>http_error_302</b>(<i>req, fp, code, msg, headers</i>)
+<a NAME="_FeedURLHandler.http_error_401" ID="_FeedURLHandler.http_error_401"></a>
+<h4>_FeedURLHandler.http_error_401</h4>
+<b>http_error_401</b>(<i>req, fp, code, msg, headers</i>)
+<a NAME="_FeedURLHandler.http_error_default" ID="_FeedURLHandler.http_error_default"></a>
+<h4>_FeedURLHandler.http_error_default</h4>
+<b>http_error_default</b>(<i>req, fp, code, msg, headers</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_HTMLSanitizer" ID="_HTMLSanitizer"></a>
+<h2>_HTMLSanitizer</h2>
+
+<h3>Derived from</h3>
+_BaseHTMLProcessor
+<h3>Class Attributes</h3>
+<table>
+<tr><td>acceptable_attributes</td></tr><tr><td>acceptable_css_keywords</td></tr><tr><td>acceptable_css_properties</td></tr><tr><td>acceptable_elements</td></tr><tr><td>acceptable_svg_properties</td></tr><tr><td>mathml_attributes</td></tr><tr><td>mathml_elements</td></tr><tr><td>svg_attr_map</td></tr><tr><td>svg_attributes</td></tr><tr><td>svg_elem_map</td></tr><tr><td>svg_elements</td></tr><tr><td>unacceptable_elements_with_end_tag</td></tr><tr><td>valid_css_values</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#_HTMLSanitizer.handle_data">handle_data</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_HTMLSanitizer.handle_decl">handle_decl</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_HTMLSanitizer.handle_pi">handle_pi</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_HTMLSanitizer.reset">reset</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_HTMLSanitizer.sanitize_style">sanitize_style</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_HTMLSanitizer.unknown_endtag">unknown_endtag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_HTMLSanitizer.unknown_starttag">unknown_starttag</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="_HTMLSanitizer.handle_data" ID="_HTMLSanitizer.handle_data"></a>
+<h4>_HTMLSanitizer.handle_data</h4>
+<b>handle_data</b>(<i>text</i>)
+<a NAME="_HTMLSanitizer.handle_decl" ID="_HTMLSanitizer.handle_decl"></a>
+<h4>_HTMLSanitizer.handle_decl</h4>
+<b>handle_decl</b>(<i>text</i>)
+<a NAME="_HTMLSanitizer.handle_pi" ID="_HTMLSanitizer.handle_pi"></a>
+<h4>_HTMLSanitizer.handle_pi</h4>
+<b>handle_pi</b>(<i>text</i>)
+<a NAME="_HTMLSanitizer.reset" ID="_HTMLSanitizer.reset"></a>
+<h4>_HTMLSanitizer.reset</h4>
+<b>reset</b>(<i></i>)
+<a NAME="_HTMLSanitizer.sanitize_style" ID="_HTMLSanitizer.sanitize_style"></a>
+<h4>_HTMLSanitizer.sanitize_style</h4>
+<b>sanitize_style</b>(<i>style</i>)
+<a NAME="_HTMLSanitizer.unknown_endtag" ID="_HTMLSanitizer.unknown_endtag"></a>
+<h4>_HTMLSanitizer.unknown_endtag</h4>
+<b>unknown_endtag</b>(<i>tag</i>)
+<a NAME="_HTMLSanitizer.unknown_starttag" ID="_HTMLSanitizer.unknown_starttag"></a>
+<h4>_HTMLSanitizer.unknown_starttag</h4>
+<b>unknown_starttag</b>(<i>tag, attrs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_LooseFeedParser" ID="_LooseFeedParser"></a>
+<h2>_LooseFeedParser</h2>
+
+<h3>Derived from</h3>
+_FeedParserMixin, _BaseHTMLProcessor
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#_LooseFeedParser.__init__">_LooseFeedParser</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_LooseFeedParser.decodeEntities">decodeEntities</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_LooseFeedParser.strattrs">strattrs</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="_LooseFeedParser.__init__" ID="_LooseFeedParser.__init__"></a>
+<h4>_LooseFeedParser (Constructor)</h4>
+<b>_LooseFeedParser</b>(<i>baseuri, baselang, encoding, entities</i>)
+<a NAME="_LooseFeedParser.decodeEntities" ID="_LooseFeedParser.decodeEntities"></a>
+<h4>_LooseFeedParser.decodeEntities</h4>
+<b>decodeEntities</b>(<i>element, data</i>)
+<a NAME="_LooseFeedParser.strattrs" ID="_LooseFeedParser.strattrs"></a>
+<h4>_LooseFeedParser.strattrs</h4>
+<b>strattrs</b>(<i>attrs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_MicroformatsParser" ID="_MicroformatsParser"></a>
+<h2>_MicroformatsParser</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>DATE</td></tr><tr><td>EMAIL</td></tr><tr><td>NODE</td></tr><tr><td>STRING</td></tr><tr><td>URI</td></tr><tr><td>known_binary_extensions</td></tr><tr><td>known_xfn_relationships</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#_MicroformatsParser.__init__">_MicroformatsParser</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.findEnclosures">findEnclosures</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.findTags">findTags</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.findVCards">findVCards</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.findXFN">findXFN</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.getPropertyValue">getPropertyValue</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.isProbablyDownloadable">isProbablyDownloadable</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.normalize">normalize</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.processSingleString">processSingleString</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.processSingleURI">processSingleURI</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.processTypeValue">processTypeValue</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.toISO8601">toISO8601</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.unique">unique</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.vcardEscape">vcardEscape</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_MicroformatsParser.vcardFold">vcardFold</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="_MicroformatsParser.__init__" ID="_MicroformatsParser.__init__"></a>
+<h4>_MicroformatsParser (Constructor)</h4>
+<b>_MicroformatsParser</b>(<i>data, baseuri, encoding</i>)
+<a NAME="_MicroformatsParser.findEnclosures" ID="_MicroformatsParser.findEnclosures"></a>
+<h4>_MicroformatsParser.findEnclosures</h4>
+<b>findEnclosures</b>(<i></i>)
+<a NAME="_MicroformatsParser.findTags" ID="_MicroformatsParser.findTags"></a>
+<h4>_MicroformatsParser.findTags</h4>
+<b>findTags</b>(<i></i>)
+<a NAME="_MicroformatsParser.findVCards" ID="_MicroformatsParser.findVCards"></a>
+<h4>_MicroformatsParser.findVCards</h4>
+<b>findVCards</b>(<i>elmRoot, bAgentParsing=0</i>)
+<a NAME="_MicroformatsParser.findXFN" ID="_MicroformatsParser.findXFN"></a>
+<h4>_MicroformatsParser.findXFN</h4>
+<b>findXFN</b>(<i></i>)
+<a NAME="_MicroformatsParser.getPropertyValue" ID="_MicroformatsParser.getPropertyValue"></a>
+<h4>_MicroformatsParser.getPropertyValue</h4>
+<b>getPropertyValue</b>(<i>elmRoot, sProperty, iPropertyType=4, bAllowMultiple=0, bAutoEscape=0</i>)
+<a NAME="_MicroformatsParser.isProbablyDownloadable" ID="_MicroformatsParser.isProbablyDownloadable"></a>
+<h4>_MicroformatsParser.isProbablyDownloadable</h4>
+<b>isProbablyDownloadable</b>(<i>elm</i>)
+<a NAME="_MicroformatsParser.normalize" ID="_MicroformatsParser.normalize"></a>
+<h4>_MicroformatsParser.normalize</h4>
+<b>normalize</b>(<i>s</i>)
+<a NAME="_MicroformatsParser.processSingleString" ID="_MicroformatsParser.processSingleString"></a>
+<h4>_MicroformatsParser.processSingleString</h4>
+<b>processSingleString</b>(<i></i>)
+<a NAME="_MicroformatsParser.processSingleURI" ID="_MicroformatsParser.processSingleURI"></a>
+<h4>_MicroformatsParser.processSingleURI</h4>
+<b>processSingleURI</b>(<i></i>)
+<a NAME="_MicroformatsParser.processTypeValue" ID="_MicroformatsParser.processTypeValue"></a>
+<h4>_MicroformatsParser.processTypeValue</h4>
+<b>processTypeValue</b>(<i>arDefaultType, arForceType=None</i>)
+<a NAME="_MicroformatsParser.toISO8601" ID="_MicroformatsParser.toISO8601"></a>
+<h4>_MicroformatsParser.toISO8601</h4>
+<b>toISO8601</b>(<i>dt</i>)
+<a NAME="_MicroformatsParser.unique" ID="_MicroformatsParser.unique"></a>
+<h4>_MicroformatsParser.unique</h4>
+<b>unique</b>(<i>aList</i>)
+<a NAME="_MicroformatsParser.vcardEscape" ID="_MicroformatsParser.vcardEscape"></a>
+<h4>_MicroformatsParser.vcardEscape</h4>
+<b>vcardEscape</b>(<i>s</i>)
+<a NAME="_MicroformatsParser.vcardFold" ID="_MicroformatsParser.vcardFold"></a>
+<h4>_MicroformatsParser.vcardFold</h4>
+<b>vcardFold</b>(<i>s</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_Options" ID="_Options"></a>
+<h2>_Options</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>etag</td></tr><tr><td>format</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_RelativeURIResolver" ID="_RelativeURIResolver"></a>
+<h2>_RelativeURIResolver</h2>
+
+<h3>Derived from</h3>
+_BaseHTMLProcessor
+<h3>Class Attributes</h3>
+<table>
+<tr><td>relative_uris</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#_RelativeURIResolver.__init__">_RelativeURIResolver</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_RelativeURIResolver.resolveURI">resolveURI</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_RelativeURIResolver.unknown_starttag">unknown_starttag</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="_RelativeURIResolver.__init__" ID="_RelativeURIResolver.__init__"></a>
+<h4>_RelativeURIResolver (Constructor)</h4>
+<b>_RelativeURIResolver</b>(<i>baseuri, encoding, type</i>)
+<a NAME="_RelativeURIResolver.resolveURI" ID="_RelativeURIResolver.resolveURI"></a>
+<h4>_RelativeURIResolver.resolveURI</h4>
+<b>resolveURI</b>(<i>uri</i>)
+<a NAME="_RelativeURIResolver.unknown_starttag" ID="_RelativeURIResolver.unknown_starttag"></a>
+<h4>_RelativeURIResolver.unknown_starttag</h4>
+<b>unknown_starttag</b>(<i>tag, attrs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_StrictFeedParser" ID="_StrictFeedParser"></a>
+<h2>_StrictFeedParser</h2>
+
+<h3>Derived from</h3>
+_FeedParserMixin, xml.sax.handler.ContentHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#_StrictFeedParser.__init__">_StrictFeedParser</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_StrictFeedParser.characters">characters</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_StrictFeedParser.endElementNS">endElementNS</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_StrictFeedParser.error">error</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_StrictFeedParser.fatalError">fatalError</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_StrictFeedParser.startElementNS">startElementNS</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_StrictFeedParser.startPrefixMapping">startPrefixMapping</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="_StrictFeedParser.__init__" ID="_StrictFeedParser.__init__"></a>
+<h4>_StrictFeedParser (Constructor)</h4>
+<b>_StrictFeedParser</b>(<i>baseuri, baselang, encoding</i>)
+<a NAME="_StrictFeedParser.characters" ID="_StrictFeedParser.characters"></a>
+<h4>_StrictFeedParser.characters</h4>
+<b>characters</b>(<i>text</i>)
+<a NAME="_StrictFeedParser.endElementNS" ID="_StrictFeedParser.endElementNS"></a>
+<h4>_StrictFeedParser.endElementNS</h4>
+<b>endElementNS</b>(<i>name, qname</i>)
+<a NAME="_StrictFeedParser.error" ID="_StrictFeedParser.error"></a>
+<h4>_StrictFeedParser.error</h4>
+<b>error</b>(<i>exc</i>)
+<a NAME="_StrictFeedParser.fatalError" ID="_StrictFeedParser.fatalError"></a>
+<h4>_StrictFeedParser.fatalError</h4>
+<b>fatalError</b>(<i>exc</i>)
+<a NAME="_StrictFeedParser.startElementNS" ID="_StrictFeedParser.startElementNS"></a>
+<h4>_StrictFeedParser.startElementNS</h4>
+<b>startElementNS</b>(<i>name, qname, attrs</i>)
+<a NAME="_StrictFeedParser.startPrefixMapping" ID="_StrictFeedParser.startPrefixMapping"></a>
+<h4>_StrictFeedParser.startPrefixMapping</h4>
+<b>startPrefixMapping</b>(<i>prefix, uri</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="FeedParserDict" ID="FeedParserDict"></a>
+<h2>FeedParserDict</h2>
+<b>FeedParserDict</b>(<i>aDict=None</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="__extract_date" ID="__extract_date"></a>
+<h2>__extract_date</h2>
+<b>__extract_date</b>(<i>m</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="__extract_time" ID="__extract_time"></a>
+<h2>__extract_time</h2>
+<b>__extract_time</b>(<i>m</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="__extract_tzd" ID="__extract_tzd"></a>
+<h2>__extract_tzd</h2>
+<b>__extract_tzd</b>(<i>m</i>)
+<p>
+Return the Time Zone Designator as an offset in seconds from UTC.
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_ebcdic_to_ascii" ID="_ebcdic_to_ascii"></a>
+<h2>_ebcdic_to_ascii</h2>
+<b>_ebcdic_to_ascii</b>(<i>s</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_getCharacterEncoding" ID="_getCharacterEncoding"></a>
+<h2>_getCharacterEncoding</h2>
+<b>_getCharacterEncoding</b>(<i>http_headers, xml_data</i>)
+<p>
+Get the character encoding of the XML document
+</p><p>
+    http_headers is a dictionary
+    xml_data is a raw string (not Unicode)
+</p><p>
+    This is so much trickier than it sounds, it's not even funny.
+    According to RFC 3023 ('XML Media Types'), if the HTTP Content-Type
+    is application/xml, application/*+xml,
+    application/xml-external-parsed-entity, or application/xml-dtd,
+    the encoding given in the charset parameter of the HTTP Content-Type
+    takes precedence over the encoding given in the XML prefix within the
+    document, and defaults to 'utf-8' if neither are specified.  But, if
+    the HTTP Content-Type is text/xml, text/*+xml, or
+    text/xml-external-parsed-entity, the encoding given in the XML prefix
+    within the document is ALWAYS IGNORED and only the encoding given in
+    the charset parameter of the HTTP Content-Type header should be
+    respected, and it defaults to 'us-ascii' if not specified.
+</p><p>
+    Furthermore, discussion on the atom-syntax mailing list with the
+    author of RFC 3023 leads me to the conclusion that any document
+    served with a Content-Type of text/* and no charset parameter
+    must be treated as us-ascii.  (We now do this.)  And also that it
+    must always be flagged as non-well-formed.  (We now do this too.)
+</p><p>
+    If Content-Type is unspecified (input was local file or non-HTTP source)
+    or unrecognized (server just got it totally wrong), then go by the
+    encoding given in the XML prefix of the document and default to
+    'iso-8859-1' as per the HTTP specification (RFC 2616).
+</p><p>
+    Then, assuming we didn't find a character encoding in the HTTP headers
+    (and the HTTP Content-type allowed us to look in the body), we need
+    to sniff the first few bytes of the XML data and try to determine
+    whether the encoding is ASCII-compatible.  Section F of the XML
+    specification shows the way here:
+    http://www.w3.org/TR/REC-xml/#sec-guessing-no-ext-info
+</p><p>
+    If the sniffed encoding is not ASCII-compatible, we need to make it
+    ASCII compatible so that we can sniff further into the XML declaration
+    to find the encoding attribute, which will tell us the true encoding.
+</p><p>
+    Of course, none of this guarantees that we will be able to parse the
+    feed in the declared character encoding (assuming it was declared
+    correctly, which many are not).  CJKCodecs and iconv_codec help a lot;
+    you should definitely install them if you can.
+    http://cjkpython.i18n.org/
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_open_resource" ID="_open_resource"></a>
+<h2>_open_resource</h2>
+<b>_open_resource</b>(<i>url_file_stream_or_string, etag, modified, agent, referrer, handlers</i>)
+<p>
+URL, filename, or string --> stream
+</p><p>
+    This function lets you define parsers that take any input source
+    (URL, pathname to local or network file, or actual data as a string)
+    and deal with it in a uniform manner.  Returned object is guaranteed
+    to have all the basic stdio read methods (read, readline, readlines).
+    Just .close() the object when you're done with it.
+</p><p>
+    If the etag argument is supplied, it will be used as the value of an
+    If-None-Match request header.
+</p><p>
+    If the modified argument is supplied, it can be a tuple of 9 integers
+    (as returned by gmtime() in the standard Python time module) or a date
+    string in any format supported by feedparser. Regardless, it MUST
+    be in GMT (Greenwich Mean Time). It will be reformatted into an
+    RFC 1123-compliant date and used as the value of an If-Modified-Since
+    request header.
+</p><p>
+    If the agent argument is supplied, it will be used as the value of a
+    User-Agent request header.
+</p><p>
+    If the referrer argument is supplied, it will be used as the value of a
+    Referer[sic] request header.
+</p><p>
+    If handlers is supplied, it is a list of handlers used to build a
+    urllib2 opener.
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_parseHTTPContentType" ID="_parseHTTPContentType"></a>
+<h2>_parseHTTPContentType</h2>
+<b>_parseHTTPContentType</b>(<i>content_type</i>)
+<p>
+takes HTTP Content-Type header and returns (content type, charset)
+</p><p>
+        If no charset is specified, returns (content type, '')
+        If no content type is specified, returns ('', '')
+        Both return parameters are guaranteed to be lowercase strings
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_parseMicroformats" ID="_parseMicroformats"></a>
+<h2>_parseMicroformats</h2>
+<b>_parseMicroformats</b>(<i>htmlSource, baseURI, encoding</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_parse_date" ID="_parse_date"></a>
+<h2>_parse_date</h2>
+<b>_parse_date</b>(<i>dateString</i>)
+<p>
+Parses a variety of date formats into a 9-tuple in GMT
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_parse_date_greek" ID="_parse_date_greek"></a>
+<h2>_parse_date_greek</h2>
+<b>_parse_date_greek</b>(<i>dateString</i>)
+<p>
+Parse a string according to a Greek 8-bit date format.
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_parse_date_hungarian" ID="_parse_date_hungarian"></a>
+<h2>_parse_date_hungarian</h2>
+<b>_parse_date_hungarian</b>(<i>dateString</i>)
+<p>
+Parse a string according to a Hungarian 8-bit date format.
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_parse_date_iso8601" ID="_parse_date_iso8601"></a>
+<h2>_parse_date_iso8601</h2>
+<b>_parse_date_iso8601</b>(<i>dateString</i>)
+<p>
+Parse a variety of ISO-8601-compatible formats like 20040105
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_parse_date_mssql" ID="_parse_date_mssql"></a>
+<h2>_parse_date_mssql</h2>
+<b>_parse_date_mssql</b>(<i>dateString</i>)
+<p>
+Parse a string according to the MS SQL date format
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_parse_date_nate" ID="_parse_date_nate"></a>
+<h2>_parse_date_nate</h2>
+<b>_parse_date_nate</b>(<i>dateString</i>)
+<p>
+Parse a string according to the Nate 8-bit date format
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_parse_date_onblog" ID="_parse_date_onblog"></a>
+<h2>_parse_date_onblog</h2>
+<b>_parse_date_onblog</b>(<i>dateString</i>)
+<p>
+Parse a string according to the OnBlog 8-bit date format
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_parse_date_perforce" ID="_parse_date_perforce"></a>
+<h2>_parse_date_perforce</h2>
+<b>_parse_date_perforce</b>(<i>aDateString</i>)
+<p>
+parse a date in yyyy/mm/dd hh:mm:ss TTT format
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_parse_date_rfc822" ID="_parse_date_rfc822"></a>
+<h2>_parse_date_rfc822</h2>
+<b>_parse_date_rfc822</b>(<i>dateString</i>)
+<p>
+Parse an RFC822, RFC1123, RFC2822, or asctime-style date
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_parse_date_w3dtf" ID="_parse_date_w3dtf"></a>
+<h2>_parse_date_w3dtf</h2>
+<b>_parse_date_w3dtf</b>(<i>dateString</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_resolveRelativeURIs" ID="_resolveRelativeURIs"></a>
+<h2>_resolveRelativeURIs</h2>
+<b>_resolveRelativeURIs</b>(<i>htmlSource, baseURI, encoding, type</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_sanitizeHTML" ID="_sanitizeHTML"></a>
+<h2>_sanitizeHTML</h2>
+<b>_sanitizeHTML</b>(<i>htmlSource, encoding, type</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_stripDoctype" ID="_stripDoctype"></a>
+<h2>_stripDoctype</h2>
+<b>_stripDoctype</b>(<i>data</i>)
+<p>
+Strips DOCTYPE from XML document, returns (rss_version, stripped_data)
+</p><p>
+    rss_version may be 'rss091n' or None
+    stripped_data is the same XML document, minus the DOCTYPE
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_tidy" ID="_tidy"></a>
+<h2>_tidy</h2>
+<b>_tidy</b>(<i>data, **kwargs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_tidy_1" ID="_tidy_1"></a>
+<h2>_tidy</h2>
+<b>_tidy</b>(<i>data, **kwargs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_toUTF8" ID="_toUTF8"></a>
+<h2>_toUTF8</h2>
+<b>_toUTF8</b>(<i>data, encoding</i>)
+<p>
+Changes an XML data stream on the fly to specify a new encoding
+</p><p>
+    data is a raw sequence of bytes (not Unicode) that is presumed to be in %encoding already
+    encoding is a string recognized by encodings.aliases
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_urljoin" ID="_urljoin"></a>
+<h2>_urljoin</h2>
+<b>_urljoin</b>(<i>base, uri</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_xmlescape" ID="_xmlescape"></a>
+<h2>_xmlescape</h2>
+<b>_xmlescape</b>(<i>data, entities={}</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="parse" ID="parse"></a>
+<h2>parse</h2>
+<b>parse</b>(<i>url_file_stream_or_string, etag=None, modified=None, agent=None, referrer=None, handlers=[]</i>)
+<p>
+Parse a feed from a URL, file, stream, or string
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="registerDateHandler" ID="registerDateHandler"></a>
+<h2>registerDateHandler</h2>
+<b>registerDateHandler</b>(<i>func</i>)
+<p>
+Register a date handler function (takes string, returns 9-tuple date in GMT)
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="zopeCompatibilityHack" ID="zopeCompatibilityHack"></a>
+<h2>zopeCompatibilityHack</h2>
+<b>zopeCompatibilityHack</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

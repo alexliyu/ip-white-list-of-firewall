@@ -1,0 +1,252 @@
+{% load i18n %}
+{% extends "base.html" %}
+{% block header %}
+<script type="text/javascript">
+jQuery(document).ready(function() {
+    jQuery("#list").jqGrid({
+	url: '/admin/ajaxlist?model=article',
+	datatype: "json",
+	mtype: 'GET',
+	scrollrows: true,
+	autowidth: true,
+	rownumbers: true,
+	gridview: true,
+	height: 500,
+	colNames: ['{% trans "Date"%}',
+		    '{%trans "Title"%}',
+		    '{%trans "Author"%}',
+		    '{% trans "Comments Count" %}',
+		    '{% trans "Read times" %}',
+		    '{%trans "Status"%}',
+		    '{%trans "Entry Type"%}',
+		    '{%trans "Post Url"%}',
+		    '{%trans "allow comment"%}'],
+	colModel: [{
+	    name: 'date',
+	    index: 'date',
+	    width: 100,
+	    align: 'left',
+	    resizable: true,
+	    formatter:'date',
+	    formoptions: {
+		rowpos: 1,
+		elmprefix: "(*)",
+		elmsuffix: "  yyyy-mm-dd"
+	    },
+	    editrules: {
+		required: true
+	    }
+	},{
+	    name: 'title',
+	    index: 'title',
+	    width: 250,
+	    resizable: true,
+	    editable: true,
+	    formatter:'showlink', formatoptions:{
+				    baseLinkUrl:'/admin/article', addParam: '&action=edit',target:'_blank'
+						}
+	},
+	{
+	    name: 'author_name',
+	    index: 'author_name',
+	    width: 150,
+	    resizable: true,
+	    editable:true,
+	},
+	{
+	    name: 'commentcount',
+	    index: 'commentcount',
+	    width: 130,
+	    align: 'right',
+	    resizable: true,
+	    formatter: 'integer'
+	},
+	{
+	    name: 'readtimes',
+	    index: 'readtimes',
+	    width: 100,
+	    align: 'right',
+	    resizable: true,
+	    editable: true,
+	    formatter: 'integer',
+	    editrules: {
+		edithidden: true,
+		required: true,
+		number: true,
+		minValue: 0
+	    }
+	},
+	{
+	    name: 'published',
+	    index: 'published',
+	    width: 100,
+	    align: 'right',
+	    editable: true,
+	    resizable: true,
+	    align:'center',
+	    formatter:'checkbox',
+	    edittype: "select",
+	    editoptions: {
+		value: "true:true;false:false"
+	    },
+	},
+	{
+	    name: 'entrytype',
+	    index: 'entrytype',
+	    width: 100,
+	    align: 'right',
+	    editable: true,
+	    resizable: true,
+	    edittype: "select",
+	    editoptions: {
+		value: "blog:blog;article:article;download:download;page:page"
+	    },
+	},
+	{
+	    name: 'link',
+	    index: 'link',
+	    width: 200,
+	    align: 'left',
+	    formatter:'link',
+	    formoptions: {target:'_blank'},
+	},
+	{
+	    name: 'allow_comment',
+	    index: 'allow_comment',
+	    width: 100,
+	    resizable: true,
+	    align:'center',
+	    formatter:'checkbox',
+	    editable:true,
+	    edittype:'select',
+	    editoptions:{value:"true:true;false:false"}
+
+	}],
+	jsonReader: {
+	    page: "page",
+	    total: "total",
+	    records: "records",
+	    id: "id",
+	    userdata: "userdata",
+	    repeatitems: false,
+	},
+	pager: 'pager',
+	multiselect: true,
+	rowNum: 20,
+	height: '100%',
+	rowList: [10, 20, 30],
+	sortname: 'id',
+	sortorder: 'desc',
+	viewrecords: true,
+	sortable: true,
+	editurl: "/admin/ajaxlist?action=save",
+	caption: '{% trans "Manage Article"%}',
+	toolbar: [true, "bottom"],
+	loadComplete: function() {
+	    var udata = $("#list").jqGrid('getUserData');
+	    $("#t_list").css("text-align", "right").html("Totals Size:" + udata.tsize + " View Count: " + udata.tviewcount + " Total: " + udata.ttotal + "&nbsp;&nbsp;&nbsp;");
+	},
+	loadError: function(xhr, st, err) {
+	    $("#t_list").css("text-align", "left").html("Type: " + st + "; Response: " + xhr.status + " " + xhr.statusText);
+	},
+	afterInsertRow: function(rowid, aData) {
+	    switch (aData.name) {
+	    case 'blog':
+		jQuery("#list").jqGrid('setCell', rowid, 'entrytype', '', {
+		    color: 'green'
+		});
+		break;
+	    case 'article':
+		jQuery("#list").jqGrid('setCell', rowid, 'entrytype', '', {
+		    color: 'red'
+		});
+		break;
+	    case 'download':
+		jQuery("#list").jqGrid('setCell', rowid, 'entrytype', '', {
+		    color: 'blue'
+		});
+		break;
+
+	    }
+	}
+    });
+    jQuery("#list").jqGrid('navGrid', '#pager', {
+	view: true,
+	edit: true,
+	add: false,
+	del: true
+    },
+    {
+	height: 280,
+	reloadAfterSubmit: false,
+	processData: "Processing...",
+	closeOnEscape: true,
+	bottominfo: "Fields marked with (*) are required",
+	afterSubmit: {
+	    success: true
+	}
+    },
+    // edit options
+    {
+	jqModal: true,
+	checkOnUpdate: true,
+	savekey: [true, 13],
+	navkeys: [true, 38, 40],
+	checkOnSubmit: true,
+	reloadAfterSubmit: false,
+	closeOnEscape: true,
+	bottominfo: "Fields marked with (*) are required",
+	closeAfterAdd: true
+    },
+    // add options
+    {
+	reloadAfterSubmit: false,
+	jqModal: false,
+	closeOnEscape: true
+    },
+    // del options
+    {
+	sopt: ['eq', 'ne', 'gt', 'ge', 'in', 'ni'],
+	closeOnEscape: true,
+	drag: true
+    },
+    // search options
+    {
+	navkeys: [true, 38, 40],
+	jqModal: false,
+	closeOnEscape: true
+    } //view options
+
+    ).jqGrid('navButtonAdd',"#pager",{
+   caption:"{% trans "add new"%}",
+   buttonicon:"ui-icon-add",
+   onClickButton: function(){
+     $.colorbox({width:"80%", height:"80%", iframe:true,href:"/admin/article?action=add",
+			    onClosed:function(){
+						jQuery("#list").jqGrid('setGridParam',
+								    {sortname:"date",sortorder:"asc"}).trigger("reloadGrid");
+						}
+		});
+   },
+   position:"last"
+   });
+
+});
+</script>
+{%endblock%}
+ {% block content %}
+
+   <div class="wrap">
+
+      <h2>{%trans "Manage Article" %}
+</h2>
+
+
+<div class="clear"></div>
+</div>
+<table id="list">
+</table>
+<div id="pager"> </div>
+<div id="pager2"> </div>
+
+ {% endblock  %}

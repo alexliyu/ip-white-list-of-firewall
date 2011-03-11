@@ -1,0 +1,46 @@
+{% load i18n %}
+{% extends "base.html" %}
+ {% block content %}
+ <form action="/admin/otherdoc" method="post" >
+   <div class="wrap">
+
+      <h2>{% trans "Manage Other Doc" %} (<a href="/admin/doc?action=add">{% trans "add new"%}</a>)</h2>
+      <div class="" style="padding:10px 5px 5px 5px"><B>{% trans "All otherdoc"%}</b></div>
+
+      <div class="clear"></div>
+
+	   <div class="tablenav">
+		  <div class="alignleft">
+		  <input type="submit" class="button-secondary delete" name="deleteit" value="{% trans "Delete"%}"/>
+		  </div>
+ 
+
+		      <br class="clear"/>
+	   </div>
+	  <br class="clear"/>
+
+
+
+	   <table class="widefat">
+		<thead>
+			<tr>
+			<th class="check-column" style="text-align:left;padding-left:12px;" scope="col"><input type="checkbox" onclick="$('input[name=checks]').attr('checked',this.checked);"/></th>
+		<th style="width: 15%;">{% trans "Name" %}</th><th>{%trans "Date"%}</th></tr>
+			</thead>
+			<tbody>
+{% for doc in otherdoc%}
+
+			<tr valign="middle" id="link-{{doc.key}}">
+			                <td  colspan="2" style="text-align:left;padding-left:20px;"><input style="margin-left:{{indent}}px;" type="checkbox" value="{{doc.key}}" name="checks"/>  <a class="row-title" title='Edit "{{doc.name}}"' href="/admin/doc?key={{doc.key}}&amp;action=edit">{{doc.name}}</a></td>
+                            <td>{{doc.date|datetz:"F jS, Y"}}</td>
+                          
+                           </tr>
+			  	{%endfor%}
+
+
+			</tbody>
+		</table>
+
+   </div>
+</form>
+ {% endblock  %}

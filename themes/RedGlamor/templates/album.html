@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block head_block %}
+<script>
+			$(document).ready(function(){
+				$("a[rel='imgurl']").colorbox({transition:"fade"});
+
+			});
+		</script>
+{% endblock %}
+{% block content%}
+<div class="main">
+		<div class="b_list">
+		{% if photos %}
+
+
+			<div class="list_all">
+				{% for photo in photos %}
+				<li id="post-{{photo.key}}">
+				<span class="g_pic">
+								<a   rel="imgurl" href="{{photo.PhotoUrl}}"  title="{{ photo.name|escape }}"><img src="{{photo.PhotoUrl_s}}"  /> </a>
+				 </span>
+
+<span><a href="{{photo.Link_url|escape}}" rel="bookmark" target="_blank">{{ photo.name|escape }}</a></span>
+				</li>
+				{%endfor%}
+			</div>
+<div class='wp-pagenavi'>
+	<span class="pages">{% if pager.next %}<a href="{{pager.next}}">&laquo; Older Entries</a>{%endif%}</span>
+	<span class="pages">{% if pager.prev %}<a href="{{pager.prev}}">&laquo; Newer Entries</a>{%endif%}</span>
+	</div>
+		{%endif%}
+		</div>
+	</div>
+{% include "albumsidebar.html" %}
+{% endblock %}

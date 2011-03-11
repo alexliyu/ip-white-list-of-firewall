@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.app.gmemsess</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.app.gmemsess</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>_defaultCookieName</td></tr><tr><td>_defaultTimeout</td></tr><tr><td>_sidChars</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#Session">Session</a></td>
+<td>A secure lightweight memcache-backed session Class for Google Appengine.</td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<hr /><hr />
+<a NAME="Session" ID="Session"></a>
+<h2>Session</h2>
+<p>
+A secure lightweight memcache-backed session Class for Google Appengine.
+</p>
+<h3>Derived from</h3>
+dict
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#Session.__init__">Session</a></td>
+<td>Create a session object.</td>
+</tr><tr>
+<td><a href="#Session.get_id">get_id</a></td>
+<td>Returns session id string.</td>
+</tr><tr>
+<td><a href="#Session.invalidate">invalidate</a></td>
+<td>Delete session data and cookie.</td>
+</tr><tr>
+<td><a href="#Session.is_new">is_new</a></td>
+<td>Returns True if session was created during this request.</td>
+</tr><tr>
+<td><a href="#Session.save">save</a></td>
+<td>Save session data.</td>
+</tr>
+</table>
+<a NAME="Session.__init__" ID="Session.__init__"></a>
+<h4>Session (Constructor)</h4>
+<b>Session</b>(<i>rh, name=_defaultCookieName, timeout=_defaultTimeout</i>)
+<p>
+Create a session object.
+</p><p>
+		Keyword arguments:
+		rh -- the parent's request handler (usually self)
+		name -- the cookie name (defaults to "gsid")
+		timeout -- the number of seconds the session will last between
+		           requests (defaults to 1800 secs - 30 minutes)
+</p><a NAME="Session.get_id" ID="Session.get_id"></a>
+<h4>Session.get_id</h4>
+<b>get_id</b>(<i></i>)
+<p>
+Returns session id string.
+</p><a NAME="Session.invalidate" ID="Session.invalidate"></a>
+<h4>Session.invalidate</h4>
+<b>invalidate</b>(<i></i>)
+<p>
+Delete session data and cookie.
+</p><a NAME="Session.is_new" ID="Session.is_new"></a>
+<h4>Session.is_new</h4>
+<b>is_new</b>(<i></i>)
+<p>
+Returns True if session was created during this request.
+</p><a NAME="Session.save" ID="Session.save"></a>
+<h4>Session.save</h4>
+<b>save</b>(<i></i>)
+<p>
+Save session data.
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

@@ -1,0 +1,152 @@
+<div id="sidebar">
+	<div id="rss"><a href="{{ blog.feedurl }}"><span id="rss-pic"></span></a></div>
+	{% include "search.html" %}
+	<ul id="sidebarul">
+
+		<li>
+			<h2>公告栏</h2>
+			<p>
+				{{blog.blognotice}}
+			</p>
+		</li>
+		<li>
+
+
+			<ul>
+				<div id="buzzwidget">
+<script type="text/javascript" language="javascript" src="http://www.buzzcounter.net/widget/alexliyu2012?background=ffffff&buzzbackground=ffffff&text=333333&smalltext=c0c0c0&link=17375e"></script><script type="text/javascript">$.Widget.get();</script><div id="buzzwidget-footer"></div></div>
+<script type="text/javascript">$.Widget.set();</script>
+
+			</ul>
+
+		</li>
+		<li>
+			<h2>文章分类</h2>
+			{% if dcategories %}
+			<ul class="side-cat" >
+				{%for cate in dcategories%}
+				<li><a href="{{cate.Link_url}}">{{cate.name}}</a>({{cate.Dcount}})</li>
+				{%endfor%}
+			</ul>
+			{% endif %}
+			<div class="clear"></div>
+		</li>
+		<li>
+			<h2>标签云</h2>
+			{% if alltags %}
+			{% for t in alltags %}
+			<a title="{{ t.tagcount }} pages" href="{{t.Tagurl|urlencode}}"><span style='font-size:{{ t.tagcount|add:9 }}px;'>{{t.tag}}</span></a>
+			{%endfor%}
+			{% endif %}
+		</li>
+		<li>
+			<h2>最新文章</h2>
+			{% if show_latest %}
+			<ul>
+				{% for entry in show_latest %}
+				<li><a href="{{entry.Link_url|escape}}" title="{{entry.title|escape}}">{{entry.title|escape}}</a>({{entry.readtimes}})</li>
+				{%endfor%}
+			</ul>
+			{% endif %}
+		</li>
+
+		<li>
+			<h2>最新评论</h2>
+			{% if recent_dcomments %}
+			<ul>
+				{% for comment in recent_dcomments %}
+				<li>
+				<a href="{{comment.entry.link}}#comment-{{comment.key.id}}" title="发表于：{{comment.entry.title|escape}}">{{comment.author}}</a>&nbsp;说道：{{comment.shortcontent}}...
+				</li>
+				{%endfor%}
+			</ul>
+			{% endif %}
+		</li>
+
+		<li>
+			<h2>热门文章</h2>
+			{% if show_hot %}
+			<ul>
+				{% for entry in show_hot %}
+				<li><a href="{{entry.Link_url|escape}}" title="{{entry.title|escape}}">{{entry.title|escape}}</a>({{entry.readtimes}})</li>
+				{%endfor%}
+			</ul>
+			{% endif %}
+		</li>
+        <li>
+        	<h2>我的Lifestream</h2>
+        <ul>
+       <link href="http://lifestream.fm/css/badges/default.css" rel="stylesheet" type="text/css" />
+<script src="http://lifestream.fm/badges/byuser/alexliyu/default/FFFFFF/006699/333333/15" type="text/javascript"></script>
+
+		</ul>
+        </li>
+
+
+		<li>
+			<h2>归档</h2>
+			{% if archives %}
+			<ul class="side-cat" >
+				{%for archive in archives%}
+				<li><a href="{{archive.Link_url}}">{{archive.year}}年{{archive.month}}月</a>({{archive.entrycount}})</li>
+				{%endfor%}
+			</ul>
+			{% endif %}
+			<div class="clear"></div>
+		</li>
+
+
+
+		<li>
+			<h2>友情链接</h2>
+			{% if blogroll %}
+			<ul>
+				{%for link in blogroll%}
+				<li><a href="{{link.href}}" target="_blank">{{link.linktext}}</a></li>
+				{%endfor%}
+			</ul>
+			{% endif %}
+		</li>
+
+
+		<li>
+			<h2>快捷链接</h2>
+			<ul id="langpref">
+				<li>管理操作</li>
+			</ul>
+		</li>
+
+		<li>
+			<ul>
+				<li><a rel="external nofollow" id="feedrss" title="订阅这个博客的文章" href="{{ blog.feedurl }}"><abbr title="Really Simple Syndication">RSS</abbr> 订阅</a></li>
+				<li><a rel="external nofollow" id="feedrsscomments" title="订阅这个博客的评论" href="{{ blog.feedurl }}/comments"><abbr title="Really Simple Syndication">RSS</abbr> 订阅评论</a></li>
+			</ul>
+		</li>
+
+	</ul>
+
+	<script type="text/javascript">
+		<!--//
+			function loginp()
+			{
+			   $.getJSON("/do/info_login", function(ret){
+					  if( ret.islogin)
+					  {
+						html='<li><a href="{{self.logouturl}}">注销</a></li>';
+						if (ret.isadmin)
+						html+=' <li><a href="/admin">管理</a></li>';
+						$('#langpref').html(html);
+
+					  }
+					  else
+					  {
+						$('#langpref').html('<li><a href="/admin">登录</a></li>');
+						if(typeof(get_check_area)!='undefined')
+							get_check_area({{blog.comment_check_type}});
+					  }
+			   });
+			}
+			loginp();
+		//-->
+	</script>
+</div>

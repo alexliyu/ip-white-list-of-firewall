@@ -1,0 +1,47 @@
+﻿{% extends "base.html" %}
+{% block title %} {{entry.title}} - {{blog.title}} {% endblock %}
+{% block head_block %}
+{% if entry %}
+{%if entry.strtags%}
+<meta name="Keywords" content="{{entry.strtags}}">
+{%endif%}
+{%if entry.excerpt%}
+<meta name="Description" content="{{entry.excerpt}}">
+{%endif%}
+{% endif %}
+{% endblock %}
+{% block content%}
+<div class="primary">
+  <div class="wrapper">
+    <div class="breadcrumbs"><a href="index.html">Home</a> / <a href="pages.html">Pages</a> / {{entry.title}}</div>
+    <!--[if IE]>
+                    <br class="clearf" />
+                <![endif]-->
+    <div class="full_width"> {% if entry %}
+      <div id="post-{{entry.key}}">
+        <h1>{{entry.title}}</h1>
+        <p> {%mf entry_content %}
+          {{ entry.content }}
+          {%endmf%} <br class="clearf" />
+          {%mf after_entry_content%}
+          {%if relateposts%}
+        <h4>Relate Posts:</h4>
+        <ul>
+          {%for post in relateposts%}
+          <li><a href="/{{post.Link_url}}">{{post.title}}</a></li>
+          {%endfor%}
+        </ul>
+        {%endif%} <br class="clearf" />
+        <div class="box450"> {%if self.is_admin%}<a href="{{entry.edit_url}}">Edit</a> {%endif%} </div>
+        {%endmf%} <br class="clearf" /></div>
+        <div class="box450"> {% include "comments.html" %} </div>
+       {%endif%}
+    </div>
+    <!-- END MAIN CONTENT -->
+
+   </div>
+  <!-- END WRAPPER -->
+</div>
+<!-- END PRIMARY -->
+{% endblock %}
+</body></html>

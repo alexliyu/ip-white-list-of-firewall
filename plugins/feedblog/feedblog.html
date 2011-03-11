@@ -1,0 +1,60 @@
+﻿<table class="widefat">
+		<thead>
+			<tr>
+			<th width="32%" style="width: 15%;">网站名称</th>
+		<th width="52%">feed地址</th>
+		  <th width="52">类别</th>
+          <th width="52">起始位置</th>
+	  <th width="52">结束位置</th>
+	  <th width="52">允许的标签</th>
+	  <th width="52">禁止的属性</th>
+	  <th width="52">允许的属性</th>
+		  <th width="52%">删除</th>
+		  </tr>
+			</thead>
+
+<tbody>
+		{% for l in list %}
+
+		<tr valign=middle id=link-1>
+		<td>{{l.name}}</td>
+		<td>{{l.feedurl}}</td>
+		<td>{{l.acategory}}</td>
+		<td>{{l.start_target}}</td>
+		<td>{{l.stop_target}}</td>
+		<td>{{l.allow_target}}</td>
+		<td>{{l.mid_target}}</td>
+		<td>{{l.end_target}}</td><td><a href="?delid={{l.name}}">删除</a></td>
+		</tr>
+		{% endfor %}
+		<tr valign="middle" id="link-1"><form action="" method="post">
+		<td> <input type="text" value="填写网站名称" name="name" /></td>
+		<td><input type="text" value="填写feed地址" name="feedurl" /></td>
+		<td><select name="acategory" id="acategory">
+		{%for cat in categories%}
+              <option value="{{cat.slug}}">{{cat.name}}</option>
+                {%endfor%}
+            </select></td>
+		<td> <input type="text" value="nohtml" name="start_target" /></td>
+		<td> <input type="text" value="nohtml" name="stop_target" /></td>
+		<td><input type="text" value="p i strong b u a h1 h2 h3 br img div embed span" name="allow_target" /></td>
+		<td><input type="text" value="ad1 ad2 href text/javascript st-related-posts h4 tags meta crinfo style randompost subscribe-af" name="mid_target" /></td>
+		<td><input type="text" value="src allowscriptaccess allowNetworking pluginspage width allowScriptAccess type wmode height quality invokeurls allownetworking invokeURLs" name="end_target" /></td>
+
+		    <td> <input type="submit" value="添加"></td></form>
+		</tr>
+			</tbody>
+</table>
+
+<p>*采集插件工作正常，采集触发地址为<a href="/robot/fetchfeed" target="_blank">http://www.example.com/robot/fetchfeed</a>·</p>
+<p>*请把本目录下的corn.yaml放置在根目录下，并根据需要修改其中的内容.</p>
+<p>* /robot/fetchfeed:代表采集rss资源种子的间隔时间</p>
+<p>*/robot/fetcharticle:代表通过已采集到的rss资源采集静态页面的间隔时间</p>
+<p>*/robot/fetchimages:代表通过采集图片的间隔时间</p>
+<p>*/robot/fetchdb:代表正式把采集到的静态页面存储并发布的间隔时间</p>
+<p>*/robot/checkdb:检查数据库，重新执行不成功的任务并把死链接剔除等任务的间隔时间</p>
+<p>*/robot/checkimage:检查数据库，把文章中的原始图片地址替换为已采集到的本地图片地址</p>
+<p><b>作者:</b><a href="http://blog.mygods.co.cc" target="_blank">李昱</a><br/>
+  *请注意在添加Feeds前一定要进行一下测试，测试是否可以准确采集 。测试地址为<a href="/admin/feedblog/test">http://www.example.com/admin/feedblog/test</a>
+</p>
+<p>采集规则：如果您不知道具体应该设置的规则那就保持默认，否则请填写相应的采集规则。具体采集规则请<a href="http://www.51203344.tk/wiki" target="_blank">查阅官方WIKI</a></p>

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content%}
+<div class="main">
+		<div class="b_list">
+		{% if albums %}
+
+			<div class="list_all">
+				{% for album in albums %}
+				<li>
+				<span class="g_pic">
+								<a title="{{album.albumname}}" href="{{album.Link_url}}" rel="bookmark"><img src="{{album.Coveradmin|default:"/themes/RedGlamor/images/blank.jpg"}}"  /> </a>
+				 </span>
+
+<span><a href="{{album.Link_url}}" rel="bookmark" target="_blank">{{album.albumname}}</a></span>
+				</li>
+				{%endfor%}
+			</div>
+<div class='wp-pagenavi'>
+	<span class="pages">{% if pager.next %}<a href="{{pager.next}}">&laquo; Older Entries</a>{%endif%}</span>
+	<span class="pages">{% if pager.prev %}<a href="{{pager.prev}}">&laquo; Newer Entries</a>{%endif%}</span>
+	</div>
+		{%endif%}
+		</div>
+	</div>
+{% include "albumsidebar.html" %}
+{% endblock %}

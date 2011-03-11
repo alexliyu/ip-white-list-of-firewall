@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} {{photo.name}} - {{blog.title}} {% endblock %}
+{% block content%}
+<div class="primary">
+  <div class="wrapper">
+    <div class="breadcrumbs"><a href="index.html">Home</a> / <a href="/album">Template</a> </div>
+    <!--[if IE]>
+                    <br class="clearf" />
+                <![endif]-->
+     <div class="full_width">
+               <div id="post-{{photo.key}}" class="full_width">
+      <h1><a href="{{ photo.Link_url }}" rel="bookmark" title="Permanent Link to {{photo.name}}">{{photo.name}}</a> <span>{{photo.date|datetz:"F jS, Y"}}</span></h1>
+      <ul><a rel="imgurl" href="{{photo.PhotoUrl}}" title="{{photo.description}}"><img src="{{photo.PhotoUrl}}" /></a></ul>
+        <ul>
+{{photo.description}}
+</ul>
+
+        <br class="clearf" />
+        <ul><h3><a href="{{photo.url}}" target="_blank">点击下载</a></h3></ul>
+        <br class="clearf" />
+
+    </div>
+    <!-- END MAIN CONTENT -->
+    </div>
+    </div>
+  <!-- END WRAPPER -->
+</div>
+<!-- END PRIMARY -->
+{% endblock %}
+</body></html>

@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.app.html_filter</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.app.html_filter</h1>
+<p>
+    A Python HTML filtering library - html_filter.py, v 1.15.4
+</p><p>
+    Translated to Python by Samuel Adam <samuel.adam@gmail.com>
+    http://amisphere.com/contrib/python-html-filter/
+</p><p>
+
+</p><p>
+    Original PHP code ( lib_filter.php, v 1.15 ) by Cal Henderson  <cal@iamcal.com>
+</p><p>
+    http://iamcal.com/publish/articles/php/processing_html/
+    http://iamcal.com/publish/articles/php/processing_html_part_2/
+</p><p>
+    This code is licensed under a Creative Commons Attribution-ShareAlike 2.5 License
+    http://creativecommons.org/licenses/by-sa/2.5/
+</p>
+<h3>Global Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#html_filter">html_filter</a></td>
+<td>html_filter removes HTML tags that do not belong to a white list closes open tags and fixes broken ones removes javascript injections and black listed URLs makes text URLs and emails clickable adds rel="no-follow" to links except for white list</td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<hr /><hr />
+<a NAME="html_filter" ID="html_filter"></a>
+<h2>html_filter</h2>
+<p>
+    html_filter removes HTML tags that do not belong to a white list
+                closes open tags and fixes broken ones
+                removes javascript injections and black listed URLs
+                makes text URLs and emails clickable
+                adds rel="no-follow" to links except for white list
+</p><p>
+    default settings are based on Flickr's "Some HTML is OK"
+    http://www.flickr.com/html.gne
+</p><p>
+
+</p><p>
+    HOWTO
+</p><p>
+    1. Basic example
+</p><p>
+        from html_filter import html_filter
+        filter = html_filter()
+</p><p>
+        #change settings to meet your needs
+        filter.strip_comments = False
+        filter.allowed['br'] = ()
+        filter.no_close += 'br',
+</p><p>
+        raw_html = '<p><strong><br><!-- Text to filter !!!<div></p>'
+</p><p>
+        # go() is a shortcut to apply the most common methods
+        filtered_html = filter.go(raw_html)
+</p><p>
+        # returns <strong><br />&lt;!-- Text to filter !!!</strong>
+</p><p>
+
+</p><p>
+    2. You can only use one method at a time if you like
+</p><p>
+        from html_filter import html_filter
+        filter = html_filter()
+</p><p>
+        please_dont_scream_this_is_a_pop_contest = filter.fix_case('HARD ROCK ALELUYAH!!!')
+        # returns Hard rock aleluyah!!!
+</p><p>
+        filter.break_words_longer_than = 30
+        wordwrap_text = filter.break_words('MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM...')
+        # adds html entity "&#8203;" (zero width space) each 30 characters
+</p><p>
+
+</p>
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#html_filter.__init__">html_filter</a></td>
+<td>START Default Config</td>
+</tr><tr>
+<td><a href="#html_filter.balance_html">balance_html</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.break_text">break_text</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.break_words">break_words</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.check_entity">check_entity</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.check_tags">check_tags</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.clickable_urls">clickable_urls</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.decode_dec_entity">decode_dec_entity</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.decode_entities">decode_entities</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.decode_hex_entity">decode_hex_entity</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.decode_num_entity">decode_num_entity</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.escape_comments">escape_comments</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.f0">f0</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.f1">f1</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.f2">f2</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.f3">f3</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.f4">f4</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.f5">f5</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.f6">f6</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.f7">f7</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.f8">f8</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.f9">f9</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.fix_case">fix_case</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.fix_case_inner">fix_case_inner</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.go">go</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.is_valid_entity">is_valid_entity</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.process_param_protocol">process_param_protocol</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.process_remove_blanks">process_remove_blanks</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.process_tag">process_tag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.re_sub_overlap">re_sub_overlap</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.strip_tags">strip_tags</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.strip_whitespace">strip_whitespace</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#html_filter.validate_entities">validate_entities</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="html_filter.__init__" ID="html_filter.__init__"></a>
+<h4>html_filter (Constructor)</h4>
+<b>html_filter</b>(<i></i>)
+<p>
+ START Default Config 
+</p><a NAME="html_filter.balance_html" ID="html_filter.balance_html"></a>
+<h4>html_filter.balance_html</h4>
+<b>balance_html</b>(<i>data</i>)
+<a NAME="html_filter.break_text" ID="html_filter.break_text"></a>
+<h4>html_filter.break_text</h4>
+<b>break_text</b>(<i>text</i>)
+<a NAME="html_filter.break_words" ID="html_filter.break_words"></a>
+<h4>html_filter.break_words</h4>
+<b>break_words</b>(<i>data</i>)
+<a NAME="html_filter.check_entity" ID="html_filter.check_entity"></a>
+<h4>html_filter.check_entity</h4>
+<b>check_entity</b>(<i>preamble, term</i>)
+<a NAME="html_filter.check_tags" ID="html_filter.check_tags"></a>
+<h4>html_filter.check_tags</h4>
+<b>check_tags</b>(<i>data</i>)
+<a NAME="html_filter.clickable_urls" ID="html_filter.clickable_urls"></a>
+<h4>html_filter.clickable_urls</h4>
+<b>clickable_urls</b>(<i>data</i>)
+<a NAME="html_filter.decode_dec_entity" ID="html_filter.decode_dec_entity"></a>
+<h4>html_filter.decode_dec_entity</h4>
+<b>decode_dec_entity</b>(<i>m</i>)
+<a NAME="html_filter.decode_entities" ID="html_filter.decode_entities"></a>
+<h4>html_filter.decode_entities</h4>
+<b>decode_entities</b>(<i>data</i>)
+<a NAME="html_filter.decode_hex_entity" ID="html_filter.decode_hex_entity"></a>
+<h4>html_filter.decode_hex_entity</h4>
+<b>decode_hex_entity</b>(<i>m</i>)
+<a NAME="html_filter.decode_num_entity" ID="html_filter.decode_num_entity"></a>
+<h4>html_filter.decode_num_entity</h4>
+<b>decode_num_entity</b>(<i>orig_type, d</i>)
+<a NAME="html_filter.escape_comments" ID="html_filter.escape_comments"></a>
+<h4>html_filter.escape_comments</h4>
+<b>escape_comments</b>(<i>data</i>)
+<a NAME="html_filter.f0" ID="html_filter.f0"></a>
+<h4>html_filter.f0</h4>
+<b>f0</b>(<i>m</i>)
+<a NAME="html_filter.f1" ID="html_filter.f1"></a>
+<h4>html_filter.f1</h4>
+<b>f1</b>(<i>m</i>)
+<a NAME="html_filter.f2" ID="html_filter.f2"></a>
+<h4>html_filter.f2</h4>
+<b>f2</b>(<i>m</i>)
+<a NAME="html_filter.f3" ID="html_filter.f3"></a>
+<h4>html_filter.f3</h4>
+<b>f3</b>(<i>m</i>)
+<a NAME="html_filter.f4" ID="html_filter.f4"></a>
+<h4>html_filter.f4</h4>
+<b>f4</b>(<i>m</i>)
+<a NAME="html_filter.f5" ID="html_filter.f5"></a>
+<h4>html_filter.f5</h4>
+<b>f5</b>(<i>m</i>)
+<a NAME="html_filter.f6" ID="html_filter.f6"></a>
+<h4>html_filter.f6</h4>
+<b>f6</b>(<i>m</i>)
+<a NAME="html_filter.f7" ID="html_filter.f7"></a>
+<h4>html_filter.f7</h4>
+<b>f7</b>(<i>m</i>)
+<a NAME="html_filter.f8" ID="html_filter.f8"></a>
+<h4>html_filter.f8</h4>
+<b>f8</b>(<i>m</i>)
+<a NAME="html_filter.f9" ID="html_filter.f9"></a>
+<h4>html_filter.f9</h4>
+<b>f9</b>(<i>m</i>)
+<a NAME="html_filter.fix_case" ID="html_filter.fix_case"></a>
+<h4>html_filter.fix_case</h4>
+<b>fix_case</b>(<i>data</i>)
+<a NAME="html_filter.fix_case_inner" ID="html_filter.fix_case_inner"></a>
+<h4>html_filter.fix_case_inner</h4>
+<b>fix_case_inner</b>(<i>data</i>)
+<a NAME="html_filter.go" ID="html_filter.go"></a>
+<h4>html_filter.go</h4>
+<b>go</b>(<i>data</i>)
+<a NAME="html_filter.is_valid_entity" ID="html_filter.is_valid_entity"></a>
+<h4>html_filter.is_valid_entity</h4>
+<b>is_valid_entity</b>(<i>entity</i>)
+<a NAME="html_filter.process_param_protocol" ID="html_filter.process_param_protocol"></a>
+<h4>html_filter.process_param_protocol</h4>
+<b>process_param_protocol</b>(<i>data</i>)
+<a NAME="html_filter.process_remove_blanks" ID="html_filter.process_remove_blanks"></a>
+<h4>html_filter.process_remove_blanks</h4>
+<b>process_remove_blanks</b>(<i>data</i>)
+<a NAME="html_filter.process_tag" ID="html_filter.process_tag"></a>
+<h4>html_filter.process_tag</h4>
+<b>process_tag</b>(<i>data</i>)
+<a NAME="html_filter.re_sub_overlap" ID="html_filter.re_sub_overlap"></a>
+<h4>html_filter.re_sub_overlap</h4>
+<b>re_sub_overlap</b>(<i>pat, repl, data, i=0</i>)
+<a NAME="html_filter.strip_tags" ID="html_filter.strip_tags"></a>
+<h4>html_filter.strip_tags</h4>
+<b>strip_tags</b>(<i>html</i>)
+<a NAME="html_filter.strip_whitespace" ID="html_filter.strip_whitespace"></a>
+<h4>html_filter.strip_whitespace</h4>
+<b>strip_whitespace</b>(<i>data</i>)
+<a NAME="html_filter.validate_entities" ID="html_filter.validate_entities"></a>
+<h4>html_filter.validate_entities</h4>
+<b>validate_entities</b>(<i>data</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

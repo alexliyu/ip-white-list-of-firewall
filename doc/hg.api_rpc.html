@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.api_rpc</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.api_rpc</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>_chunk_re</td></tr><tr><td>_pingback_re</td></tr><tr><td>_title_re</td></tr><tr><td>dispatcher</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#CallApi">CallApi</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#DeleteLog">DeleteLog</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Logger">Logger</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PlogXMLRPCDispatcher">PlogXMLRPCDispatcher</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#View">View</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr>
+<td><a href="#_decorate">_decorate</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_wrapper">_wrapper</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#blogger_deletePost">blogger_deletePost</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#blogger_getUserInfo">blogger_getUserInfo</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#blogger_getUsersBlogs">blogger_getUsersBlogs</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#checkauth">checkauth</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#entry_title_struct">entry_title_struct</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#format_date">format_date</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#func">func</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#func_1">func</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#func_2">func</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#get_excerpt">get_excerpt</a></td>
+<td>Get an excerpt from the given `response`.</td>
+</tr><tr>
+<td><a href="#main">main</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#metaWeblog_editPost">metaWeblog_editPost</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#metaWeblog_getCategories">metaWeblog_getCategories</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#metaWeblog_getPost">metaWeblog_getPost</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#metaWeblog_getRecentPosts">metaWeblog_getRecentPosts</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#metaWeblog_newMediaObject">metaWeblog_newMediaObject</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#metaWeblog_newPost">metaWeblog_newPost</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#mt_getCategoryList">mt_getCategoryList</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#mt_getPostCategories">mt_getPostCategories</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#mt_getRecentPostTitles">mt_getRecentPostTitles</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#mt_publishPost">mt_publishPost</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#mt_setPostCategories">mt_setPostCategories</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#page_struct">page_struct</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#pingback_ping">pingback_ping</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#pingback_post">pingback_post</a></td>
+<td>This is the pingback handler for posts.</td>
+</tr><tr>
+<td><a href="#post_struct">post_struct</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_deleteCategory">wp_deleteCategory</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_deleteComment">wp_deleteComment</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_deletePage">wp_deletePage</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_editComment">wp_editComment</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_editPage">wp_editPage</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getAuthors">wp_getAuthors</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getComment">wp_getComment</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getCommentCount">wp_getCommentCount</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getCommentStatusList">wp_getCommentStatusList</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getComments">wp_getComments</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getOptions">wp_getOptions</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getPage">wp_getPage</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getPageList">wp_getPageList</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getPageStatusList">wp_getPageStatusList</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getPageTemplates">wp_getPageTemplates</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getPages">wp_getPages</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getPostStatusList">wp_getPostStatusList</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getTags">wp_getTags</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_getUsersBlogs">wp_getUsersBlogs</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_newCategory">wp_newCategory</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_newComment">wp_newComment</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_newPage">wp_newPage</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_setOptions">wp_setOptions</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wp_suggestCategories">wp_suggestCategories</a></td>
+<td></td>
+</tr>
+</table>
+<hr /><hr />
+<a NAME="CallApi" ID="CallApi"></a>
+<h2>CallApi</h2>
+
+<h3>Derived from</h3>
+BaseRequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#CallApi.get">get</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#CallApi.post">post</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="CallApi.get" ID="CallApi.get"></a>
+<h4>CallApi.get</h4>
+<b>get</b>(<i></i>)
+<a NAME="CallApi.post" ID="CallApi.post"></a>
+<h4>CallApi.post</h4>
+<b>post</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="DeleteLog" ID="DeleteLog"></a>
+<h2>DeleteLog</h2>
+
+<h3>Derived from</h3>
+BaseRequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#DeleteLog.get">get</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="DeleteLog.get" ID="DeleteLog.get"></a>
+<h4>DeleteLog.get</h4>
+<b>get</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Logger" ID="Logger"></a>
+<h2>Logger</h2>
+
+<h3>Derived from</h3>
+db.Model
+<h3>Class Attributes</h3>
+<table>
+<tr><td>date</td></tr><tr><td>request</td></tr><tr><td>response</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="PlogXMLRPCDispatcher" ID="PlogXMLRPCDispatcher"></a>
+<h2>PlogXMLRPCDispatcher</h2>
+
+<h3>Derived from</h3>
+SimpleXMLRPCDispatcher
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#PlogXMLRPCDispatcher.__init__">PlogXMLRPCDispatcher</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="PlogXMLRPCDispatcher.__init__" ID="PlogXMLRPCDispatcher.__init__"></a>
+<h4>PlogXMLRPCDispatcher (Constructor)</h4>
+<b>PlogXMLRPCDispatcher</b>(<i>funcs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="View" ID="View"></a>
+<h2>View</h2>
+
+<h3>Derived from</h3>
+BaseRequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#View.get">get</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="View.get" ID="View.get"></a>
+<h4>View.get</h4>
+<b>get</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_decorate" ID="_decorate"></a>
+<h2>_decorate</h2>
+<b>_decorate</b>(<i>method</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_wrapper" ID="_wrapper"></a>
+<h2>_wrapper</h2>
+<b>_wrapper</b>(<i>*args, **kwargs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="blogger_deletePost" ID="blogger_deletePost"></a>
+<h2>blogger_deletePost</h2>
+<b>blogger_deletePost</b>(<i>appkey, postid, publish=False</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="blogger_getUserInfo" ID="blogger_getUserInfo"></a>
+<h2>blogger_getUserInfo</h2>
+<b>blogger_getUserInfo</b>(<i>appkey</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="blogger_getUsersBlogs" ID="blogger_getUsersBlogs"></a>
+<h2>blogger_getUsersBlogs</h2>
+<b>blogger_getUsersBlogs</b>(<i>discard</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="checkauth" ID="checkauth"></a>
+<h2>checkauth</h2>
+<b>checkauth</b>(<i>pos=1</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="entry_title_struct" ID="entry_title_struct"></a>
+<h2>entry_title_struct</h2>
+<b>entry_title_struct</b>(<i>entry</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="format_date" ID="format_date"></a>
+<h2>format_date</h2>
+<b>format_date</b>(<i>d</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="func" ID="func"></a>
+<h2>func</h2>
+<b>func</b>(<i>blog_id</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="func_1" ID="func_1"></a>
+<h2>func</h2>
+<b>func</b>(<i>blogid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="func_2" ID="func_2"></a>
+<h2>func</h2>
+<b>func</b>(<i>blogid, data</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="get_excerpt" ID="get_excerpt"></a>
+<h2>get_excerpt</h2>
+<b>get_excerpt</b>(<i>response, url_hint, body_limit=1024 * 512</i>)
+<p>
+Get an excerpt from the given `response`.  `url_hint` is the URL
+	which will be used as anchor for the excerpt.  The return value is a
+	tuple in the form ``(title, body)``.  If one of the two items could
+	not be calculated it will be `None`.
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="main" ID="main"></a>
+<h2>main</h2>
+<b>main</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="metaWeblog_editPost" ID="metaWeblog_editPost"></a>
+<h2>metaWeblog_editPost</h2>
+<b>metaWeblog_editPost</b>(<i>postid, struct, publish</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="metaWeblog_getCategories" ID="metaWeblog_getCategories"></a>
+<h2>metaWeblog_getCategories</h2>
+<b>metaWeblog_getCategories</b>(<i>blogid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="metaWeblog_getPost" ID="metaWeblog_getPost"></a>
+<h2>metaWeblog_getPost</h2>
+<b>metaWeblog_getPost</b>(<i>postid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="metaWeblog_getRecentPosts" ID="metaWeblog_getRecentPosts"></a>
+<h2>metaWeblog_getRecentPosts</h2>
+<b>metaWeblog_getRecentPosts</b>(<i>blogid, num</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="metaWeblog_newMediaObject" ID="metaWeblog_newMediaObject"></a>
+<h2>metaWeblog_newMediaObject</h2>
+<b>metaWeblog_newMediaObject</b>(<i>blogid, struct</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="metaWeblog_newPost" ID="metaWeblog_newPost"></a>
+<h2>metaWeblog_newPost</h2>
+<b>metaWeblog_newPost</b>(<i>blogid, struct, publish</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="mt_getCategoryList" ID="mt_getCategoryList"></a>
+<h2>mt_getCategoryList</h2>
+<b>mt_getCategoryList</b>(<i>blogid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="mt_getPostCategories" ID="mt_getPostCategories"></a>
+<h2>mt_getPostCategories</h2>
+<b>mt_getPostCategories</b>(<i>postid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="mt_getRecentPostTitles" ID="mt_getRecentPostTitles"></a>
+<h2>mt_getRecentPostTitles</h2>
+<b>mt_getRecentPostTitles</b>(<i>blogid, num</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="mt_publishPost" ID="mt_publishPost"></a>
+<h2>mt_publishPost</h2>
+<b>mt_publishPost</b>(<i>postid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="mt_setPostCategories" ID="mt_setPostCategories"></a>
+<h2>mt_setPostCategories</h2>
+<b>mt_setPostCategories</b>(<i>postid, cates</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="page_struct" ID="page_struct"></a>
+<h2>page_struct</h2>
+<b>page_struct</b>(<i>entry</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="pingback_ping" ID="pingback_ping"></a>
+<h2>pingback_ping</h2>
+<b>pingback_ping</b>(<i>source_uri, target_uri</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="pingback_post" ID="pingback_post"></a>
+<h2>pingback_post</h2>
+<b>pingback_post</b>(<i>response, source_uri, target_uri, slug</i>)
+<p>
+This is the pingback handler for posts.
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="post_struct" ID="post_struct"></a>
+<h2>post_struct</h2>
+<b>post_struct</b>(<i>entry</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_deleteCategory" ID="wp_deleteCategory"></a>
+<h2>wp_deleteCategory</h2>
+<b>wp_deleteCategory</b>(<i>blogid, cateid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_deleteComment" ID="wp_deleteComment"></a>
+<h2>wp_deleteComment</h2>
+<b>wp_deleteComment</b>(<i>blogid, commentid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_deletePage" ID="wp_deletePage"></a>
+<h2>wp_deletePage</h2>
+<b>wp_deletePage</b>(<i>blogid, pageid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_editComment" ID="wp_editComment"></a>
+<h2>wp_editComment</h2>
+<b>wp_editComment</b>(<i>blogid, commentid, struct</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_editPage" ID="wp_editPage"></a>
+<h2>wp_editPage</h2>
+<b>wp_editPage</b>(<i>blogid, pageid, struct, publish</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getAuthors" ID="wp_getAuthors"></a>
+<h2>wp_getAuthors</h2>
+<b>wp_getAuthors</b>(<i>blogid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getComment" ID="wp_getComment"></a>
+<h2>wp_getComment</h2>
+<b>wp_getComment</b>(<i>blogid, commentid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getCommentCount" ID="wp_getCommentCount"></a>
+<h2>wp_getCommentCount</h2>
+<b>wp_getCommentCount</b>(<i>blog_id, postid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getCommentStatusList" ID="wp_getCommentStatusList"></a>
+<h2>wp_getCommentStatusList</h2>
+<b>wp_getCommentStatusList</b>(<i>blogid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getComments" ID="wp_getComments"></a>
+<h2>wp_getComments</h2>
+<b>wp_getComments</b>(<i>blogid, data</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getOptions" ID="wp_getOptions"></a>
+<h2>wp_getOptions</h2>
+<b>wp_getOptions</b>(<i>blogid, options</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getPage" ID="wp_getPage"></a>
+<h2>wp_getPage</h2>
+<b>wp_getPage</b>(<i>blogid, pageid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getPageList" ID="wp_getPageList"></a>
+<h2>wp_getPageList</h2>
+<b>wp_getPageList</b>(<i>blogid, num=20</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getPageStatusList" ID="wp_getPageStatusList"></a>
+<h2>wp_getPageStatusList</h2>
+<b>wp_getPageStatusList</b>(<i>blogid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getPageTemplates" ID="wp_getPageTemplates"></a>
+<h2>wp_getPageTemplates</h2>
+<b>wp_getPageTemplates</b>(<i>blogid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getPages" ID="wp_getPages"></a>
+<h2>wp_getPages</h2>
+<b>wp_getPages</b>(<i>blogid, num=20</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getPostStatusList" ID="wp_getPostStatusList"></a>
+<h2>wp_getPostStatusList</h2>
+<b>wp_getPostStatusList</b>(<i>blogid</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getTags" ID="wp_getTags"></a>
+<h2>wp_getTags</h2>
+<b>wp_getTags</b>(<i>blog_id</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_getUsersBlogs" ID="wp_getUsersBlogs"></a>
+<h2>wp_getUsersBlogs</h2>
+<b>wp_getUsersBlogs</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_newCategory" ID="wp_newCategory"></a>
+<h2>wp_newCategory</h2>
+<b>wp_newCategory</b>(<i>blogid, struct</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_newComment" ID="wp_newComment"></a>
+<h2>wp_newComment</h2>
+<b>wp_newComment</b>(<i>blogid, postid, struct</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_newPage" ID="wp_newPage"></a>
+<h2>wp_newPage</h2>
+<b>wp_newPage</b>(<i>blogid, struct, publish</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_setOptions" ID="wp_setOptions"></a>
+<h2>wp_setOptions</h2>
+<b>wp_setOptions</b>(<i>blogid, options</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wp_suggestCategories" ID="wp_suggestCategories"></a>
+<h2>wp_suggestCategories</h2>
+<b>wp_suggestCategories</b>(<i>blogid, category, max_result</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

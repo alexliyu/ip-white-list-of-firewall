@@ -1,0 +1,92 @@
+application: cdm-system
+version: 3
+runtime: python
+api_version: 1
+
+derived_file_type:
+- python_precompiled
+default_expiration: "10d"
+handlers:
+- url: /favicon\.ico
+  static_files: static/images/favicon.ico
+  upload: static/images/favicon.ico
+  mime_type: image/x-icon
+  
+- url: /robots\.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt
+  
+- url: /tinymce/.*
+  script: $PYTHON_LIB/google/appengine/ext/zipserve
+
+- url: /static
+  static_dir: static
+  
+- url: /doc
+  static_dir: doc
+
+- url: /rpc|/xmlrpc\.php|/rpc/.*
+  script: api_rpc.py
+  
+- url: /themes/.*
+  script: theme_files.py
+  
+- url: /myadmin/.*|/myadmin
+  script: $PYTHON_LIB/google/appengine/ext/admin
+  login: admin
+  
+- url: /admin/post|/admin/entries/(post|page)|/admin/links|/admin/categories|/admin/comments|/admin/download/|/admin/article/|/admin/doc|/admin/otherdoc|/admin/photo
+  script: admin.py
+  login: required
+  
+- url: /admin/{0,1}
+  script: admin.py
+  login: required
+  
+- url: /admin/link|/admin/category|/admin/(post|page)|/admin/lang|/admin/filemanager|/admin/uploadmain|/admin/uploadserver/
+  script: admin.py
+  login: required
+
+- url: /admin/upload|/admin/uploadex|/admin/uploads
+  script: admin.py
+  
+- url: /admin/.*
+  script: admin.py
+  login: admin
+  
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+  
+- url: /sserve/.*
+  script: media.py
+  
+- url: /serve/.*
+  script: media.py
+  
+- url: /media/.*
+  script: media.py
+  
+- url: /media/post_comment|/media|/album|/album/page/|/album/category/(.*)|/media/tag/(.*)|/album/.*|/photo/.*|/gallery/.*
+  script: media.py
+  
+- url: /blog/.*|/download/(.*)|/download/category/(.*)|/download/page/(.*)|/archive/(.*)
+  script: blog.py
+
+- url: /contact|/privacy|/join|/aboutme|/support|/page/(.*)
+  script: blog.py
+  
+- url: /test|/push
+  script: test.py
+
+- url: /users/(.*)|/users
+  script: wiki.py
+
+- url: /w|/w/.*|/wiki|/wiki/(\S+)|/wiki/|/users/(.*)|/users
+  script: wiki.py
+
+- url: /admin/pushblog/setup/.*
+  script: test.py
+
+- url: /.*
+  script: blog.py

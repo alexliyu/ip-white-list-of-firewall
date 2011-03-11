@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %} {{entry.title|escape}} - {{blog.title|escape}} {% endblock %}
+
+{% block head_block %}
+
+{% if entry %}
+{%if entry.strtags%}<meta name="Keywords" content="{{entry.strtags|escape}}" />{%endif%}
+{%if entry.excerpt%} <meta name="Description" content="{{entry.excerpt|escape}}" />{%endif%}
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+
+	<div id="main">
+		<div id="maincontent"><div class="forFlow">
+		{% if entry %}
+			<div class="post" id="post-{{entry.key}}">
+				<h2 class="post-title"><a href="{{entry.Link_url|escape}}" rel="bookmark" title="{{ entry.title|escape }}">{{ entry.title|escape }}</a></h2>
+				<div class="postmetadata-top">
+                                <span><a title="Post to Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="small-count" data-locale="zh_CN" data-url="{{entry.fullurl|escape}}"  data-message="{{ entry.title|escape }}"></a>
+<script type="text/javascript" src="http://www.google.com/buzz/api/button.js"></script></span>
+					<span class="post-comments"><a href="{{entry.Link_url|escape}}#comments">{{entry.commentcount}} 条评论</a></span>
+					<span class="post-date">{{entry.date|datetz:"Y/m/d H:i"}}</span>
+					<span class="post-views"><a href="{{entry.Link_url|escape}}">{{entry.readtimes}} 次阅读</a></span>
+				</div>
+				<div class="entry">
+					{{ entry.content }}
+					<p><b>转载请注明：来自</b><a href="{{blog.baseurl}}" title="{{blog.title|escape}}">{{blog.title|escape}}</a>
+					<br/><b>本文地址：</b><a href="{{entry.fullurl|escape}}" title="{{ entry.title|escape }}">{{entry.fullurl|escape}}</a></p>
+				</div>
+				<div class="postmetadata">
+					<span class="post-cat">分类:
+						{%for cate in entry.categories%} <a href="{{cate.Link_url}}">{{cate.name}}</a> {%endfor%}
+					</span>
+
+					{% if entry.tags%}
+					<span class="post-tag">标签:
+						{%for tag in entry.tags%}
+							<a href="{{tag.Tagurl|urlencode}}">{{tag}}</a>&nbsp;{%endfor%}</span>
+					{%endif%}
+				</div>
+			</div>
+			<div class="navigation">
+				{%for prev in entry.prev%}
+					<span class="previous"><a href="{{prev.Link_url}}">{{prev.title}}</a></span>
+				{%endfor%}
+				{%for next in entry.next%}
+					<span class="next"><a href="{{next.Link_url}}">{{next.title}}</a></span>
+				{%endfor%}
+			</div>
+
+			<div class="related">
+				<h4>相关文章</h4>
+				{% if relateposts %}
+				<ul>
+				{%for post in relateposts%}
+					<li><a href="{{post.Link_url|escape}}">{{post.title|escape}}</a> - {{post.date|datetz:"Y/m/d"}}</li>
+				{%endfor%}
+				</ul>
+				{% endif %}
+			</div>
+
+		{% include "comments.html" %}
+
+		{% else %}
+			<h2 class="center">Not Found</h2>
+			<p class="center">不好意思，您所查看的内容不再这里，您可以通过侧栏搜索工具查一下。</p>
+		{% endif %}
+
+		</div></div>
+
+		{% include "sidebar.html" %}
+	</div>
+{% endblock %}

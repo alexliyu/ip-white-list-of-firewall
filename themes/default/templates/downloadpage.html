@@ -1,0 +1,30 @@
+
+<div id="footer">
+  <div id="download_list" style="display:none">
+    <div class="part"> <strong>下载声明：</strong>
+      <div class="part_content">
+        <p> 1. 本站所有软件和资料均为软件作者提供或网友推荐发布而来，仅供学习和研究使用，不得用于任何商业用途。如本站不慎侵犯你的版权请<a href="/contact">联系我</a>，我将及时处理，并撤下相关内容！ </p>
+        <p> 2. 访问本站的用户必须明白，本站对所提供下载的软件和程序代码不拥有任何权利，其版权归该软件和程序代码的合法拥有者所有，请用户在下载使用前必须详细阅读并遵守软件作者的&quot;使用许可协议&quot;。本站仅仅是一个软件使用交流的平台。 </p>
+      </div>
+    </div>
+    <div class="part"> <strong>文件信息：</strong>
+      <div class="part_content">
+        <div style="float:left;">
+          <p>文件名称：{{entry.title}}</p>
+          <p>文件大小：{{entry.downloadsize}}</p>
+          <p>上传日期：{{entry.date}}</p>
+        </div>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+    <div class="part" style="text-align:center">
+      <h2 style="font-size:12px;margin: 0px;"><a href="{{entry.Link_url}}">去{{blog.titile}}看看关于{{entry.title}} 的详细介绍文章</a></h2>
+    </div>
+    <div class="part"> <strong>下载地址：</strong> | </div>
+    <div style="padding-top:10px">如无特殊说明，本文件解压密码为：<font color="red">{{blog.baseurl}}</font>，使用WinRAR打开压缩包亦可看到密码。</div>
+  </div>
+  <div id="download_client_code" style="display:none"> 
+    <a ref="download" href="{{entry.downloadurl}}" target="_blank" title="Please Click"> Download </a> 
+  </div>
+</div>
+</div>

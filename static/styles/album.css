@@ -1,0 +1,113 @@
+@charset "utf-8";
+ *{margin:0;padding:0}
+
+ ul{list-style:none;}
+ img{border:none;}
+ a:link,a:hover,a:visited,a:active
+{
+text-decoration:underline;
+color:#4F463F;
+}
+a:hover{
+text-decoration:none;
+}
+
+ #container
+ {
+ padding:10px;
+ }
+ ul.album{
+list-style:none;
+ }
+ ul.album li
+ {
+   float:left;
+   padding:5px 21px 5px 13px;
+   margin:5px;
+   height:200px;
+   border:solid 3px #ccc;
+   width:200px;
+ }
+ .clear{clear:both;}
+ 
+  
+ #body{width:1002px;}
+ 
+ div.album{
+  background:url(/static/images/zp_zj_bg.gif) left top no-repeat;
+ float:left;
+width:300px;
+ padding:5px;
+ margin:5px;
+ text-align:center;
+ }
+ 
+ div.cover
+ {
+ background:url(/static/images/cover.jpg) 6px 5px no-repeat;
+ width:152px;
+ height:117px;
+ float:left;
+ }
+ 
+ div.des
+ {
+ text-align:left;
+font-size:12px;
+
+ float:left;
+ }
+ div.des p kbd
+ {
+margin:0 3px;
+font-family:Georgia;
+font-weight:bold;
+ }
+ div.des p
+ {
+ line-height:200%;
+
+ }
+ #copyright
+ {
+ clear:both;
+ margin-top:15px;
+ text-align:left;
+ padding-left:150px;
+ height:40px;
+ line-height:40px;
+ }
+ img.showimg{float:left;padding:5px;border:solid 3px #ccc;}
+ dl.photoinfo
+ {
+ float:left;
+ margin-left:8px;
+ }
+ dl.photoinfo dd, dl.photoinfo dt
+ {
+ padding:3px 0;
+ }
+ ul.ulnav
+ {
+ float:left;
+ }
+ ul.ulnav li
+ {
+ float:left;
+ padding:0 5px;
+ 
+ }
+ 
+
+ input.input,input.button,input.select
+ {
+ border:solid 2px #ccc;
+ padding:3px;
+ width:350px;
+ font-size:12px;
+ }
+ input.button
+ {
+   width:100px;
+   cursor:pointer;
+ }

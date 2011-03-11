@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+/*---------------- RESET BROWSER DEFAULTS ----------------*/
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, em, img, fieldset, form, label, legend { margin: 0; padding: 0; border: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+ul { list-style:none; }
+body { line-height: 1.5; }
+a img { border: none; }
+

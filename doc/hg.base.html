@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.base</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.base</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#BaseRequestHandler">BaseRequestHandler</a></td>
+<td>TODO:This system the most important class, which is one of the base class.</td>
+</tr><tr>
+<td><a href="#Pager">Pager</a></td>
+<td>TODO:This class is used for paging.</td>
+</tr><tr>
+<td><a href="#PingbackError">PingbackError</a></td>
+<td>TODO:Raised if the remote server caused an exception while pingbacking.</td>
+</tr><tr>
+<td><a href="#util">util</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr>
+<td><a href="#Cache_expires">Cache_expires</a></td>
+<td>TODO:the images and js,css file are caching</td>
+</tr><tr>
+<td><a href="#Chk_cache">Chk_cache</a></td>
+<td>TODO:this method is used for check the request wether in the cache.</td>
+</tr><tr>
+<td><a href="#_decorate">_decorate</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#_wrapper">_wrapper</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#ajaxonly">ajaxonly</a></td>
+<td>TODO:this ia a warp,this used for the method,which we want to only use ajax.</td>
+</tr><tr>
+<td><a href="#cache">cache</a></td>
+<td>TODO:this is a very important warp,because it control the cache of the app.</td>
+</tr><tr>
+<td><a href="#format_date">format_date</a></td>
+<td>TODO:this method,return the datetime value of dt,which by format %a, %d %b %Y %H:%M:%S GMT</td>
+</tr><tr>
+<td><a href="#hostonly">hostonly</a></td>
+<td>TODO:this is a warp,only request from same host can passed</td>
+</tr><tr>
+<td><a href="#printinfo">printinfo</a></td>
+<td>TODO:this is a warp,it is usually used for debug, you can use it like this: @printinfo def xxxx(xxxx)</td>
+</tr><tr>
+<td><a href="#requires_admin">requires_admin</a></td>
+<td>TODO:this is a warp, used like:@requires_admin on the def.</td>
+</tr><tr>
+<td><a href="#sid">sid</a></td>
+<td>TODO:return the value of datetime.now(),but by format %y%m%d%H%M%S</td>
+</tr><tr>
+<td><a href="#urldecode">urldecode</a></td>
+<td>TODO:use urllib.unquote to format the  string and return the result by utf-8 unicode</td>
+</tr><tr>
+<td><a href="#urlencode">urlencode</a></td>
+<td>TODO:use urllib.unquote to format the  unicode and return the result by utf-8 string</td>
+</tr><tr>
+<td><a href="#wrapper">wrapper</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wrapper_1">wrapper</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wrapper_2">wrapper</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wrapper_3">wrapper</a></td>
+<td></td>
+</tr>
+</table>
+<hr /><hr />
+<a NAME="BaseRequestHandler" ID="BaseRequestHandler"></a>
+<h2>BaseRequestHandler</h2>
+<p>
+	TODO:This system the most important class, which is one of the base class.
+	for blog package,media package,wiki package,admin package.
+</p>
+<h3>Derived from</h3>
+webapp.RequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#BaseRequestHandler.__init__">BaseRequestHandler</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.Cache_expires">Cache_expires</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.Chk_cache">Chk_cache</a></td>
+<td>TODO:Check for whether cached</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.Getkeywords">Getkeywords</a></td>
+<td>TODO:Finishing a dictionary object, if not a string key, remove from the dictionary.</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.Getpage">Getpage</a></td>
+<td>TODO:Helper method to get the number of pages,which in the request url</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.Getslug">Getslug</a></td>
+<td>TODO:Helper method to get the string after the /page/,which in the request url</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.Post_data">Post_data</a></td>
+<td>TODO:Used to download files from the database output</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.__after__">__after__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.__before__">__before__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.chk_admin">chk_admin</a></td>
+<td>TODO:CHECK THE USER WHETHER ADMIN</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.chk_login">chk_login</a></td>
+<td>TODO:Check the request whether login</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.error">error</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.get_render">get_render</a></td>
+<td>TODO:Helper method to render the template template_file:the template file name,but no '.html' values:the values for template</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.initialize">initialize</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.message">message</a></td>
+<td>TODO:Helper method to be a msg value for template</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.param">param</a></td>
+<td>TODO:Helper method to return the value of self.request.get(name)</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.parambool">parambool</a></td>
+<td>TODO:Helper method to get the request.get(name) by boolean type.</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.paramint">paramint</a></td>
+<td>TODO:Helper method to get the request.get(name) by int type.</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.render">render</a></td>
+<td>TODO:Helper method to render the appropriate template,this one used the cache warp.</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.render2">render2</a></td>
+<td>TODO:Helper method to render the appropriate template,but no cache</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.wikirender">wikirender</a></td>
+<td>TODO:Helper method to render the wiki appropriate template,this one used the cache warp.</td>
+</tr><tr>
+<td><a href="#BaseRequestHandler.write">write</a></td>
+<td>TODO:Helper method to response.out.write(s)</td>
+</tr>
+</table>
+<a NAME="BaseRequestHandler.__init__" ID="BaseRequestHandler.__init__"></a>
+<h4>BaseRequestHandler (Constructor)</h4>
+<b>BaseRequestHandler</b>(<i></i>)
+<a NAME="BaseRequestHandler.Cache_expires" ID="BaseRequestHandler.Cache_expires"></a>
+<h4>BaseRequestHandler.Cache_expires</h4>
+<b>Cache_expires</b>(<i>seconds=0, mime_type=None, **kw</i>)
+<a NAME="BaseRequestHandler.Chk_cache" ID="BaseRequestHandler.Chk_cache"></a>
+<h4>BaseRequestHandler.Chk_cache</h4>
+<b>Chk_cache</b>(<i>seconds=0, mime_type=None</i>)
+<p>
+		TODO:Check for whether cached
+</p><a NAME="BaseRequestHandler.Getkeywords" ID="BaseRequestHandler.Getkeywords"></a>
+<h4>BaseRequestHandler.Getkeywords</h4>
+<b>Getkeywords</b>(<i>kwargs</i>)
+<p>
+			TODO:Finishing a dictionary object, if not a string key,
+			remove from the dictionary.
+			Finally, returns a new dictionary object.
+			kwargs:the dict object
+</p><a NAME="BaseRequestHandler.Getpage" ID="BaseRequestHandler.Getpage"></a>
+<h4>BaseRequestHandler.Getpage</h4>
+<b>Getpage</b>(<i></i>)
+<p>
+		TODO:Helper method to get the number of pages,which in the request url
+</p><a NAME="BaseRequestHandler.Getslug" ID="BaseRequestHandler.Getslug"></a>
+<h4>BaseRequestHandler.Getslug</h4>
+<b>Getslug</b>(<i>slug</i>)
+<p>
+		TODO:Helper method to get the string after the /page/,which in the request url
+</p><a NAME="BaseRequestHandler.Post_data" ID="BaseRequestHandler.Post_data"></a>
+<h4>BaseRequestHandler.Post_data</h4>
+<b>Post_data</b>(<i>model</i>)
+<p>
+				TODO:Used to download files from the database output
+</p><a NAME="BaseRequestHandler.__after__" ID="BaseRequestHandler.__after__"></a>
+<h4>BaseRequestHandler.__after__</h4>
+<b>__after__</b>(<i>*args, **kwargs</i>)
+<a NAME="BaseRequestHandler.__before__" ID="BaseRequestHandler.__before__"></a>
+<h4>BaseRequestHandler.__before__</h4>
+<b>__before__</b>(<i>*args, **kwargs</i>)
+<a NAME="BaseRequestHandler.chk_admin" ID="BaseRequestHandler.chk_admin"></a>
+<h4>BaseRequestHandler.chk_admin</h4>
+<b>chk_admin</b>(<i>redirect_url='/'</i>)
+<p>
+		TODO:CHECK THE USER WHETHER ADMIN
+</p><a NAME="BaseRequestHandler.chk_login" ID="BaseRequestHandler.chk_login"></a>
+<h4>BaseRequestHandler.chk_login</h4>
+<b>chk_login</b>(<i>redirect_url='/'</i>)
+<p>
+		TODO:Check the request whether login
+</p><a NAME="BaseRequestHandler.error" ID="BaseRequestHandler.error"></a>
+<h4>BaseRequestHandler.error</h4>
+<b>error</b>(<i>errorcode, message='an error occured'</i>)
+<a NAME="BaseRequestHandler.get_render" ID="BaseRequestHandler.get_render"></a>
+<h4>BaseRequestHandler.get_render</h4>
+<b>get_render</b>(<i>template_file, values</i>)
+<p>
+		TODO:Helper method to render the template
+		template_file:the template file name,but no '.html'
+		values:the values for template
+</p><a NAME="BaseRequestHandler.initialize" ID="BaseRequestHandler.initialize"></a>
+<h4>BaseRequestHandler.initialize</h4>
+<b>initialize</b>(<i>request, response</i>)
+<a NAME="BaseRequestHandler.message" ID="BaseRequestHandler.message"></a>
+<h4>BaseRequestHandler.message</h4>
+<b>message</b>(<i>msg, returl=None, title='Infomation'</i>)
+<p>
+		TODO:Helper method to be a msg value for template
+</p><a NAME="BaseRequestHandler.param" ID="BaseRequestHandler.param"></a>
+<h4>BaseRequestHandler.param</h4>
+<b>param</b>(<i>name, **kw</i>)
+<p>
+		TODO:Helper method to return the value of self.request.get(name)
+</p><a NAME="BaseRequestHandler.parambool" ID="BaseRequestHandler.parambool"></a>
+<h4>BaseRequestHandler.parambool</h4>
+<b>parambool</b>(<i>name, default=False</i>)
+<p>
+		TODO:Helper method to get the request.get(name) by boolean type.
+</p><a NAME="BaseRequestHandler.paramint" ID="BaseRequestHandler.paramint"></a>
+<h4>BaseRequestHandler.paramint</h4>
+<b>paramint</b>(<i>name, default=0</i>)
+<p>
+		TODO:Helper method to get the request.get(name) by int type.
+</p><a NAME="BaseRequestHandler.render" ID="BaseRequestHandler.render"></a>
+<h4>BaseRequestHandler.render</h4>
+<b>render</b>(<i>template_file, values</i>)
+<p>
+		TODO:Helper method to render the appropriate template,this one used the cache warp.
+		so it is caching.
+</p><a NAME="BaseRequestHandler.render2" ID="BaseRequestHandler.render2"></a>
+<h4>BaseRequestHandler.render2</h4>
+<b>render2</b>(<i>template_file, template_vals={}</i>)
+<p>
+		TODO:Helper method to render the appropriate template,but no cache
+</p><a NAME="BaseRequestHandler.wikirender" ID="BaseRequestHandler.wikirender"></a>
+<h4>BaseRequestHandler.wikirender</h4>
+<b>wikirender</b>(<i>template_file, values</i>)
+<p>
+		TODO:Helper method to render the wiki appropriate template,this one used the cache warp.
+		so it is caching.
+</p><a NAME="BaseRequestHandler.write" ID="BaseRequestHandler.write"></a>
+<h4>BaseRequestHandler.write</h4>
+<b>write</b>(<i>s</i>)
+<p>
+		TODO:Helper method to response.out.write(s)
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Pager" ID="Pager"></a>
+<h2>Pager</h2>
+<p>
+	TODO:This class is used for paging.
+	model:Can be physical or Recordset
+	query:the query
+	items_per_page:The number of records per page,default number is 10
+</p>
+<h3>Derived from</h3>
+object
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#Pager.__init__">Pager</a></td>
+<td>TODO:If the model parameters exist, self.query = model.all ().</td>
+</tr><tr>
+<td><a href="#Pager.fetch">fetch</a></td>
+<td>TODO:According to parameters specified in the number of pages and num of per page, for get the Recordset.</td>
+</tr>
+</table>
+<a NAME="Pager.__init__" ID="Pager.__init__"></a>
+<h4>Pager (Constructor)</h4>
+<b>Pager</b>(<i>model=None, query=None, items_per_page=10</i>)
+<p>
+		TODO:If the model parameters exist,
+		self.query = model.all (). Otherwise,
+		self.query = the query parameters
+</p><a NAME="Pager.fetch" ID="Pager.fetch"></a>
+<h4>Pager.fetch</h4>
+<b>fetch</b>(<i>p, mode='blog'</i>)
+<p>
+		TODO:According to parameters specified in the number of pages and num of per page,
+		for get the Recordset.
+		p:the number of pages
+		mode:the entry.entrytype,default is blog
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="PingbackError" ID="PingbackError"></a>
+<h2>PingbackError</h2>
+<p>
+	TODO:Raised if the remote server caused an exception while pingbacking.
+	This is not raised if the pingback function is unable to locate a
+	remote server.
+</p>
+<h3>Derived from</h3>
+Exception
+<h3>Class Attributes</h3>
+<table>
+<tr><td>_</td></tr><tr><td>default_messages</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#PingbackError.__init__">PingbackError</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PingbackError.as_fault">as_fault</a></td>
+<td>TODO:Return the pingback errors XMLRPC fault.</td>
+</tr><tr>
+<td><a href="#PingbackError.ignore_silently">ignore_silently</a></td>
+<td>TODO:If the error can be ignored silently.</td>
+</tr><tr>
+<td><a href="#PingbackError.internal_message">internal_message</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PingbackError.means_missing">means_missing</a></td>
+<td>TODO:If the error means that the resource is missing or not accepting pingbacks.</td>
+</tr><tr>
+<td><a href="#PingbackError.message">message</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="PingbackError.__init__" ID="PingbackError.__init__"></a>
+<h4>PingbackError (Constructor)</h4>
+<b>PingbackError</b>(<i>fault_code, internal_message=None</i>)
+<a NAME="PingbackError.as_fault" ID="PingbackError.as_fault"></a>
+<h4>PingbackError.as_fault</h4>
+<b>as_fault</b>(<i></i>)
+<p>
+		TODO:Return the pingback errors XMLRPC fault.
+</p><a NAME="PingbackError.ignore_silently" ID="PingbackError.ignore_silently"></a>
+<h4>PingbackError.ignore_silently</h4>
+<b>ignore_silently</b>(<i></i>)
+<p>
+		TODO:If the error can be ignored silently.
+</p><a NAME="PingbackError.internal_message" ID="PingbackError.internal_message"></a>
+<h4>PingbackError.internal_message</h4>
+<b>internal_message</b>(<i></i>)
+<a NAME="PingbackError.means_missing" ID="PingbackError.means_missing"></a>
+<h4>PingbackError.means_missing</h4>
+<b>means_missing</b>(<i></i>)
+<p>
+		TODO:If the error means that the resource is missing or not
+		accepting pingbacks.
+</p><a NAME="PingbackError.message" ID="PingbackError.message"></a>
+<h4>PingbackError.message</h4>
+<b>message</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="util" ID="util"></a>
+<h2>util</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#util.do_pingback">do_pingback</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#util.do_trackback">do_trackback</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="util.do_pingback" ID="util.do_pingback"></a>
+<h4>util.do_pingback</h4>
+<b>do_pingback</b>(<i>source_uri, target_uri</i>)
+<a NAME="util.do_trackback" ID="util.do_trackback"></a>
+<h4>util.do_trackback</h4>
+<b>do_trackback</b>(<i>tbUrl=None, title=None, excerpt=None, url=None, blog_name=None</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Cache_expires" ID="Cache_expires"></a>
+<h2>Cache_expires</h2>
+<b>Cache_expires</b>(<i>request, response, seconds=0, mime_type=None, **kw</i>)
+<p>
+		TODO:the images and js,css file are caching
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Chk_cache" ID="Chk_cache"></a>
+<h2>Chk_cache</h2>
+<b>Chk_cache</b>(<i>request, response, seconds=0, mime_type=None</i>)
+<p>
+	TODO:this method is used for check the request wether in the cache.
+	if the request is in the client cache,return 304 to the client.
+	if the request not in the client,but in the server memcache,then return the memcache value to the client.
+	if all not,do the method,then return the result to the client,cache it in memchache and client cache.
+	request:the request handler
+	response:the response handler
+	seconds:the cache time
+	mime_type:the mime type
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_decorate" ID="_decorate"></a>
+<h2>_decorate</h2>
+<b>_decorate</b>(<i>method</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_wrapper" ID="_wrapper"></a>
+<h2>_wrapper</h2>
+<b>_wrapper</b>(<i>*args, **kwargs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="format_date" ID="format_date"></a>
+<h2>format_date</h2>
+<b>format_date</b>(<i>dt</i>)
+<p>
+	TODO:this method,return the datetime value of dt,which by format %a, %d %b %Y %H:%M:%S GMT
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="hostonly" ID="hostonly"></a>
+<h2>hostonly</h2>
+<b>hostonly</b>(<i>method</i>)
+<p>
+	TODO:this is a warp,only request from same host can passed
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="requires_admin" ID="requires_admin"></a>
+<h2>requires_admin</h2>
+<b>requires_admin</b>(<i>method</i>)
+<p>
+	TODO:this is a warp,
+	used like:@requires_admin on the def.
+	this mean:if you use this one on method,the method must be require admin
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="sid" ID="sid"></a>
+<h2>sid</h2>
+<b>sid</b>(<i></i>)
+<p>
+	TODO:return the value of datetime.now(),but by format %y%m%d%H%M%S
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="urldecode" ID="urldecode"></a>
+<h2>urldecode</h2>
+<b>urldecode</b>(<i>value</i>)
+<p>
+	TODO:use urllib.unquote to format the  string
+	and return the result by utf-8 unicode
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="urlencode" ID="urlencode"></a>
+<h2>urlencode</h2>
+<b>urlencode</b>(<i>value</i>)
+<p>
+	TODO:use urllib.unquote to format the  unicode
+	and return the result by utf-8 string
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wrapper" ID="wrapper"></a>
+<h2>wrapper</h2>
+<b>wrapper</b>(<i>self, *args, **kwargs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wrapper_1" ID="wrapper_1"></a>
+<h2>wrapper</h2>
+<b>wrapper</b>(<i>self, *args, **kwargs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wrapper_2" ID="wrapper_2"></a>
+<h2>wrapper</h2>
+<b>wrapper</b>(<i>self, *args, **kwargs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wrapper_3" ID="wrapper_3"></a>
+<h2>wrapper</h2>
+<b>wrapper</b>(<i>self, *args, **kwargs</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

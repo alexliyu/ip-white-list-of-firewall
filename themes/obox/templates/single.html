@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %} {{entry.title|escape}} - {{blog.title|escape}} {% endblock %}
+
+{% block head_block %}
+
+{% if entry %}
+{%if entry.strtags%}<meta name="Keywords" content="{{entry.strtags|escape}}" />{%endif%}
+{%if entry.excerpt%} <meta name="Description" content="{{entry.excerpt|escape}}" />{%endif%}
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+
+
+	{% if entry %}
+
+		<div class="navigation">
+			{%for prev in entry.prev%}
+					<span class="previous"><a href="{{prev.Link_url}}">{{prev.title}}</a></span>
+				{%endfor%}
+				{%for next in entry.next%}
+					<span class="next"><a href="{{next.Link_url}}">{{next.title}}</a></span>
+				{%endfor%}
+		</div>
+
+			<div class="post" id="post-{{entry.key}}">
+				<h2><a href="{{entry.Link_url|escape}}" rel="bookmark" title="Permanent Link to {{ entry.title|escape }}">{{ entry.title|escape }}</a></h2>
+				<ul class="post_metadata">
+					<li class="post_date">{{entry.date|datetz:"Y/m/d H:i"}}</li>
+				</ul>
+				<div class="entry">
+					{{ entry.content }}
+				</div>
+				<div class="related">
+				<h4>Relate Posts</h4>
+				{% if relateposts %}
+				<ul>
+				{%for post in relateposts%}
+					<li><a href="{{post.Link_url|escape}}">{{post.title|escape}}</a> - {{post.date|datetz:"Y/m/d"}}</li>
+				{%endfor%}
+				</ul>
+				{% endif %}
+			</div>
+
+				<div class="post_tags">{% if entry.tags%}
+					<span class="post-tag">Tag:
+						{%for tag in entry.tags%}
+							<a href="{{tag.Tagurl|urlencode}}">{{tag}}</a>&nbsp;{%endfor%}</span>
+					{%endif%}</div>
+			</div>
+
+			
+
+		{% include "comments.html" %}
+
+	{% else %}
+			<h2 class="center">Not Found</h2>
+			<p class="center">不好意思，您所查看的内容不再这里，您可以通过侧栏搜索工具查一下。</p>
+		{% endif %}
+
+	</div>
+{% include "sidebar.html" %}
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block head_block %}
+<meta name="google-site-verification" content="TnHqFrkxmd_na_-DlB4BbUV25XOJ77h2M1LfVE9Xv3k" />
+<meta name="Keywords" content="管理专家,李昱,专栏,新媒体,人力资源管理,appspot.com,python,google app engine,django,linux,开发,安全,计算机技术" />
+<meta name="Description" content="我是李昱，这是我的个人博客，在这里我会发表很多的原创文章，欢迎大家一起讨论." />
+
+{% endblock %}
+
+{% block content %}
+
+	<div id="main">
+		<div id="maincontent"><div class="forFlow">
+			{% if entries %}
+				{% for entry in entries %}
+					<div class="post" id="post-{{entry.key}}">
+						<h2 class="post-title"><a href="{{ entry.Link_url|escape }}" rel="bookmark" title="Permanent Link to {{entry.title|escape}}">{{entry.title|escape}}</a></h2>
+						<div class="postmetadata-top">
+							<span class="post-comments"><a href="{{entry.Link_url|escape}}#comments">{{entry.commentcount}} 条评论</a></span>
+							<span class="post-date">{{entry.date|datetz:"Y/m/d H:i"}}</span>
+							<span class="post-views"><a href="{{entry.Link_url|escape}}">{{entry.readtimes}} 次阅读</a></span>
+						</div>
+						<div class="entry">
+							{{entry.content_excerpt}}
+						</div>
+						<div class="postmetadata">
+							<span class="post-cat">分类:
+								{%for cate in entry.categories%} <a href="{{cate.Link_url}}">{{cate.name}}</a> {%endfor%}
+							</span>
+
+							{% if entry.tags%}
+							<span class="post-tag">标签:
+								{%for tag in entry.tags%}
+									<a href="{{tag.Tagurl|urlencode}}">{{tag}}</a>&nbsp;{%endfor%}</span>
+							{%endif%}
+						</div>
+					</div>
+				{% endfor %}
+				<div class="navigation">
+					<span class="pages">第 {{pageindex}} 页</span>
+					{% if pager.prev %}<a href="{{pager.prev}}" >&laquo;上一页</a>{% endif %}
+					{% if pager.next %}<a href="{{pager.next}}" >下一页&raquo;</a>{% endif %}
+				</div>
+			{% else %}
+				<h2 class="center">Not Found</h2>
+				<p class="center">不好意思，您所查看的内容不再这里，您可以通过侧栏搜索工具查一下。</p>
+			{% endif %}
+		</div></div>
+		{% include "sidebar.html" %}
+	</div>
+{% endblock %}

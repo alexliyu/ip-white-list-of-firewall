@@ -1,0 +1,69 @@
+<div class="sidebar">
+	<div class="wlc_rss">
+	<h2 class="exp">欢迎 &lt; RSS</h2>
+		<div class="welcome">
+		<dl>
+			<dt><a href="{{blog.feedurl}}" target="_blank"><img src="/themes/{{ blog.theme_name }}/images/rss.png" alt="RSS" /></a></dt>
+			<dd>
+			{%if self.is_login%}
+			您好,{{self.login_user.nickname}}
+			{%else%}
+			您好，新朋友！
+			{%endif%}
+			</dd>
+			<dd><b>欢迎订阅本站！</b></dd>
+		</dl>
+		</div>
+		<div class="rss_content">
+		<div class="note">订阅本站，第一时间获取本站更新! </div>
+		<div class="subscribe">
+			<ul id="feed_readers">
+			<li id="google_reader"><a rel="nofollow" class="reader" title="订阅到 Google" href="http://fusion.google.com/add?feedurl={{blog.feedurl}}" target="_blank"><span></span></a></li>
+			<li id="zhuaxia_reader"><a rel="nofollow" class="reader" title="订阅到抓虾" href="http://www.zhuaxia.com/add_channel.php?url={{blog.feedurl}}" target="_blank"><span></span></a></li>
+			<li id="yahoo_reader"><a rel="nofollow" class="reader" title="订阅到 My Yahoo!" href="http://add.my.yahoo.com/rss?url={{blog.feedurl}}" target="_blank"><span></span></a></li>
+			<li id="xianguo_reader"><a rel="nofollow" class="reader" title="订阅到鲜果" href="http://www.xianguo.com/subscribe.php?url={{blog.feedurl}}" target="_blank"><span></span></a></li>
+			<li id="inezha_reader"><a rel="nofollow" class="reader" title="订阅到哪吒" href="http://inezha.com/add?url={{blog.feedurl}}" target="_blank"><span></span></a></li>
+			<li id="qqmail_reader"><a rel="nofollow" class="reader" title="订阅到QQ邮箱" href="http://mail.qq.com/cgi-bin/feed?u={{blog.feedurl}}" target="_blank"><span></span></a></li>
+			<li id="youdao_reader"><a rel="nofollow" class="reader" title="订阅到有道" href="http://reader.youdao.com/b.do?keyfrom=feedsky&amp;url={{blog.feedurl}}" target="_blank"><span></span></a></li>
+			<li id="deban_reader"><a rel="nofollow" class="reader last" title="订阅到豆瓣9点" href="http://9.douban.com/reader/subscribe?url={{blog.feedurl}}" target="_blank"><span></span></a></li>
+			</ul>
+		</div>
+		</div>
+		<div class="more">
+		<h3 class="exp">更多订阅方式</h3>
+			<p><a href="{{blog.feedurl}}" target="_blank">更多订阅方式&gt;&gt;</a></p>
+		</div>
+	</div>
+<div class="iclear"></div>
+
+<div class="box" id="MostViews">
+	<h2>最热下载</h2>
+<ul class="mostviews">
+
+{%for entry in show_hot%}
+  <li><a href="{{entry.Link_url}}" rel="bookmark" title="{{entry.title}}" target="_blank">
+  <img src="{{entry.Images.0|default:"/themes/RedGlamor/images/blank.jpg"}}" alt="{{entry.title}}" /></a>
+  </li>
+ 	{%endfor%}
+</ul>
+	</div>
+
+<div class="iclear"></div>
+
+	<div class="box" id="Tags">
+	<h2>标签云</h2>
+{% for t in alltags %}
+			<a title="{{ t.tagcount }} pages" href="{{t.Tagurl|urlencode}}"><span style='font-size:{{ t.tagcount|add:9 }}px;'>{{t.tag}}</span></a>
+			{%endfor%}
+	</div>
+<div class="iclear"></div>
+
+	<div class="box" id="Links">
+	<h2>友情链接</h2>
+				<ul class="links">
+			{%for link in blogroll%}
+<li><a href="{{link.href}}">{{link.linktext}}</a></li>
+{%endfor%}
+			</ul>
+	</div>
+</div>

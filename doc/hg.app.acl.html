@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.app.acl</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.app.acl</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#ForbiddenException">ForbiddenException</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#HTTPException">HTTPException</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#UnauthorizedException">UnauthorizedException</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#acl">acl</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<hr /><hr />
+<a NAME="ForbiddenException" ID="ForbiddenException"></a>
+<h2>ForbiddenException</h2>
+
+<h3>Derived from</h3>
+HTTPException
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#ForbiddenException.__init__">ForbiddenException</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="ForbiddenException.__init__" ID="ForbiddenException.__init__"></a>
+<h4>ForbiddenException (Constructor)</h4>
+<b>ForbiddenException</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="HTTPException" ID="HTTPException"></a>
+<h2>HTTPException</h2>
+
+<h3>Derived from</h3>
+Exception
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="UnauthorizedException" ID="UnauthorizedException"></a>
+<h2>UnauthorizedException</h2>
+
+<h3>Derived from</h3>
+HTTPException
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#UnauthorizedException.__init__">UnauthorizedException</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="UnauthorizedException.__init__" ID="UnauthorizedException.__init__"></a>
+<h4>UnauthorizedException (Constructor)</h4>
+<b>UnauthorizedException</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="acl" ID="acl"></a>
+<h2>acl</h2>
+
+<h3>Derived from</h3>
+object
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#acl.__init__">acl</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#acl.can_edit_pages">can_edit_pages</a></td>
+<td>Returns True if the user can edit pages, otherwise throws an exception."</td>
+</tr><tr>
+<td><a href="#acl.can_edit_settings">can_edit_settings</a></td>
+<td>Returns True if the user can edit wiki settings.</td>
+</tr><tr>
+<td><a href="#acl.can_read_pages">can_read_pages</a></td>
+<td>Returns True if the user can read pages, otherwise throws an exception.</td>
+</tr><tr>
+<td><a href="#acl.check_edit_pages">check_edit_pages</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#acl.check_edit_settings">check_edit_settings</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#acl.check_read_pages">check_read_pages</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#acl.check_wrapper">check_wrapper</a></td>
+<td>Raises an appropriate exception if the callback function returns Fallse.</td>
+</tr>
+</table>
+<a NAME="acl.__init__" ID="acl.__init__"></a>
+<h4>acl (Constructor)</h4>
+<b>acl</b>(<i>settings</i>)
+<a NAME="acl.can_edit_pages" ID="acl.can_edit_pages"></a>
+<h4>acl.can_edit_pages</h4>
+<b>can_edit_pages</b>(<i></i>)
+<p>
+    Returns True if the user can edit pages, otherwise throws an exception."
+</p><a NAME="acl.can_edit_settings" ID="acl.can_edit_settings"></a>
+<h4>acl.can_edit_settings</h4>
+<b>can_edit_settings</b>(<i></i>)
+<p>
+    Returns True if the user can edit wiki settings.
+</p><a NAME="acl.can_read_pages" ID="acl.can_read_pages"></a>
+<h4>acl.can_read_pages</h4>
+<b>can_read_pages</b>(<i></i>)
+<p>
+    Returns True if the user can read pages, otherwise throws an exception.
+</p><a NAME="acl.check_edit_pages" ID="acl.check_edit_pages"></a>
+<h4>acl.check_edit_pages</h4>
+<b>check_edit_pages</b>(<i></i>)
+<a NAME="acl.check_edit_settings" ID="acl.check_edit_settings"></a>
+<h4>acl.check_edit_settings</h4>
+<b>check_edit_settings</b>(<i></i>)
+<a NAME="acl.check_read_pages" ID="acl.check_read_pages"></a>
+<h4>acl.check_read_pages</h4>
+<b>check_read_pages</b>(<i></i>)
+<a NAME="acl.check_wrapper" ID="acl.check_wrapper"></a>
+<h4>acl.check_wrapper</h4>
+<b>check_wrapper</b>(<i>cb</i>)
+<p>
+    Raises an appropriate exception if the callback function returns Fallse.
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

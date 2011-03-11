@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %} {{year}}年{{month}}月 - {{blog.title|escape}} {% endblock %}
+{% block content %}
+
+	<div id="main">
+		<div id="maincontent"><div class="forFlow">
+			<div class="navigation-top">
+				<div><span>&#8216;{{year}}年{{month}}月&#8217; 的文章</span></div>
+			</div>
+			{% if entries %}
+				{% for entry in entries %}
+					<div class="post" id="post-{{entry.key}}">
+						<h2 class="post-title"><a href="{{ entry.Link_url|escape }}" rel="bookmark" title="Permanent Link to {{entry.title|escape}}">{{entry.title|escape}}</a></h2>
+						<div class="postmetadata-top">
+							<span class="post-comments"><a href="{{entry.Link_url|escape}}#comments">{{entry.commentcount}} 条评论</a></span>
+							<span class="post-date">{{entry.date|datetz:"F jS, Y"}}</span>
+							<span class="post-views"><a href="{{entry.Link_url|escape}}">{{entry.readtimes}} 次阅读</a></span>
+						</div>
+						<div class="postmetadata">
+							<span class="post-cat">分类: </span><span>
+								{%for cate in entry.categories%} <a href="{{cate.Link_url}}">{{cate.name}}</a> {%endfor%}
+							</span>
+
+							{% if entry.tags%}
+							<span class="post-tag">标签: </span><span>
+								{%for tag in entry.tags%}
+									<a href="{{tag.Tagurl|urlencode}}">{{tag}}</a>&nbsp;{%endfor%}</span>
+							{%endif%}
+						</div>
+					</div>
+				{% endfor %}
+				<div class="navigation">
+					{% if pager.prev %}<a href="{{ pager.prev}}" >&laquo;上一页</a>{% endif %}
+					{% if pager.next %}<a href="{{ pager.next }}" >下一页&raquo;</a>{% endif %}
+				</div>
+			{% else %}
+				<h2 class="center">Not Found</h2>
+				<p class="center">不好意思，您所查看的内容不再这里，您可以通过侧栏搜索工具查一下。</p>
+			{% endif %}
+		</div></div>
+		
+		{% include "sidebar.html" %}
+	</div>
+{% endblock %}
+
+

@@ -1,0 +1,21 @@
+		<li id="comment-{{comment.key.id}}" class="comment">
+			<div class="commentleft">
+				<div class="commentcount"> #{{ comment.key.id }}</div>
+				<div id="gravatar"><img alt='' src='{{comment.gravatar_url}}' class='avatar avatar-36 photo avatar-default' height='36' width='36' /></div>
+			</div>
+			<div class="commentright">
+				<p class="header" > 
+					{%if comment.weburl %}
+					<a id="comment-{{comment.key.id}}" class="url" target="_blank" href="{{comment.weburl}}">{{comment.author}}</a>
+					{% else %}{{comment.author}}{%endif%} 发表于 
+					{{comment.date|datetz:"Y-m-d"}} at {{comment.date|datetz:"H:i"}}
+					{% if comment.reply_notify_mail %}
+					<a onclick="return backcomment('{{comment.author}}','{{comment.key.id}}')" href="#commentform" title="@{{comment.author}}-{{comment.key.id}}:" style="color:red">回复</a> 
+					{% else %}
+					<a onclick="return backcomment('{{comment.author}}','{{comment.key.id}}')" href="#commentform" title="@{{comment.author}}-{{comment.key.id}}:">回复</a> 
+					{% endif %}
+					<a onclick="return quote('{{comment.author}}','commenttext-{{comment.key.id}}')" href="#commentform">引用</a>
+				</p>
+				<div class="commenttext" id="commenttext-{{comment.key.id}}">{{comment.content}}</div>
+			</div>
+		</li>

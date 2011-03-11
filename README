@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#  Copyright Š 2010 alexliyu email:alexliyu2012@gmail.com
+# This file is part of CDM SYSTEM.
+#
+# CDM SYSTEM is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 0.3 of the License, or (at your option) any later
+# version. WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+# Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# CDM SYSTEM. If not, see <http://www.gnu.org/licenses/>.
+CDM SYSTEM is a set of engine based on GOOGLE GAE free, open-source construction.some specific SYSTEM can realize the album, blog, wiki, download, CMS application etc.
+And through its built-in acquisition system and delivery systems can be very convenient build your own content distribution network, network marketing and promotion, application, etc.
+Other built-in system such as multi-lingual support system, labels, XMLRPC system, called system XMPP system and templates support system, etc. Jquery
+Through these built-in system and module, as long as you can think of application can be realized through simple calls. In addition, DOC directory also provides the system
+API documentation. Some complex applications can also see API documentation to quickly through the understanding of system architecture, and time can achieve your personal development.
+Specific content http://www.ccdm.tk official website: please login to check.
+
+This project's official website: http://www.ccdm.tk
+This project site: http://code.google.com/p/linblog
+Demo site address: http://www.mygods.co.cc
+http://www.51203344.tk
+http://www.51201314.tk
+Contact email: Alexliyu2012@gmail.com
+Qq: 939567050 contact
+linjue_2299@163.com: contact MSN
+
+Finally I wish you to use!
+Developers: li yu
+On July 1, 2010
+
+CDM SYSTEM 是一套基于GOOGLE GAE引擎的开源免费建站系统，可以实现相册、博客、wiki、下载、CMS等应用。
+并且通过其内置的采集系统与推送系统可以非常便捷的建立您自己的内容分发源，实现网络推广、网络营销等应用。
+另外系统内建了诸如多国语言支持系统、标签调用系统、xmlrpc系统、xmpp系统、模板支持系统、jquery支持等。
+通过这些内建系统与模块，只要您能够想到的应用都可以通过简单的调用来实现。此外，DOC目录内还提供了系统的
+API文档。一些复杂的应用也可以通过查看API文档来快速的了解系统构架，从而段时间就能实现您个人的二次开发。
+具体内容请登陆官方网站：http://www.ccdm.tk 进行查看。
+
+本项目官方网站：http://www.ccdm.tk
+本项目开发网站：http://code.google.com/p/linblog
+演示网站地址：http://www.mygods.co.cc
+			  http://www.51203344.tk
+			  http://www.51201314.tk
+联系邮件：Alexliyu2012@gmail.com
+联系qq:939567050
+联系msn:linjue_2299@163.com
+
+最后祝您使用愉快！
+																		 开发者：李昱
+																		 2010年7月1日

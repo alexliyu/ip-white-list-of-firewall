@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %} {{photo.name|escape}} - {{blog.title}} {% endblock %}
+{% block head_block %}
+<script>
+			$(document).ready(function(){
+				$("a[rel='imgurl']").colorbox({transition:"fade"});
+
+			});
+		</script>
+
+{% endblock %}
+{% block content%}
+<div class="main">
+<div class="post_content">
+{% if photo %}
+	<div class="post_box" id="post-{{photo.key}}">
+		<dl class="postdesc">
+		<dt>
+		<a rel="imgurl" href="{{photo.PhotoUrl}}" title="{{photo.description}}"><img src="{{photo.PhotoUrl}}" /></a>
+		</dt>
+		<dd class="mark_name"><p><strong>{{photo.name}}</strong></p></dd>
+		<dd><strong>作者：</strong>{{photo.user}}</dd>
+		<dd><strong>时间：</strong>{{photo.date|datetz:"F jS, Y"}}</dd>
+		<dd><strong>大小：</strong>{{photo.size}}</dd>
+		<dd><strong>浏览：</strong>{{photo.viewcount}}次</dd>
+		<dd><strong>宽：</strong>{{photo.width}}</dd>
+		<dd><strong>高：</strong>{{photo.height}}</dd>
+
+
+		<dd><strong>评论：</strong>{{photo.commentcount}}</dd>
+		<dd class="tags"><strong>标签：</strong>{%for tag in photo.tag%}<a href="{{tag.Tagurl|urlencode}}">{{tag}}</a> {%endfor%}</dd>
+		<dd class="tags"><strong>下载：</strong><a href="{{photo.PhotoUrl}}" target="_blank" title="download the image">Download</a></dd>
+		<dd class="tags"><strong>相关网址：</strong>{{photo.url}}</dd>
+		{% if photo.Prev %}
+					<dd><strong>上一张：</strong><a href="{{photo.Prev.Link_url}}">{{photo.Prev.name}}</a></dd>
+				{%endif%}
+				{% if photo.Next %}
+					<dd><strong>下一张：</strong><a href="{{photo.Next.Link_url}}">{{photo.Next.name}}</a></dd>
+				{%endif%}
+		</dl>
+
+		<div class="post_detail">
+			<div class="post_nav">
+				<div class="nav_title">
+					<span><a class="on" id="current1" onclick="change_option(2,1);">文章内容</a></span>
+
+				</div>
+				<p class="nav_explain">
+				</p>
+			</div>
+			<div class="postphoto" id="content1">
+			{{ photo.description }}
+			</div>
+		</div>
+<div class="iclear"></div>
+<div id="share">
+
+                        </div>
+<div class="iclear"></div>
+		<div class="post_comment">
+                	{% include "pcomments.html" %}
+                </div>
+	</div>
+{%else%}
+<h2>Not Found</h2>
+<p>Sorry, no posts matched your criteria.</p>
+{%endif%}
+</div>
+</div>
+{% include "albumsidebar.html" %}
+{% endblock %}

@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.media</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.media</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#ASinglePost">ASinglePost</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#AlbumByTag">AlbumByTag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#AlbumPage">AlbumPage</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BaseMediaPage">BaseMediaPage</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FeedHandler">FeedHandler</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#GalleryShow">GalleryShow</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PhotoPage">PhotoPage</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Post_comment">Post_comment</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SSmallphotoHandler">SSmallphotoHandler</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#ServeHandler">ServeHandler</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SinglePost">SinglePost</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#getMedia">getMedia</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr>
+<td><a href="#main">main</a></td>
+<td></td>
+</tr>
+</table>
+<hr /><hr />
+<a NAME="ASinglePost" ID="ASinglePost"></a>
+<h2>ASinglePost</h2>
+
+<h3>Derived from</h3>
+BaseMediaPage
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#ASinglePost.get">get</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="ASinglePost.get" ID="ASinglePost.get"></a>
+<h4>ASinglePost.get</h4>
+<b>get</b>(<i>slug=None, postid=None</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="AlbumByTag" ID="AlbumByTag"></a>
+<h2>AlbumByTag</h2>
+
+<h3>Derived from</h3>
+BaseMediaPage
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#AlbumByTag.get">get</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="AlbumByTag.get" ID="AlbumByTag.get"></a>
+<h4>AlbumByTag.get</h4>
+<b>get</b>(<i>slug=None</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="AlbumPage" ID="AlbumPage"></a>
+<h2>AlbumPage</h2>
+
+<h3>Derived from</h3>
+BaseMediaPage
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#AlbumPage.doget">doget</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#AlbumPage.get">get</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#AlbumPage.post">post</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="AlbumPage.doget" ID="AlbumPage.doget"></a>
+<h4>AlbumPage.doget</h4>
+<b>doget</b>(<i>page</i>)
+<a NAME="AlbumPage.get" ID="AlbumPage.get"></a>
+<h4>AlbumPage.get</h4>
+<b>get</b>(<i>page=1</i>)
+<a NAME="AlbumPage.post" ID="AlbumPage.post"></a>
+<h4>AlbumPage.post</h4>
+<b>post</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="BaseMediaPage" ID="BaseMediaPage"></a>
+<h2>BaseMediaPage</h2>
+
+<h3>Derived from</h3>
+BaseRequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#BaseMediaPage.Tags">Tags</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BaseMediaPage.initialize">initialize</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BaseMediaPage.m_album">m_album</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BaseMediaPage.m_media">m_media</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BaseMediaPage.p_list_pages">p_list_pages</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="BaseMediaPage.Tags" ID="BaseMediaPage.Tags"></a>
+<h4>BaseMediaPage.Tags</h4>
+<b>Tags</b>(<i>Entrie</i>)
+<a NAME="BaseMediaPage.initialize" ID="BaseMediaPage.initialize"></a>
+<h4>BaseMediaPage.initialize</h4>
+<b>initialize</b>(<i>request, response</i>)
+<a NAME="BaseMediaPage.m_album" ID="BaseMediaPage.m_album"></a>
+<h4>BaseMediaPage.m_album</h4>
+<b>m_album</b>(<i></i>)
+<a NAME="BaseMediaPage.m_media" ID="BaseMediaPage.m_media"></a>
+<h4>BaseMediaPage.m_media</h4>
+<b>m_media</b>(<i></i>)
+<a NAME="BaseMediaPage.p_list_pages" ID="BaseMediaPage.p_list_pages"></a>
+<h4>BaseMediaPage.p_list_pages</h4>
+<b>p_list_pages</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="FeedHandler" ID="FeedHandler"></a>
+<h2>FeedHandler</h2>
+
+<h3>Derived from</h3>
+BaseRequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#FeedHandler.get">get</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="FeedHandler.get" ID="FeedHandler.get"></a>
+<h4>FeedHandler.get</h4>
+<b>get</b>(<i>tags=None</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="GalleryShow" ID="GalleryShow"></a>
+<h2>GalleryShow</h2>
+
+<h3>Derived from</h3>
+BaseMediaPage
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#GalleryShow.get">get</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="GalleryShow.get" ID="GalleryShow.get"></a>
+<h4>GalleryShow.get</h4>
+<b>get</b>(<i>slug</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="PhotoPage" ID="PhotoPage"></a>
+<h2>PhotoPage</h2>
+
+<h3>Derived from</h3>
+BaseMediaPage
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#PhotoPage.Getcomments">Getcomments</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PhotoPage.get">get</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PhotoPage.get_comments_nav">get_comments_nav</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PhotoPage.get_comments_pagenum_link">get_comments_pagenum_link</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="PhotoPage.Getcomments" ID="PhotoPage.Getcomments"></a>
+<h4>PhotoPage.Getcomments</h4>
+<b>Getcomments</b>(<i>photos, index, psize</i>)
+<a NAME="PhotoPage.get" ID="PhotoPage.get"></a>
+<h4>PhotoPage.get</h4>
+<b>get</b>(<i>slug=None, postid=None</i>)
+<a NAME="PhotoPage.get_comments_nav" ID="PhotoPage.get_comments_nav"></a>
+<h4>PhotoPage.get_comments_nav</h4>
+<b>get_comments_nav</b>(<i>pindex, count</i>)
+<a NAME="PhotoPage.get_comments_pagenum_link" ID="PhotoPage.get_comments_pagenum_link"></a>
+<h4>PhotoPage.get_comments_pagenum_link</h4>
+<b>get_comments_pagenum_link</b>(<i>pindex</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Post_comment" ID="Post_comment"></a>
+<h2>Post_comment</h2>
+
+<h3>Derived from</h3>
+BaseRequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#Post_comment.post">post</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="Post_comment.post" ID="Post_comment.post"></a>
+<h4>Post_comment.post</h4>
+<b>post</b>(<i>slug=None</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="SSmallphotoHandler" ID="SSmallphotoHandler"></a>
+<h2>SSmallphotoHandler</h2>
+
+<h3>Derived from</h3>
+BaseRequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#SSmallphotoHandler.BigCover">BigCover</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SSmallphotoHandler.Checkurl">Checkurl</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SSmallphotoHandler.CusCover">CusCover</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SSmallphotoHandler.GalleryCover">GalleryCover</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SSmallphotoHandler.GetModel">GetModel</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SSmallphotoHandler.Getdata">Getdata</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SSmallphotoHandler.Getkey">Getkey</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SSmallphotoHandler.MidCover">MidCover</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SSmallphotoHandler.SmallCover">SmallCover</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SSmallphotoHandler.get">get</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="SSmallphotoHandler.BigCover" ID="SSmallphotoHandler.BigCover"></a>
+<h4>SSmallphotoHandler.BigCover</h4>
+<b>BigCover</b>(<i>img</i>)
+<a NAME="SSmallphotoHandler.Checkurl" ID="SSmallphotoHandler.Checkurl"></a>
+<h4>SSmallphotoHandler.Checkurl</h4>
+<b>Checkurl</b>(<i></i>)
+<a NAME="SSmallphotoHandler.CusCover" ID="SSmallphotoHandler.CusCover"></a>
+<h4>SSmallphotoHandler.CusCover</h4>
+<b>CusCover</b>(<i>img, size</i>)
+<a NAME="SSmallphotoHandler.GalleryCover" ID="SSmallphotoHandler.GalleryCover"></a>
+<h4>SSmallphotoHandler.GalleryCover</h4>
+<b>GalleryCover</b>(<i>img</i>)
+<a NAME="SSmallphotoHandler.GetModel" ID="SSmallphotoHandler.GetModel"></a>
+<h4>SSmallphotoHandler.GetModel</h4>
+<b>GetModel</b>(<i>resource</i>)
+<a NAME="SSmallphotoHandler.Getdata" ID="SSmallphotoHandler.Getdata"></a>
+<h4>SSmallphotoHandler.Getdata</h4>
+<b>Getdata</b>(<i>mkey, gettype=None, buffer=None, size='m'</i>)
+<a NAME="SSmallphotoHandler.Getkey" ID="SSmallphotoHandler.Getkey"></a>
+<h4>SSmallphotoHandler.Getkey</h4>
+<b>Getkey</b>(<i>resource</i>)
+<a NAME="SSmallphotoHandler.MidCover" ID="SSmallphotoHandler.MidCover"></a>
+<h4>SSmallphotoHandler.MidCover</h4>
+<b>MidCover</b>(<i>img</i>)
+<a NAME="SSmallphotoHandler.SmallCover" ID="SSmallphotoHandler.SmallCover"></a>
+<h4>SSmallphotoHandler.SmallCover</h4>
+<b>SmallCover</b>(<i>img</i>)
+<a NAME="SSmallphotoHandler.get" ID="SSmallphotoHandler.get"></a>
+<h4>SSmallphotoHandler.get</h4>
+<b>get</b>(<i>slug</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="ServeHandler" ID="ServeHandler"></a>
+<h2>ServeHandler</h2>
+
+<h3>Derived from</h3>
+blobstore_handlers.BlobstoreDownloadHandler, BaseRequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#ServeHandler.get">get</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="ServeHandler.get" ID="ServeHandler.get"></a>
+<h4>ServeHandler.get</h4>
+<b>get</b>(<i>slug</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="SinglePost" ID="SinglePost"></a>
+<h2>SinglePost</h2>
+
+<h3>Derived from</h3>
+BaseMediaPage
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#SinglePost.get">get</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SinglePost.get_comments_nav">get_comments_nav</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SinglePost.get_comments_pagenum_link">get_comments_pagenum_link</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="SinglePost.get" ID="SinglePost.get"></a>
+<h4>SinglePost.get</h4>
+<b>get</b>(<i>slug=None, postid=None</i>)
+<a NAME="SinglePost.get_comments_nav" ID="SinglePost.get_comments_nav"></a>
+<h4>SinglePost.get_comments_nav</h4>
+<b>get_comments_nav</b>(<i>pindex, count</i>)
+<a NAME="SinglePost.get_comments_pagenum_link" ID="SinglePost.get_comments_pagenum_link"></a>
+<h4>SinglePost.get_comments_pagenum_link</h4>
+<b>get_comments_pagenum_link</b>(<i>pindex</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="getMedia" ID="getMedia"></a>
+<h2>getMedia</h2>
+
+<h3>Derived from</h3>
+blobstore_handlers.BlobstoreDownloadHandler, BaseRequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#getMedia.get">get</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="getMedia.get" ID="getMedia.get"></a>
+<h4>getMedia.get</h4>
+<b>get</b>(<i>slug</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="main" ID="main"></a>
+<h2>main</h2>
+<b>main</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

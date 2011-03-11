@@ -1,0 +1,68 @@
+{% load i18n %}
+{% extends "base.html" %}
+{% block h_message %}
+  {%if postback%}
+    <div class="info {%if not result%}error{%endif%}">{{msg}}</div>
+  {%endif%}
+{% endblock %}
+{% block content %}
+   <form action="/admin/photo/" method="POST">
+     <div class="wrap">
+     <h2>{% trans "Edit Photo" %}</h2>
+      <div id="poststuff">
+
+<div id="submitlink" class="submitbox">
+
+<div id="previewview">
+</div>
+
+<div class="inside">
+<p>&nbsp;</p>
+</div>
+<p class="submit">
+<input type="submit" tabindex="4" value="{% trans "Save"%}" name="" class="button button-highlighted"/>
+</p>
+
+<div class="side-info">
+<h5>{%trans "Related"%}</h5>
+
+<ul>
+<li><a href="/admin/album/{{albumid}}">{% trans "Manage Album"%}</a></li>
+
+
+</ul>
+</div>
+</div>
+<div id="post-body">
+<div class="stuffbox" id="namediv">
+<h3>{%trans "Name"%}</h3>
+<div class="inside">
+	<input type="text" name="name" id="name" value="{{photo.name}}" class="input" tabindex="1" size="30" name="name"/><br/>
+    {% trans "The name is used to show the photo."%}</div>
+</div>
+<div class="stuffbox" id="namediv">
+<h3>{%trans "Name"%}</h3>
+<div class="inside">
+	<input type="text" id="url" name="url" value="{{photo.url}}" class="input" tabindex="2" size="30" name="url"/><br/>
+    {% trans "The url is used to show the content of photo."%}</div>
+</div>
+
+<div class="stuffbox" id="namediv">
+<h3>{%trans "Name"%}</h3>
+<div class="inside">
+	<textarea id="description" name="description" cols="100" rows="30">{{photo.description}}</textarea><br/>
+    {% trans "The url is used to show the content of photo."%}</div>
+</div>
+
+    <input type="hidden" name="key" id="key" value="{{key}}" />
+    <input type="hidden" name="albumid" id="albumid" value="{{albumid}}" />
+    <input type="hidden" name="action" id="action" value="edit" />
+
+
+   </form>
+</div>
+
+   </div>
+{% endblock %}
+</body>
+</html>

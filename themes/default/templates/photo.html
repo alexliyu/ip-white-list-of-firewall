@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block head_block %}
+<link rel="stylesheet" href="/static/styles/album.css" type="text/css" media="screen" />
+<script> 
+			$(document).ready(function(){
+				$("a[rel='imgurl']").colorbox({transition:"fade"});
+				
+			});
+		</script> 
+    
+{% endblock %}
+{% block content%}
+
+
+<div id="post-{{photo.key}}" class="box" style="width:600px;float:left;padding:5px;margin:5px;text-align:center; ">
+
+  <li><a rel="imgurl" href="{{photo.PhotoUrl}}" title="{{photo.description}}"><img src="{{photo.PhotoUrl}}" /></a></li>
+<br class="clear"/>
+<a href="{{album.Link_url}}" rel="bookmark" title="Permanent Link to {{album.albumname}}">{{photo.name}}</a> <span class="date">{{photo.date|datetz:"F jS, Y"}}</span>
+<div class="meta">View:{{photo.viewcount}} | Size:{{photo.size}} | Author:{{photo.user}} | <a href="{{photo.PhotoUrl}}" target="_blank" title="download the image">Download</a> |  <a href="{{photo.url}}" target="_blank"> Link </a> {%if self.is_admin%} <a href="{{photo.Edit_url}}"> | Edit </a>{%endif%} {% if photo.Next %} <a href="{{photo.Next.Link_url}}" target="_self" title="Show the Next Image"> | Next </a>{%endif%} {% if photo.Prev %} <a href="{{photo.Prev.Link_url}}" target="_self" title="Show the Prev Image"> | Prev</a>{%endif%} 
+<br class="clear"/>
+<li>
+{{photo.description}}
+</li>
+</div>
+</div>
+<br class="clear"/>
+<div class="box">
+{% include "pcomments.html" %}
+</div>
+
+
+</div>
+{% include "asidebar.html" %}
+{% endblock %}
+
+

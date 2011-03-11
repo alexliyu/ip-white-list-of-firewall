@@ -1,0 +1,10 @@
+{% load i18n %}
+{% extends "wikibase.html" %}
+{% block title %}{% trans "Send Admin Email" %}{% endblock %}
+{% block content %}
+<h1>{% trans "Send an email to the Wiki Admins" %}</h1>
+<form action="/sendadminemail" method="POST">
+{% trans "Subject:" %} <input type="text" name="subject" size="40"><br>
+{% trans "Body:" %} <br><textarea name="body" rows=10 cols=80 /></textarea><br>
+<input type="submit" value="{% trans "Send Email" %}">
+{% endblock %}

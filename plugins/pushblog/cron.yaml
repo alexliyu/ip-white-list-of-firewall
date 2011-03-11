@@ -1,0 +1,20 @@
+cron:
+- description: the feedblog is fetching the feed! 
+  url: /robot/fetchfeed
+  schedule: every 6 hours
+  timezone: Asia/Shanghai
+
+- description: the feedblog is fetching the article! 
+  url: /robot/fetcharticle
+  schedule: every 3 minutes
+  timezone: Asia/Shanghai
+
+- description: the feedblog is insert to the db! 
+  url: /robot/fetchdb
+  schedule: every 5 minutes
+  timezone: Asia/Shanghai
+
+- description: the feedblog is checking the db! 
+  url: /robot/checkdb
+  schedule: every 1 hours
+  timezone: Asia/Shanghai

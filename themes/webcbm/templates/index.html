@@ -1,0 +1,133 @@
+{%extends "base.html"%}
+{% block head_block %}
+<link href="/static/styles/galleryview.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/static/js/jquery.timers-1.2.js"></script>
+<script type="text/javascript" src="/static/js/jquery.galleryview-2.1.1.js"></script>
+<script type="text/javascript" src="/themes/{{ blog.theme_name }}/jcarousellite_1.0.1.pack.js"></script>
+<script type="text/javascript" src="/themes/{{ blog.theme_name }}/nivo_init.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#fader').galleryView({
+			panel_width: 940,
+			panel_height: 380,
+			frame_width: 100,
+			frame_height: 38,
+			transition_speed: 1200,
+			background_color: 'none',
+			border: 'none',
+			easing: 'easeInOutBack',
+			pause_on_hover: true,
+                        nav_theme: 'custom',
+			overlay_height: 52,
+			filmstrip_position: 'bottom',
+			overlay_position: 'bottom',
+
+		});
+	});
+
+	</script>
+{%endblock%}
+{%block content%}
+
+           <div class="featured home_slider">
+                      <div class="wrapper for_slider" id="photos">
+                <ul id="fader">
+                     {%for entry in cms.Pageentry%}
+                                                      {% if entry.sticky%}
+                      <li>
+			<img src="{{entry.Images.0}}" alt="image" title="Pretty Picture" style="height: 380px; width: 940px; position: relative; top: 0px; left: 0px; "/>
+			<div class="panel-overlay" style="POSITION: absolute; PADDING-BOTTOM: 30px; PADDING-LEFT: 30px; WIDTH: 675px; PADDING-RIGHT: 30px; BACKGROUND: url(/themes/webcbm/images/titles_grad.jpg) #ffcc00 repeat-x; HEIGHT: 30px; OVERFLOW: hidden; PADDING-TOP: 30px; LEFT: 0px;">
+		    <h3><a href="{{entry.Link_url}}" target="_blank">{{entry.title}}</a></h3>
+				<p>相关说明：{{entry.content_excerpt}}</p>
+			</div>
+		</li>
+
+                     {%endif%}
+                                                        {%endfor%}
+                </ul><!-- END UL FADER -->
+            </div><!-- END WRAPPER FOR SLIDER -->
+
+                      <div class="clearf"></div>
+           </div><!-- END FEATURED -->
+
+           <div class="primary full_width home">
+                      <div class="box940">
+                                 <h1>What is ChinaCDM?</h1>
+
+                                 <p>CDM的全称是Content Disseminate Marketing——内容传播营销，即通过与各类基于互联网、3G移动网络、有线电视网络等网络的新媒体平台和人际关系平台建立API通信通道，从而实现以提升内容价值与快速传播为核心的价值导向式主动营销。它是由ChinaCDM提出的一种基于上游的营销模式，通过内容高速、有效、精准的传播来实现影响受众的价值导向与消费潮流，从而快速实现企业品牌价值和口碑的建立以及目标市场的开拓。 <br> ChinaCDM一直专注于新媒体平台营销模式的研究与建立，并提供新营销模式体系的咨询、指导、策划与建立等服务的第三方咨询服务机构。WebCDM是我们的一款基于Web平台的免费并开源的内容营销产品，通过它可以快速实现低成本的内容营销方案。</p>
+                      </div><!-- END BOX940 -->
+
+                      <div class="box450">
+                                 <h2>The News</h2>
+
+                                 <div class="testimonials">
+                                            <ul>
+                                                      {%for entry in cms.Pageentry%}
+                                                      {% ifequal entry.entry_parent 2%}
+                                                       <li><img src="{{entry.imageurl|default:"themes/webcbm/images/thumb2.jpg"}}" alt="client image" /> <em>{{entry|excerpt_more}}</em> <strong>- {{entry.author_name}}</strong><br class="clearf" /></li>
+                                                        {%endifequal%}
+                                                        {%endfor%}
+                                                                                                </ul>
+                                 </div><!-- END TESTIMONIALS -->
+                      </div><!-- END BOX450 -->
+
+                      <div class="box450 right_side">
+                                 <h2>The Project</h2>
+
+                                 <div class="feat_projects">
+                                            <ul>
+                                                       <li><a rel="linkurl" href="http://alexliyublog.appspot.com" title="the blog demo"><img src="/themes/{{blog.theme_name}}/images/thumbnail/cham80.jpg" alt="feat1" /></a></li>
+
+                                                       <li><a rel="linkurl" href="http://cdm-system.appspot.com" title="the website demo"><img src="/themes/{{blog.theme_name}}/images/thumbnail/insect80.jpg" alt="feat2" /></a></li>
+
+                                                       <li><a rel="linkurl" href="http://alexliyublog.appspot.com/wiki" title="the wiki demo"><img src="/themes/{{blog.theme_name}}/images/thumbnail/parrot80.jpg" alt="feat3" /></a></li>
+
+                                                       <li><a rel="linkurl" href="http://alexliyu.blog.163.com" title="the demo of push article to other website"><img src="/themes/{{blog.theme_name}}/images/thumbnail/seagull80.jpg" alt="feat4" /></a></li>
+
+                                                       <li><a rel="linkurl" href="http://alexliyublog.appspot.com/album" title="the album demo"><img src="/themes/{{blog.theme_name}}/images/thumbnail/pearl80.jpg" alt="feat5" /></a></li>
+
+                                                       <li><a rel="linkurl" href="http://alexliyublog.appspot.com/download" title="the download demo"><img src="/themes/{{blog.theme_name}}/images/thumbnail/bird80.jpg" alt="feat5" /></a></li>
+                                            </ul>
+                                 </div><!-- end feat projects -->
+                      </div><!-- END BOX450 RIGHT SIDE -->
+                      <br class="clearf" />
+
+                      <div class="box205">
+                                 <h2>Request a Service</h2>
+
+                                 <p>我们专注于新媒体营销模式的研究并提供相应的服务与产品，如果您对于新媒体这个领域感兴趣可以尝试我们提供的一些免费服务。.</p>
+
+                                 <p><a href="#" class="more">Read more</a></p>
+                      </div>
+
+                      <div class="box205">
+                                 <h2>Work with Us</h2>
+
+                                 <p>我们期待着志同道合之士能够与我们一起深入新媒体与营销这个领域。如果您感兴趣，那么还等什么？</p>
+
+                                 <p><a href="/join" class="more">Read more</a></p>
+                      </div>
+
+                      <div class="box205">
+                                 <h2>Download  Sourses</h2>
+
+                                 <p>我们提供了一些开源的产品与资源供您下载学习与使用，希望这些我们提供的资源能够帮到您！</p>
+
+                                 <p><a href="/download" class="more">Read more</a></p>
+                      </div>
+
+                      <div class="box205 right_side">
+                                 <h2>Newsletter</h2>
+
+                                 <p>请订阅我们的邮件列表，那上面会有我们最新的消息以及资源的分享。请不要与我们断了联系哦.</p>
+
+                                 <form id="subscribe_form" method="post" action="#" name="subscribe_form">
+                                            <p><input type="text" name="subscribe" class="short_field" id="subscribe_field" title="your email address" /></p>
+
+                                            <p class="subs_submit"><input name="submit" type="submit" value="Subscribe Now" /></p>
+                                 </form>
+                      </div>
+           </div><!-- END PRIMARY -->
+           {% endblock %}

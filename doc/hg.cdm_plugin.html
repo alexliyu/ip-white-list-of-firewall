@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.cdm_plugin</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.cdm_plugin</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>RE_FIND_GROUPS</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#Plugin">Plugin</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PluginIterator">PluginIterator</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugin_importbase">Plugin_importbase</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins">Plugins</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<hr /><hr />
+<a NAME="Plugin" ID="Plugin"></a>
+<h2>Plugin</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#Plugin.__init__">Plugin</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugin.error">error</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugin.get">get</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugin.register_action">register_action</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugin.register_filter">register_filter</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugin.register_setupmenu">register_setupmenu</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugin.register_urlhandler">register_urlhandler</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugin.register_urlmap">register_urlmap</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugin.register_urlzip">register_urlzip</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugin.render_content">render_content</a></td>
+<td>Helper method to render the appropriate template</td>
+</tr>
+</table>
+<a NAME="Plugin.__init__" ID="Plugin.__init__"></a>
+<h4>Plugin (Constructor)</h4>
+<b>Plugin</b>(<i>pfile=__file__</i>)
+<a NAME="Plugin.error" ID="Plugin.error"></a>
+<h4>Plugin.error</h4>
+<b>error</b>(<i>msg=""</i>)
+<a NAME="Plugin.get" ID="Plugin.get"></a>
+<h4>Plugin.get</h4>
+<b>get</b>(<i>page</i>)
+<a NAME="Plugin.register_action" ID="Plugin.register_action"></a>
+<h4>Plugin.register_action</h4>
+<b>register_action</b>(<i>name, func</i>)
+<a NAME="Plugin.register_filter" ID="Plugin.register_filter"></a>
+<h4>Plugin.register_filter</h4>
+<b>register_filter</b>(<i>name, func</i>)
+<a NAME="Plugin.register_setupmenu" ID="Plugin.register_setupmenu"></a>
+<h4>Plugin.register_setupmenu</h4>
+<b>register_setupmenu</b>(<i>m_id, title, url</i>)
+<a NAME="Plugin.register_urlhandler" ID="Plugin.register_urlhandler"></a>
+<h4>Plugin.register_urlhandler</h4>
+<b>register_urlhandler</b>(<i>url, handler</i>)
+<a NAME="Plugin.register_urlmap" ID="Plugin.register_urlmap"></a>
+<h4>Plugin.register_urlmap</h4>
+<b>register_urlmap</b>(<i>url, func</i>)
+<a NAME="Plugin.register_urlzip" ID="Plugin.register_urlzip"></a>
+<h4>Plugin.register_urlzip</h4>
+<b>register_urlzip</b>(<i>name, zipfile</i>)
+<a NAME="Plugin.render_content" ID="Plugin.render_content"></a>
+<h4>Plugin.render_content</h4>
+<b>render_content</b>(<i>template_file, template_vals={}</i>)
+<p>
+		Helper method to render the appropriate template
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="PluginIterator" ID="PluginIterator"></a>
+<h2>PluginIterator</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#PluginIterator.__init__">PluginIterator</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PluginIterator.__iter__">__iter__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PluginIterator.next">next</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="PluginIterator.__init__" ID="PluginIterator.__init__"></a>
+<h4>PluginIterator (Constructor)</h4>
+<b>PluginIterator</b>(<i>plugins_path='plugins'</i>)
+<a NAME="PluginIterator.__iter__" ID="PluginIterator.__iter__"></a>
+<h4>PluginIterator.__iter__</h4>
+<b>__iter__</b>(<i></i>)
+<a NAME="PluginIterator.next" ID="PluginIterator.next"></a>
+<h4>PluginIterator.next</h4>
+<b>next</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Plugin_importbase" ID="Plugin_importbase"></a>
+<h2>Plugin_importbase</h2>
+
+<h3>Derived from</h3>
+Plugin
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#Plugin_importbase.__init__">Plugin_importbase</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugin_importbase.post">post</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="Plugin_importbase.__init__" ID="Plugin_importbase.__init__"></a>
+<h4>Plugin_importbase (Constructor)</h4>
+<b>Plugin_importbase</b>(<i>pfile, name, description=""</i>)
+<a NAME="Plugin_importbase.post" ID="Plugin_importbase.post"></a>
+<h4>Plugin_importbase.post</h4>
+<b>post</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Plugins" ID="Plugins"></a>
+<h2>Plugins</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#Plugins.__init__">Plugins</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.__getitem__">__getitem__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.activate">activate</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.add_urlhandler">add_urlhandler</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.filter">filter</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.getPluginByName">getPluginByName</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.get_action_plugins">get_action_plugins</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.get_filter_plugins">get_filter_plugins</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.get_handlerlist">get_handlerlist</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.get_setupmenu">get_setupmenu</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.get_urlmap_func">get_urlmap_func</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.register_handlerlist">register_handlerlist</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.reload">reload</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.remove_urlhandler">remove_urlhandler</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.tigger_action">tigger_action</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.tigger_filter">tigger_filter</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Plugins.tigger_urlmap">tigger_urlmap</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="Plugins.__init__" ID="Plugins.__init__"></a>
+<h4>Plugins (Constructor)</h4>
+<b>Plugins</b>(<i>blog=None</i>)
+<a NAME="Plugins.__getitem__" ID="Plugins.__getitem__"></a>
+<h4>Plugins.__getitem__</h4>
+<b>__getitem__</b>(<i>index</i>)
+<a NAME="Plugins.activate" ID="Plugins.activate"></a>
+<h4>Plugins.activate</h4>
+<b>activate</b>(<i>iname, active</i>)
+<a NAME="Plugins.add_urlhandler" ID="Plugins.add_urlhandler"></a>
+<h4>Plugins.add_urlhandler</h4>
+<b>add_urlhandler</b>(<i>plugin, application</i>)
+<a NAME="Plugins.filter" ID="Plugins.filter"></a>
+<h4>Plugins.filter</h4>
+<b>filter</b>(<i>attr, value</i>)
+<a NAME="Plugins.getPluginByName" ID="Plugins.getPluginByName"></a>
+<h4>Plugins.getPluginByName</h4>
+<b>getPluginByName</b>(<i>iname</i>)
+<a NAME="Plugins.get_action_plugins" ID="Plugins.get_action_plugins"></a>
+<h4>Plugins.get_action_plugins</h4>
+<b>get_action_plugins</b>(<i>name</i>)
+<a NAME="Plugins.get_filter_plugins" ID="Plugins.get_filter_plugins"></a>
+<h4>Plugins.get_filter_plugins</h4>
+<b>get_filter_plugins</b>(<i>name</i>)
+<a NAME="Plugins.get_handlerlist" ID="Plugins.get_handlerlist"></a>
+<h4>Plugins.get_handlerlist</h4>
+<b>get_handlerlist</b>(<i>url</i>)
+<a NAME="Plugins.get_setupmenu" ID="Plugins.get_setupmenu"></a>
+<h4>Plugins.get_setupmenu</h4>
+<b>get_setupmenu</b>(<i></i>)
+<a NAME="Plugins.get_urlmap_func" ID="Plugins.get_urlmap_func"></a>
+<h4>Plugins.get_urlmap_func</h4>
+<b>get_urlmap_func</b>(<i>url</i>)
+<a NAME="Plugins.register_handlerlist" ID="Plugins.register_handlerlist"></a>
+<h4>Plugins.register_handlerlist</h4>
+<b>register_handlerlist</b>(<i>application</i>)
+<a NAME="Plugins.reload" ID="Plugins.reload"></a>
+<h4>Plugins.reload</h4>
+<b>reload</b>(<i></i>)
+<a NAME="Plugins.remove_urlhandler" ID="Plugins.remove_urlhandler"></a>
+<h4>Plugins.remove_urlhandler</h4>
+<b>remove_urlhandler</b>(<i>plugin, application</i>)
+<a NAME="Plugins.tigger_action" ID="Plugins.tigger_action"></a>
+<h4>Plugins.tigger_action</h4>
+<b>tigger_action</b>(<i>name, *arg1, **arg2</i>)
+<a NAME="Plugins.tigger_filter" ID="Plugins.tigger_filter"></a>
+<h4>Plugins.tigger_filter</h4>
+<b>tigger_filter</b>(<i>name, content, *arg1, **arg2</i>)
+<a NAME="Plugins.tigger_urlmap" ID="Plugins.tigger_urlmap"></a>
+<h4>Plugins.tigger_urlmap</h4>
+<b>tigger_urlmap</b>(<i>url, *arg1, **arg2</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

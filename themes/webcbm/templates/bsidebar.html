@@ -1,0 +1,20 @@
+ <div class="sidebar">
+                    <h2>Recent Comments</h2>
+                    <ul class="list_widget">
+                          {% for comment in recent_bcomments %}
+        <li><a href="{{comment.entry.Link_url}}#comment-{{comment.key.id}}">{{comment.author}}:{{comment.shortcontent}}...</a> </li>
+        {%endfor%}
+                    </ul>
+                    <br class="margin20" />
+                    <h2>Categories</h2>
+                    <ul class="list_widget">
+                       {%for cate in categories%}
+  <li>	<a href="{{cate.Link_url}}">{{cate.name}}({{cate.count}})</a></li>
+ 	{%endfor%}
+                    </ul>
+                    <br class="margin20" />
+                    <h2 class="text_widget">Blog roll</h2>
+                    {%for link in blogroll%}
+<li><a href="{{link.href}}">{{link.linktext}}</a></li>
+{%endfor%}
+                </div><!-- END SIDEBAR -->

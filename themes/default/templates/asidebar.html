@@ -1,0 +1,56 @@
+<div class="sidebar">
+<ul>
+<li>
+
+    <h2>Recent Comments</h2>
+        <ul>
+        {% for comment in recent_comments %}
+        <li><a href="{{comment.photo.Link_url}}#comment-{{comment.key.id}}">{{comment.author}}:{{comment.shortcontent}}...</a></li>
+        {%endfor%}
+        </ul>
+        </li>
+
+<li>
+ <h2>Categories</h2>
+  <ul>
+ 	{%for cate in categories%}
+  <li>	<a href="/album/tag/{{cate}}">{{cate}}</a></li>
+ 	{%endfor%}
+ 	</ul>
+
+</li>
+
+<li>
+<h2>Latest Photo</h2>
+<ul>
+{%for photo in latestphoto%}
+<li><a href="{{photo.Link_url}}">{{photo.name}}</a></li>
+{%endfor%}
+
+</ul>
+</li>
+
+<li>
+<h2>Top Views</h2>
+<ul>
+{%for photo in topviews%}
+<li><a href="{{photo.Link_url}}">{{photo.name}}</a></li>
+{%endfor%}
+
+</ul>
+</li>
+
+<li>
+<h2>Top Comments</h2>
+<ul>
+{%for photo in topcomments%}
+<li><a href="{{photo.Link_url}}"><img src="{{photo.PhotoUrl_c}}" style="float:left;" alt="{{photo.name}}"/></a></li>
+<br class="clear"/>
+{%endfor%}
+
+</ul>
+</li>
+
+
+</ul>
+</div>

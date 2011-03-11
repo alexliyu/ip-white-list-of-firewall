@@ -1,0 +1,32 @@
+{% load i18n %}
+{% extends "base.html" %}
+{% block header %}	
+
+<script type="text/javascript">
+function window_onload() {
+var newText={{newshow}}
+//'<li><img src={{imgurl}}><br /><input type=checkbox name=deleteid value={{photokey}} /></li>  '
+var my=this.parent.document;
+var h = my.getElementById("albumkey").value;
+this.document.getElementById("albumkey").value=h;
+if (newText!=''){
+setText('photo','',newText)
+}
+
+function setText(objId,x,newText) {
+							with (this.parent.document) if (getElementById && ((obj=getElementById(objId))!=null))
+							with (obj) innerHTML += unescape(newText);
+							}
+</script>
+{% endblock %}
+{% block content %}
+<body onload="window_onload();">
+<form action="{{upload_url}}" method="POST" enctype="multipart/form-data">
+上传照片: <input type="file" name="file"> <br/>
+标题:<input type="text" name="Name"  vaule="标题" class="input" />
+说明:<input type="text" name="description" vaule="说明" class="input"  />
+<input name="albumkey" id="albumkey" type="hidden" value="{{albumkey}}" />
+<input type="submit" name="submit" value="提交"> 
+</form>
+</body>
+{% endblock  %}

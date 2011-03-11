@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.markdown.mdx_footnotes</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.markdown.mdx_footnotes</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>FN_BACKLINK_TEXT</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#FootnoteExtension">FootnoteExtension</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnotePattern">FootnotePattern</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnotePostprocessor">FootnotePostprocessor</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnotePreprocessor">FootnotePreprocessor</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnoteTextPostprocessor">FootnoteTextPostprocessor</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr>
+<td><a href="#makeExtension">makeExtension</a></td>
+<td></td>
+</tr>
+</table>
+<hr /><hr />
+<a NAME="FootnoteExtension" ID="FootnoteExtension"></a>
+<h2>FootnoteExtension</h2>
+
+<h3>Derived from</h3>
+markdown.Extension
+<h3>Class Attributes</h3>
+<table>
+<tr><td>DEF_RE</td></tr><tr><td>SHORT_USE_RE</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#FootnoteExtension.__init__">FootnoteExtension</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnoteExtension.extendMarkdown">extendMarkdown</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnoteExtension.findFootnotePlaceholderFn">findFootnotePlaceholderFn</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnoteExtension.findFootnotesPlaceholder">findFootnotesPlaceholder</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnoteExtension.makeFootnoteId">makeFootnoteId</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnoteExtension.makeFootnoteRefId">makeFootnoteRefId</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnoteExtension.makeFootnotesDiv">makeFootnotesDiv</a></td>
+<td>Creates the div with class='footnote' and populates it with the text of the footnotes.</td>
+</tr><tr>
+<td><a href="#FootnoteExtension.reset">reset</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnoteExtension.setFootnote">setFootnote</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="FootnoteExtension.__init__" ID="FootnoteExtension.__init__"></a>
+<h4>FootnoteExtension (Constructor)</h4>
+<b>FootnoteExtension</b>(<i>configs</i>)
+<a NAME="FootnoteExtension.extendMarkdown" ID="FootnoteExtension.extendMarkdown"></a>
+<h4>FootnoteExtension.extendMarkdown</h4>
+<b>extendMarkdown</b>(<i>md, md_globals</i>)
+<a NAME="FootnoteExtension.findFootnotePlaceholderFn" ID="FootnoteExtension.findFootnotePlaceholderFn"></a>
+<h4>FootnoteExtension.findFootnotePlaceholderFn</h4>
+<b>findFootnotePlaceholderFn</b>(<i>indent=0</i>)
+<a NAME="FootnoteExtension.findFootnotesPlaceholder" ID="FootnoteExtension.findFootnotesPlaceholder"></a>
+<h4>FootnoteExtension.findFootnotesPlaceholder</h4>
+<b>findFootnotesPlaceholder</b>(<i>doc</i>)
+<a NAME="FootnoteExtension.makeFootnoteId" ID="FootnoteExtension.makeFootnoteId"></a>
+<h4>FootnoteExtension.makeFootnoteId</h4>
+<b>makeFootnoteId</b>(<i>num</i>)
+<a NAME="FootnoteExtension.makeFootnoteRefId" ID="FootnoteExtension.makeFootnoteRefId"></a>
+<h4>FootnoteExtension.makeFootnoteRefId</h4>
+<b>makeFootnoteRefId</b>(<i>num</i>)
+<a NAME="FootnoteExtension.makeFootnotesDiv" ID="FootnoteExtension.makeFootnotesDiv"></a>
+<h4>FootnoteExtension.makeFootnotesDiv</h4>
+<b>makeFootnotesDiv</b>(<i>doc</i>)
+<p>
+Creates the div with class='footnote' and populates it with
+           the text of the footnotes.
+</p><dl>
+<dt>Returns:</dt>
+<dd>
+the footnote div as a dom element
+</dd>
+</dl><a NAME="FootnoteExtension.reset" ID="FootnoteExtension.reset"></a>
+<h4>FootnoteExtension.reset</h4>
+<b>reset</b>(<i></i>)
+<a NAME="FootnoteExtension.setFootnote" ID="FootnoteExtension.setFootnote"></a>
+<h4>FootnoteExtension.setFootnote</h4>
+<b>setFootnote</b>(<i>id, text</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="FootnotePattern" ID="FootnotePattern"></a>
+<h2>FootnotePattern</h2>
+
+<h3>Derived from</h3>
+markdown.Pattern
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#FootnotePattern.__init__">FootnotePattern</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnotePattern.handleMatch">handleMatch</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="FootnotePattern.__init__" ID="FootnotePattern.__init__"></a>
+<h4>FootnotePattern (Constructor)</h4>
+<b>FootnotePattern</b>(<i>pattern, footnotes</i>)
+<a NAME="FootnotePattern.handleMatch" ID="FootnotePattern.handleMatch"></a>
+<h4>FootnotePattern.handleMatch</h4>
+<b>handleMatch</b>(<i>m, doc</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="FootnotePostprocessor" ID="FootnotePostprocessor"></a>
+<h2>FootnotePostprocessor</h2>
+
+<h3>Derived from</h3>
+markdown.Postprocessor
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#FootnotePostprocessor.__init__">FootnotePostprocessor</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnotePostprocessor.run">run</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="FootnotePostprocessor.__init__" ID="FootnotePostprocessor.__init__"></a>
+<h4>FootnotePostprocessor (Constructor)</h4>
+<b>FootnotePostprocessor</b>(<i>footnotes</i>)
+<a NAME="FootnotePostprocessor.run" ID="FootnotePostprocessor.run"></a>
+<h4>FootnotePostprocessor.run</h4>
+<b>run</b>(<i>doc</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="FootnotePreprocessor" ID="FootnotePreprocessor"></a>
+<h2>FootnotePreprocessor</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#FootnotePreprocessor.__init__">FootnotePreprocessor</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnotePreprocessor._findFootnoteDefinition">_findFootnoteDefinition</a></td>
+<td>Finds the first line of a footnote definition.</td>
+</tr><tr>
+<td><a href="#FootnotePreprocessor._handleFootnoteDefinitions">_handleFootnoteDefinitions</a></td>
+<td>Recursively finds all footnote definitions in the lines.</td>
+</tr><tr>
+<td><a href="#FootnotePreprocessor.recordFootnoteUse">recordFootnoteUse</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnotePreprocessor.run">run</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="FootnotePreprocessor.__init__" ID="FootnotePreprocessor.__init__"></a>
+<h4>FootnotePreprocessor (Constructor)</h4>
+<b>FootnotePreprocessor</b>(<i>footnotes</i>)
+<a NAME="FootnotePreprocessor._findFootnoteDefinition" ID="FootnotePreprocessor._findFootnoteDefinition"></a>
+<h4>FootnotePreprocessor._findFootnoteDefinition</h4>
+<b>_findFootnoteDefinition</b>(<i>lines</i>)
+<p>
+Finds the first line of a footnote definition.
+</p><dl>
+<dt><i>lines:</i></dt>
+<dd>
+a list of lines of text
+</dd>
+</dl><dl>
+<dt>Returns:</dt>
+<dd>
+the index of the line containing a footnote definition
+</dd>
+</dl><a NAME="FootnotePreprocessor._handleFootnoteDefinitions" ID="FootnotePreprocessor._handleFootnoteDefinitions"></a>
+<h4>FootnotePreprocessor._handleFootnoteDefinitions</h4>
+<b>_handleFootnoteDefinitions</b>(<i>lines</i>)
+<p>
+Recursively finds all footnote definitions in the lines.
+</p><dl>
+<dt><i>lines:</i></dt>
+<dd>
+a list of lines of text
+</dd>
+</dl><dl>
+<dt>Returns:</dt>
+<dd>
+a string representing the text with footnote
+                      definitions removed 
+</dd>
+</dl><a NAME="FootnotePreprocessor.recordFootnoteUse" ID="FootnotePreprocessor.recordFootnoteUse"></a>
+<h4>FootnotePreprocessor.recordFootnoteUse</h4>
+<b>recordFootnoteUse</b>(<i>match</i>)
+<a NAME="FootnotePreprocessor.run" ID="FootnotePreprocessor.run"></a>
+<h4>FootnotePreprocessor.run</h4>
+<b>run</b>(<i>lines</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="FootnoteTextPostprocessor" ID="FootnoteTextPostprocessor"></a>
+<h2>FootnoteTextPostprocessor</h2>
+
+<h3>Derived from</h3>
+markdown.Postprocessor
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#FootnoteTextPostprocessor.__init__">FootnoteTextPostprocessor</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FootnoteTextPostprocessor.run">run</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="FootnoteTextPostprocessor.__init__" ID="FootnoteTextPostprocessor.__init__"></a>
+<h4>FootnoteTextPostprocessor (Constructor)</h4>
+<b>FootnoteTextPostprocessor</b>(<i>footnotes</i>)
+<a NAME="FootnoteTextPostprocessor.run" ID="FootnoteTextPostprocessor.run"></a>
+<h4>FootnoteTextPostprocessor.run</h4>
+<b>run</b>(<i>text</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="makeExtension" ID="makeExtension"></a>
+<h2>makeExtension</h2>
+<b>makeExtension</b>(<i>configs=None</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

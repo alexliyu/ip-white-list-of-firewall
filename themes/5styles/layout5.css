@@ -1,0 +1,16 @@
+/*
+Theme Name: 5styles
+Theme URI: http://marslau.com/
+Description: WordPress theme Designed by <a href="http://marslau.com/" title="MarsLau's blog">MarsLau</a> 
+Version: 1.0
+Author: Mars Lau
+Author URI: http://marslau.com/
+Tags:green,black,fixed width,styles,two columns,right sidebar,left sidebar,widgets,valid XHTML,valid CSS
+*/
+
+
+#wrap{ margin:0 auto; padding:0; width:900px; border-left:3px solid #424242; border-right:3px solid #424242; background: #f8f8f8;}
+#main{width: 100%;}
+#maincontent{ float:right; margin:0 0 0 0px; padding:0; display:inline;width: 100%;}
+#maincontent .forFlow{ margin:0 0 0 0px; float: none; width: auto;}
+#sidebar{ display: none;  }

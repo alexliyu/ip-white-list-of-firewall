@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block head_block %}
+<link rel="stylesheet" href="/static/styles/album.css" type="text/css" media="screen" />
+
+{% endblock %}
+{% block content%}
+{% if albums %}
+
+{% for album in albums %}
+
+
+
+<div class="album" id="post-{{album.key}}">
+
+<div class="cover"  style="background-image:url({{album.Coveradmin}})">
+</div>
+ 
+
+<br class="clear"/>
+<div class="meta"><h2><a href="{{album.Link_url}}" rel="bookmark" title="Permanent Link to {{album.albumname}}">{{album.albumname}}({{album.photocount}})</a> <span class="date">{{album.createdate|datetz:"F jS, Y"}}</span></h2></div>
+<div class="meta">Lastet:{{album.lastupdate|datetz:"j, b Y"}} Posted in <a href="{{album.Tag_url}}">{{album.Tag}} </a> | <p><a href="{{album.Gallery_url}}" target="_blank">  View by GalleryView </a></p>{%if self.is_admin%}<p><a href="{{album.Edit_url}}">Edit</a></p>{%endif%} </div>
+</div>
+
+{% endfor %}
+
+<div class="ctop"></div>
+<div class="box">
+<div class="alignleft">{% if pager.next %}<a href="{{pager.next}}">&laquo; Older Entries</a>{%endif%}</div>
+<div class="alignright">{% if pager.prev %}<a href="{{pager.prev}}">&laquo; Newer Entries</a>{%endif%}</div>
+<div class="clear"></div></div>
+<div class="cbottom"></div>
+<div class="space"></div>
+
+{% else %}
+<div class="ctop"></div>
+<div class="box">
+<h2>Not Found</h2>
+<p>Sorry, but you are looking for something that isn't here.</p>
+</div>
+<div class="clear"></div>
+<div class="cbottom"></div>
+<div class="space"></div>
+
+
+{% endif %}
+
+</div>
+{% include "asidebar.html" %}
+{% endblock %}
+
+

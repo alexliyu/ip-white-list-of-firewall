@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.plugins.feedblog.checkdb</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.plugins.feedblog.checkdb</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#Checkdb">Checkdb</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<hr /><hr />
+<a NAME="Checkdb" ID="Checkdb"></a>
+<h2>Checkdb</h2>
+
+<h3>Derived from</h3>
+BaseRequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#Checkdb.__init__">Checkdb</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.__changdir">__changdir</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.__changstat">__changstat</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.__checklimit">__checklimit</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.__checklisterr">__checklisterr</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.__checklistnull">__checklistnull</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.__checkliststat">__checkliststat</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.__checknull">__checknull</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.__getcategorykey">__getcategorykey</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.changefeedstat">changefeedstat</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.checkentry">checkentry</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.checkfeedslist">checkfeedslist</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.getChecked">getChecked</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Checkdb.initDb">initDb</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="Checkdb.__init__" ID="Checkdb.__init__"></a>
+<h4>Checkdb (Constructor)</h4>
+<b>Checkdb</b>(<i></i>)
+<a NAME="Checkdb.__changdir" ID="Checkdb.__changdir"></a>
+<h4>Checkdb.__changdir</h4>
+<b>__changdir</b>(<i>slug</i>)
+<a NAME="Checkdb.__changstat" ID="Checkdb.__changstat"></a>
+<h4>Checkdb.__changstat</h4>
+<b>__changstat</b>(<i>feedkey</i>)
+<a NAME="Checkdb.__checklimit" ID="Checkdb.__checklimit"></a>
+<h4>Checkdb.__checklimit</h4>
+<b>__checklimit</b>(<i>oldlimit, nowlimit, checknumber</i>)
+<a NAME="Checkdb.__checklisterr" ID="Checkdb.__checklisterr"></a>
+<h4>Checkdb.__checklisterr</h4>
+<b>__checklisterr</b>(<i>feed, s, defDir</i>)
+<a NAME="Checkdb.__checklistnull" ID="Checkdb.__checklistnull"></a>
+<h4>Checkdb.__checklistnull</h4>
+<b>__checklistnull</b>(<i>feed, s</i>)
+<a NAME="Checkdb.__checkliststat" ID="Checkdb.__checkliststat"></a>
+<h4>Checkdb.__checkliststat</h4>
+<b>__checkliststat</b>(<i>feed, s, defDate, defStat</i>)
+<a NAME="Checkdb.__checknull" ID="Checkdb.__checknull"></a>
+<h4>Checkdb.__checknull</h4>
+<b>__checknull</b>(<i>feed, s</i>)
+<a NAME="Checkdb.__getcategorykey" ID="Checkdb.__getcategorykey"></a>
+<h4>Checkdb.__getcategorykey</h4>
+<b>__getcategorykey</b>(<i>feed_url, defDir</i>)
+<a NAME="Checkdb.changefeedstat" ID="Checkdb.changefeedstat"></a>
+<h4>Checkdb.changefeedstat</h4>
+<b>changefeedstat</b>(<i>defDate, defStat, feedset, checknumber</i>)
+<a NAME="Checkdb.checkentry" ID="Checkdb.checkentry"></a>
+<h4>Checkdb.checkentry</h4>
+<b>checkentry</b>(<i>fetchelimit, defDir, defStat, defDate, feedset, checknumber</i>)
+<a NAME="Checkdb.checkfeedslist" ID="Checkdb.checkfeedslist"></a>
+<h4>Checkdb.checkfeedslist</h4>
+<b>checkfeedslist</b>(<i>fetchllimit, defDir, defStat, defDate, feedset, checknumber</i>)
+<a NAME="Checkdb.getChecked" ID="Checkdb.getChecked"></a>
+<h4>Checkdb.getChecked</h4>
+<b>getChecked</b>(<i>checknumber, page=None, *arg1, **arg2</i>)
+<a NAME="Checkdb.initDb" ID="Checkdb.initDb"></a>
+<h4>Checkdb.initDb</h4>
+<b>initDb</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

@@ -1,0 +1,99 @@
+﻿<!-- comments  -->
+
+{% if entry.allow_comment %}
+<script type="text/javascript" src="/static/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/static/js/jquery.form.utf8.js"></script>
+<script type="text/javascript" src="/themes/{{ blog.theme_name }}/comment.js"></script>
+<script type="text/javascript" src="/themes/{{ blog.theme_name }}/xheditor/xheditor.js"></script>
+<script type="text/javascript">
+function xheditorInit(on)
+{
+    if(on){
+        $('#comment').xheditor({
+            tools:'GStart,Blocktag,Bold,Italic,Underline,Removeformat,GEnd,Separator,GStart,List,Link,Unlink,Img,Emot,Table,GEnd,Separator,GStart,Source,Fullscreen,About,GEnd',
+            forcePtag:false
+        });
+
+    }else{
+        $('#comment').xheditor(false);
+    }
+}
+</script>
+<a name="comments"></a> <!--回复使用的锚-->
+<div id="comments-wrap">
+
+    <h2 id="respond">{{ entry.commentcount }} 条评论</h2><span class="goto-comment"><a href="#commentform">我要留言</a></span>
+        {% if comments %}
+        <ul id="thecomments">
+        {% for comment in comments %}
+        <li id="comment-{{comment.key.id}}" class="comment">
+            <div class="commentleft">
+                <div class="commentcount"> #{{ comment.key.id }} </div>
+                <div id="gravatar"><img alt='' src='{{comment.gravatar_url}}' class='avatar avatar-36 photo avatar-default' height='36' width='36' /></div>
+            </div>
+            <div class="commentright">
+                <p class="header" > 
+                    {%if comment.weburl %}
+                    <a id="comment-{{comment.key.id}}" class="url" target="_blank" href="{{comment.weburl}}">{{comment.author}}</a>
+                    {% else %}{{comment.author}}{%endif%} 发表于 
+                    {{comment.date|datetz:"Y-m-d"}} at {{comment.date|datetz:"H:i"}}
+                    {% if comment.reply_notify_mail %}
+                    <a onclick="return backcomment('{{comment.author}}','{{comment.key.id}}')" href="#commentform" title="@{{comment.author}}-{{comment.key.id}}:" style="color:red">回复</a> 
+                    {% else %}
+                    <a onclick="return backcomment('{{comment.author}}','{{comment.key.id}}')" href="#commentform" title="@{{comment.author}}-{{comment.key.id}}:">回复</a> 
+                    {% endif %}
+                    <a onclick="return quote('{{comment.author}}','commenttext-{{comment.key.id}}')" href="#commentform">引用</a>
+                </p>
+                <div class="commenttext" id="commenttext-{{comment.key.id}}">{{comment.content}}</div>
+            </div>  
+        </li>
+        {% endfor %}
+        </ul>
+        <div id="commentsnavi">
+        {{comments_nav.nav}}
+        </div>
+        {% else %}
+        <ul id="thecomments"></ul>
+        {% endif %}
+
+    <input type="hidden" value="{{blog.comment_check_type}}" id="check_type"/>
+    <form action="/post_comment" method="post" id="commentform">
+        <div id="conmmentform">
+            <div id="conmmentforminfo">
+                <label class="conmmentform-title" for="author">昵称(必填)</label> 
+                <div><input type="text" name="author" id="author" value="" tabindex="1" /></div>
+                <label class="conmmentform-title" for="email">Email(必填，绝不公开)</label>
+                <div><input type="text" name="email" id="email" value="" tabindex="2" /></div> 
+                <label class="conmmentform-title" for="url">网站</label>
+                <div> <input type="text" name="url" id="url" value="" tabindex="3" /></div>
+                
+                <div id="checkarea" style='display:none'>
+                <label class="conmmentform-title" for="checkret" >验证码：<span id="check"></span></label>
+                <input type="text" name="checkret" id="checkret" value="" tabindex="4" />
+                
+                </div>
+            </div>
+            <div id="conmmentformtext">
+                <label for="comment"  class="conmmentform-title">留言区（打开编辑器？<input type="checkbox" onclick="$(xheditorInit(this.checked))" />）</label> 
+                <div><textarea name="comment" id="comment" rows="10" cols="10" tabindex="5"></textarea></div>
+                <p>
+
+                    <input type="hidden" name="key" value="{{entry.key}}" />
+                    <input type="hidden" name="useajax" value="1" />
+                    <input type="submit"  name="submit" id="submit" value="" class="comment-button" tabindex="6" />
+                    <input name="reply_notify_mail" id="reply_notify_mail" tabindex="7" 
+                        style="width: auto;" type="checkbox" />
+                    <label for="reply_notify_mail">有回复时邮件通知我</label>
+
+                </p>
+            </div>
+            <div id="s_msg" style="display:none;color:red">正在提交留言...</div>
+        </div>
+
+    </form>
+</div> 
+{% else %}
+<div id="comments-wrap"><p class="nocomments">评论已关闭</p></div>
+{% endif %}
+
+<!-- /comments -->

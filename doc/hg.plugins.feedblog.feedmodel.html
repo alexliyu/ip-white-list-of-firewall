@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.plugins.feedblog.feedmodel</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.plugins.feedblog.feedmodel</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#AddmemFeed">AddmemFeed</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FeedList">FeedList</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FeedSet">FeedSet</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#FeedsList">FeedsList</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tempimages">Tempimages</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<hr /><hr />
+<a NAME="AddmemFeed" ID="AddmemFeed"></a>
+<h2>AddmemFeed</h2>
+
+<h3>Derived from</h3>
+BaseRequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#AddmemFeed.__init__">AddmemFeed</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#AddmemFeed.check_memFeed">check_memFeed</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#AddmemFeed.edit_memFeed">edit_memFeed</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#AddmemFeed.flush_db">flush_db</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#AddmemFeed.get_mem">get_mem</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#AddmemFeed.get_memFeed">get_memFeed</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#AddmemFeed.render_memFeed">render_memFeed</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#AddmemFeed.replace_memFeed">replace_memFeed</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="AddmemFeed.__init__" ID="AddmemFeed.__init__"></a>
+<h4>AddmemFeed (Constructor)</h4>
+<b>AddmemFeed</b>(<i></i>)
+<a NAME="AddmemFeed.check_memFeed" ID="AddmemFeed.check_memFeed"></a>
+<h4>AddmemFeed.check_memFeed</h4>
+<b>check_memFeed</b>(<i></i>)
+<a NAME="AddmemFeed.edit_memFeed" ID="AddmemFeed.edit_memFeed"></a>
+<h4>AddmemFeed.edit_memFeed</h4>
+<b>edit_memFeed</b>(<i>key, content, stat</i>)
+<a NAME="AddmemFeed.flush_db" ID="AddmemFeed.flush_db"></a>
+<h4>AddmemFeed.flush_db</h4>
+<b>flush_db</b>(<i>memFeed</i>)
+<a NAME="AddmemFeed.get_mem" ID="AddmemFeed.get_mem"></a>
+<h4>AddmemFeed.get_mem</h4>
+<b>get_mem</b>(<i></i>)
+<a NAME="AddmemFeed.get_memFeed" ID="AddmemFeed.get_memFeed"></a>
+<h4>AddmemFeed.get_memFeed</h4>
+<b>get_memFeed</b>(<i></i>)
+<a NAME="AddmemFeed.render_memFeed" ID="AddmemFeed.render_memFeed"></a>
+<h4>AddmemFeed.render_memFeed</h4>
+<b>render_memFeed</b>(<i></i>)
+<a NAME="AddmemFeed.replace_memFeed" ID="AddmemFeed.replace_memFeed"></a>
+<h4>AddmemFeed.replace_memFeed</h4>
+<b>replace_memFeed</b>(<i>memFeed</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="FeedList" ID="FeedList"></a>
+<h2>FeedList</h2>
+
+<h3>Derived from</h3>
+db.Model
+<h3>Class Attributes</h3>
+<table>
+<tr><td>abconf</td></tr><tr><td>acategory</td></tr><tr><td>allow_target</td></tr><tr><td>end_target</td></tr><tr><td>feedurl</td></tr><tr><td>last_retrieved</td></tr><tr><td>latest</td></tr><tr><td>mid_target</td></tr><tr><td>name</td></tr><tr><td>start_target</td></tr><tr><td>stop_target</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="FeedSet" ID="FeedSet"></a>
+<h2>FeedSet</h2>
+
+<h3>Derived from</h3>
+db.Model
+<h3>Class Attributes</h3>
+<table>
+<tr><td>check_db_num</td></tr><tr><td>chnitemi</td></tr><tr><td>defDate</td></tr><tr><td>defDir</td></tr><tr><td>defStat</td></tr><tr><td>delitemi</td></tr><tr><td>delitems</td></tr><tr><td>entryerri</td></tr><tr><td>entryerrs</td></tr><tr><td>fetch_db_num</td></tr><tr><td>imgchecked_num</td></tr><tr><td>last_checked</td></tr><tr><td>last_entry</td></tr><tr><td>last_feedslist</td></tr><tr><td>last_imgchecked</td></tr><tr><td>stat</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="FeedsList" ID="FeedsList"></a>
+<h2>FeedsList</h2>
+
+<h3>Derived from</h3>
+db.Model
+<h3>Class Attributes</h3>
+<table>
+<tr><td>abconf</td></tr><tr><td>allow_target</td></tr><tr><td>author_name</td></tr><tr><td>categorie_keys</td></tr><tr><td>content</td></tr><tr><td>date</td></tr><tr><td>end_target</td></tr><tr><td>excerpt</td></tr><tr><td>feed_link</td></tr><tr><td>fetch_stat</td></tr><tr><td>link</td></tr><tr><td>mid_target</td></tr><tr><td>start_target</td></tr><tr><td>stop_target</td></tr><tr><td>tags</td></tr><tr><td>title</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Tempimages" ID="Tempimages"></a>
+<h2>Tempimages</h2>
+
+<h3>Derived from</h3>
+db.Model
+<h3>Class Attributes</h3>
+<table>
+<tr><td>greatdate</td></tr><tr><td>newurl</td></tr><tr><td>oldurl</td></tr><tr><td>parsedate</td></tr><tr><td>stat</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

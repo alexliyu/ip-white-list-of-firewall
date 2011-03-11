@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %} {{tag}}-{{blog.title}} {% endblock %}
+{% block head_block %}
+<link rel="stylesheet" href="/static/styles/album.css" type="text/css" media="screen" />
+
+{% endblock %}
+{% block content %}
+
+
+	<div id="main">
+		<div id="maincontent" style="background-color:#ffffff"><div class="forFlow" style="float:left">
+			{% if albums %}
+				{% for album in albums %}
+					<div class="album" id="post-{{album.key}}" style="float:left">
+
+<div class="cover"  style="background-image:url({{album.Coveradmin}})">
+</div>
+
+
+<br class="clear"/>
+<div class="meta"><h2><a href="{{album.Link_url}}" rel="bookmark" title="Permanent Link to {{album.albumname}}">{{album.albumname}}({{album.photocount}})</a> <span class="date">{{album.createdate|datetz:"F jS, Y"}}</span></h2></div>
+<div class="meta">Lastet:{{album.lastupdate|datetz:"j, b Y"}} Posted in <a href="{{album.Tag_url}}">{{album.Tag}} </a> | <p><a href="{{album.Gallery_url}}" target="_blank">  View by GalleryView </a></p>{%if self.is_admin%}<p><a href="{{album.Edit_url}}">Edit</a></p>{%endif%} </div>
+</div>
+
+{% endfor %}
+
+						</div>
+					</div>
+
+				<div class="navigation">
+					{% if pager.prev %}<a href="{{ pager.prev}}" >&laquo;上一页</a>{% endif %}
+					{% if pager.next %}<a href="{{ pager.next }}" >下一页&raquo;</a>{% endif %}
+				</div>
+			{% else %}
+				<h2 class="center">Not Found</h2>
+				<p class="center">不好意思，您所查看的内容不再这里，您可以通过侧栏搜索工具查一下。</p>
+			{% endif %}
+		</div></div>
+
+		{% include "albumsidebar.html" %}
+	</div>
+{% endblock %}

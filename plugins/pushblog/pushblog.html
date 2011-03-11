@@ -1,0 +1,46 @@
+﻿<table class="widefat">
+		<thead>
+			<tr>
+			<th width="32%" style="width: 15%;">网站名称</th>
+		<th width="52%">选择要推送的网站</th>
+		  <th width="52%">用户名</th>
+		  <th width="52">密码</th>
+          <th width="52">本地类别</th><th width="52">远程类别</th><th width="52">间隔时间</th>
+		  <th width="52%">删除</th>
+		  </tr>
+			</thead>
+
+<tbody>
+		{% for l in list %}
+
+		<tr valign=middle id=link-1>
+		<td>{{l.name}}</td><td>{{l.pushurl}}</td><td>{{l.username}}</td><td>{{l.password}}</td><td>{{l.category}}</td>
+		<td>{{l.acategory}}</td><td>{{l.pushtime}}</td><td><a href="?delid={{l.key}}">删除</a></td>
+		</tr>
+		{% endfor %}
+		<tr valign="middle" id="link-1"><form action="" method="post"><td>
+		<input type="text" value="填写网站名称" name="name" /></td>
+		<td>
+		<select name="website" id="website">
+		{%for value in website%}
+              <option value="{{value}}">{{value}}</option>
+                {%endfor%}
+		</select></td>
+		<td><input type="text" value="填写用户名" name="username" /></td>
+		<td><input type="text" value="填写密码" name="password" /></td>
+		<td><select name="category" id="category">
+		{%for cat in categories%}
+              <option value="{{cat.key}}">{{cat.name}}</option>
+                {%endfor%}
+            </select></td>
+		<td><input type="text" name="acategory" /></td>
+		<td><input type="text" value=0 name="pushtime" /></td>
+		<td> <input type="submit" value="添加"></td></form>
+		</tr>
+			</tbody>
+</table>
+
+<p>*Push插件工作正常，Push触发地址为<a href="/robot/pusharticle" target="_blank">http://www.example.com/robot/pusharticle</a>·</p>
+<p>*请把本目录下的corn.yaml放置在根目录下，并根据需要修改其中的内容.</p>
+<p><b>作者:</b><a href="http://blog.mygods.co.cc" target="_blank">李昱</a><br/>
+</p>

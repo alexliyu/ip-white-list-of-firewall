@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.EXIF</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.EXIF</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>EXIF_TAGS</td></tr><tr><td>FIELD_TYPES</td></tr><tr><td>GPS_TAGS</td></tr><tr><td>IGNORE_TAGS</td></tr><tr><td>INTR_TAGS</td></tr><tr><td>MAKERNOTE_CANON_TAGS</td></tr><tr><td>MAKERNOTE_CANON_TAG_0x001</td></tr><tr><td>MAKERNOTE_CANON_TAG_0x004</td></tr><tr><td>MAKERNOTE_CASIO_TAGS</td></tr><tr><td>MAKERNOTE_FUJIFILM_TAGS</td></tr><tr><td>MAKERNOTE_NIKON_NEWER_TAGS</td></tr><tr><td>MAKERNOTE_NIKON_OLDER_TAGS</td></tr><tr><td>MAKERNOTE_OLYMPUS_TAGS</td></tr><tr><td>MAKERNOTE_OLYMPUS_TAG_0x2020</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#EXIF_header">EXIF_header</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#IFD_Tag">IFD_Tag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Ratio">Ratio</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr>
+<td><a href="#gcd">gcd</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#make_string">make_string</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#make_string_uc">make_string_uc</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#nikon_ev_bias">nikon_ev_bias</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#olympus_special_mode">olympus_special_mode</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#process_file">process_file</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#s2n_intel">s2n_intel</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#s2n_motorola">s2n_motorola</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#usage">usage</a></td>
+<td></td>
+</tr>
+</table>
+<hr /><hr />
+<a NAME="EXIF_header" ID="EXIF_header"></a>
+<h2>EXIF_header</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#EXIF_header.__init__">EXIF_header</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#EXIF_header.canon_decode_tag">canon_decode_tag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#EXIF_header.decode_maker_note">decode_maker_note</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#EXIF_header.dump_IFD">dump_IFD</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#EXIF_header.extract_TIFF_thumbnail">extract_TIFF_thumbnail</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#EXIF_header.first_IFD">first_IFD</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#EXIF_header.list_IFDs">list_IFDs</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#EXIF_header.n2s">n2s</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#EXIF_header.next_IFD">next_IFD</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#EXIF_header.olympus_decode_tag">olympus_decode_tag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#EXIF_header.s2n">s2n</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="EXIF_header.__init__" ID="EXIF_header.__init__"></a>
+<h4>EXIF_header (Constructor)</h4>
+<b>EXIF_header</b>(<i>file, endian, offset, fake_exif, strict, debug=0</i>)
+<a NAME="EXIF_header.canon_decode_tag" ID="EXIF_header.canon_decode_tag"></a>
+<h4>EXIF_header.canon_decode_tag</h4>
+<b>canon_decode_tag</b>(<i>value, dict</i>)
+<a NAME="EXIF_header.decode_maker_note" ID="EXIF_header.decode_maker_note"></a>
+<h4>EXIF_header.decode_maker_note</h4>
+<b>decode_maker_note</b>(<i></i>)
+<a NAME="EXIF_header.dump_IFD" ID="EXIF_header.dump_IFD"></a>
+<h4>EXIF_header.dump_IFD</h4>
+<b>dump_IFD</b>(<i>ifd, ifd_name, dict=EXIF_TAGS, relative=0, stop_tag='UNDEF'</i>)
+<a NAME="EXIF_header.extract_TIFF_thumbnail" ID="EXIF_header.extract_TIFF_thumbnail"></a>
+<h4>EXIF_header.extract_TIFF_thumbnail</h4>
+<b>extract_TIFF_thumbnail</b>(<i>thumb_ifd</i>)
+<a NAME="EXIF_header.first_IFD" ID="EXIF_header.first_IFD"></a>
+<h4>EXIF_header.first_IFD</h4>
+<b>first_IFD</b>(<i></i>)
+<a NAME="EXIF_header.list_IFDs" ID="EXIF_header.list_IFDs"></a>
+<h4>EXIF_header.list_IFDs</h4>
+<b>list_IFDs</b>(<i></i>)
+<a NAME="EXIF_header.n2s" ID="EXIF_header.n2s"></a>
+<h4>EXIF_header.n2s</h4>
+<b>n2s</b>(<i>offset, length</i>)
+<a NAME="EXIF_header.next_IFD" ID="EXIF_header.next_IFD"></a>
+<h4>EXIF_header.next_IFD</h4>
+<b>next_IFD</b>(<i>ifd</i>)
+<a NAME="EXIF_header.olympus_decode_tag" ID="EXIF_header.olympus_decode_tag"></a>
+<h4>EXIF_header.olympus_decode_tag</h4>
+<b>olympus_decode_tag</b>(<i>value, dict</i>)
+<a NAME="EXIF_header.s2n" ID="EXIF_header.s2n"></a>
+<h4>EXIF_header.s2n</h4>
+<b>s2n</b>(<i>offset, length, signed=0</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="IFD_Tag" ID="IFD_Tag"></a>
+<h2>IFD_Tag</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#IFD_Tag.__init__">IFD_Tag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#IFD_Tag.__repr__">__repr__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#IFD_Tag.__str__">__str__</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="IFD_Tag.__init__" ID="IFD_Tag.__init__"></a>
+<h4>IFD_Tag (Constructor)</h4>
+<b>IFD_Tag</b>(<i>printable, tag, field_type, values, field_offset, field_length</i>)
+<a NAME="IFD_Tag.__repr__" ID="IFD_Tag.__repr__"></a>
+<h4>IFD_Tag.__repr__</h4>
+<b>__repr__</b>(<i></i>)
+<a NAME="IFD_Tag.__str__" ID="IFD_Tag.__str__"></a>
+<h4>IFD_Tag.__str__</h4>
+<b>__str__</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Ratio" ID="Ratio"></a>
+<h2>Ratio</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#Ratio.__init__">Ratio</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Ratio.__repr__">__repr__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Ratio.reduce">reduce</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="Ratio.__init__" ID="Ratio.__init__"></a>
+<h4>Ratio (Constructor)</h4>
+<b>Ratio</b>(<i>num, den</i>)
+<a NAME="Ratio.__repr__" ID="Ratio.__repr__"></a>
+<h4>Ratio.__repr__</h4>
+<b>__repr__</b>(<i></i>)
+<a NAME="Ratio.reduce" ID="Ratio.reduce"></a>
+<h4>Ratio.reduce</h4>
+<b>reduce</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="gcd" ID="gcd"></a>
+<h2>gcd</h2>
+<b>gcd</b>(<i>a, b</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="make_string" ID="make_string"></a>
+<h2>make_string</h2>
+<b>make_string</b>(<i>seq</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="make_string_uc" ID="make_string_uc"></a>
+<h2>make_string_uc</h2>
+<b>make_string_uc</b>(<i>seq</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="nikon_ev_bias" ID="nikon_ev_bias"></a>
+<h2>nikon_ev_bias</h2>
+<b>nikon_ev_bias</b>(<i>seq</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="olympus_special_mode" ID="olympus_special_mode"></a>
+<h2>olympus_special_mode</h2>
+<b>olympus_special_mode</b>(<i>v</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="process_file" ID="process_file"></a>
+<h2>process_file</h2>
+<b>process_file</b>(<i>f, stop_tag='UNDEF', details=True, strict=False, debug=False</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="s2n_intel" ID="s2n_intel"></a>
+<h2>s2n_intel</h2>
+<b>s2n_intel</b>(<i>str</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="s2n_motorola" ID="s2n_motorola"></a>
+<h2>s2n_motorola</h2>
+<b>s2n_motorola</b>(<i>str</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="usage" ID="usage"></a>
+<h2>usage</h2>
+<b>usage</b>(<i>exit_status</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

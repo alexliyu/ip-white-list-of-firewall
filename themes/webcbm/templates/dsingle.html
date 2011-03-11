@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %} {{entry.title}} - {{blog.title}} {% endblock %}
+{% block head_block %}
+{% if entry %}
+{%if entry.strtags%}
+<meta name="Keywords" content="{{entry.strtags}}">
+{%endif%}
+{%if entry.excerpt%}
+<meta name="Description" content="{{entry.excerpt}}">
+{%endif%}
+{% endif %}
+{% endblock %}
+{% block content%}
+<div class="primary">
+  <div class="wrapper">
+    <div class="breadcrumbs"><a href="index.html">Home</a> / <a href="/download">Download</a> </div>
+    <!--[if IE]>
+                    <br class="clearf" />
+                <![endif]-->
+     <div class="main_content">
+                           {% if entry %}
+               <div id="post-{{entry.key}}" class="box695">
+      <h3><a href="{{ entry.Link_url }}" rel="bookmark" title="Permanent Link to {{entry.title}}">{{entry.title}}</a> <span>{{entry.date|datetz:"F jS, Y"}}</span></h3>
+      <p> {%mf entry_content %}
+        {{ entry.content }}
+        {%endmf%}
+        <br class="clearf" />
+        <ul><h3><a href="{{entry.downloadurl}}" target="_blank">点击下载</a></h3></ul>
+        {%mf after_entry_content%}
+        {%if relateposts%}
+      <h4>Relate Posts:</h4>
+      <ul>
+        {%for post in relateposts%}
+        <li><a href="{{post.Link_url}}">{{post.title}}</a></li>
+        {%endfor%}
+ </ul>
+      {%endif%} <br class="clearf" />
+      <div class="box450"> {% if entry.strtags %}Tags: {%for tag in entry.tags%}<a href="/tag/{{tag|urlencode}}">{{tag}}</a> {%endfor%}<br>
+        <br>
+        {%endif%}  Posted in {%for cate in entry.categories%} <a href="{{cate.Link_url}}">{{cate.name}}</a> {%endfor%} | {%if self.is_admin%}<a href="{{entry.edit_url}}">Edit</a> {%endif%}
+        {%if blog.allow_trackback and entry.allow_trackback%}
+        <div style="padding:2px 0"> Trackback:<a href='{{entry.trackbackurl}}'>{{entry.trackbackurl}}</a> </div>
+        {%endif%} </div>
+      {%endmf%} <br class="clearf" />
+
+    </div>
+    <!-- END MAIN CONTENT -->
+     <div class="box695">{% include "comments.html" %} </div>
+    {%endif%}
+    </div>
+    {% include "dsidebar.html" %}
+    </div>
+  <!-- END WRAPPER -->
+</div>
+<!-- END PRIMARY -->
+{% endblock %}
+</body></html>

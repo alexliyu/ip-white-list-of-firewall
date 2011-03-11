@@ -1,0 +1,39 @@
+{% load i18n %}
+{% extends "base.html" %}
+{% block header %}
+<link href="/static/styles/album.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block content %}
+
+  <fieldset>
+  <legend>{% trans "Great A Albums" %}</legend>
+	 <form action="/admin/albums/" method="post">
+	   <p><input type="text" name="albumname" value="" class="input" /></p>
+	   <p><input type="submit" value="确认创建" class="button" />
+	   </form>
+
+	 </fieldset>
+
+
+{% for album in albums %}
+  <div class="album">
+   <div class="cover"  style="background-image:url({{album.Coveradmin}})">
+   </div>
+   <div class="des">
+	 <p><strong>{{album.albumname}}</strong></p>
+	 <p>共{{album.photocount}}张({{album.displayorder}})</p>
+	 <p>{{album.lastupdate|date:"Y-m-d H:i"}}更新</p>
+	 <p>{{album.createdate|date:"Y-m-d" }}创建</p>
+	 <p><a href="/admin/albums/{{album.id}}/">[查看]</a>|<a href="/admin/albums/edit/{{album.id}}/?keepThis=true&TB_iframe=true&height=400&width=450&" class="thickbox" >[修改]</a>|<a href="/admin/albums/deleteAlbum/{{album.id}}/" onclick="return confirm('确定?');">[删除]</a>
+	 </p>
+	 </div>
+	
+	 
+  </div>
+  {% endfor %}
+<div class="clear"></div>
+
+
+{% endblock %}
+</body>
+</html>

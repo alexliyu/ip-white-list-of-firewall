@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %} {{photo.name|escape}} - {{blog.title|escape}} {% endblock %}
+
+{% block head_block %}
+<link rel="stylesheet" href="/static/styles/album.css" type="text/css" media="screen" />
+<script>
+			$(document).ready(function(){
+				$("a[rel='imgurl']").colorbox({transition:"fade"});
+
+			});
+		</script>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+	<div id="main">
+		<div id="maincontent"><div class="forFlow">
+		{% if photo %}
+			<div class="post" id="post-{{photo.key}}">
+				<h2 class="post-title"><a href="{{photo.Link_url|escape}}" rel="bookmark" title="{{ photo.name|escape }}">{{ photo.name|escape }}</a></h2>
+				<div class="postmetadata-top">
+                                <span><a title="Post to Google Buzz" class="google-buzz-button" href="http://www.google.com/buzz/post" data-button-style="small-count" data-locale="zh_CN" data-url="{{photo.Link_url|escape}}"  data-message="{{ photo.name|escape }}"></a>
+<script type="text/javascript" src="http://www.google.com/buzz/api/button.js"></script></span>
+					<span class="post-date">{{photo.date|datetz:"Y/m/d H:i"}}</span>
+					<span class="post-views"><a href="{{photo.Link_url|escape}}">{{photo.viewcount}} 次阅读</a></span>
+				</div>
+				<div class="entry">
+					<li><a rel="imgurl" href="{{photo.PhotoUrl}}" title="{{photo.description}}"><img src="{{photo.PhotoUrl}}" /></a></li>
+					<li>{{photo.description}}</li>
+					<p><b>转载请注明：来自</b><a href="{{blog.baseurl}}" title="{{blog.title|escape}}">{{blog.title|escape}}</a>
+					<br/><b>本文地址：</b><a href="{{photo.Link_url|escape}}" title="{{ photo.name|escape }}">{{photo.Link_url|escape}}</a></p>
+				</div>
+				<div class="postmetadata">
+					<span class="post-cat">分类:
+						View:{{photo.viewcount}} | Size:{{photo.size}} | Author:{{photo.user}} | <a href="{{photo.PhotoUrl}}" target="_blank" title="download the image">Download</a> |  <a href="{{photo.url}}" target="_blank"> Link </a> {%if self.is_admin%} <a href="{{photo.Edit_url}}"> | Edit </a>{%endif%}
+					</span>
+				</div>
+			</div>
+			<div class="navigation">
+				{% if photo.Prev %}
+					<span class="previous"><a href="{{photo.Prev.Link_url}}">{{photo.Prev.name}}</a></span>
+				{%endif%}
+				{% if photo.Next %}
+					<span class="next"><a href="{{photo.Next.Link_url}}">{{photo.Next.name}}</a></span>
+				{%endif%}
+			</div>
+
+		{% include "pcomments.html" %}
+
+		{% else %}
+			<h2 class="center">Not Found</h2>
+			<p class="center">不好意思，您所查看的内容不再这里，您可以通过侧栏搜索工具查一下。</p>
+		{% endif %}
+
+		</div></div>
+
+		{% include "albumsidebar.html" %}
+	</div>
+{% endblock %}

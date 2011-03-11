@@ -1,0 +1,29 @@
+{% load i18n %}
+{% extends "wikibase.html" %}
+{% block title %}{{ page.name }} — {{ settings.title }}{% endblock %}
+{% block heads %}
+<link rel="alternate" type="application/x-wiki" href="/w/edit?page={{ page.name }}"/>
+{% endblock %}
+{% block content %}
+
+<ul id="tabs"{% if page.pread %}{% else %} class="locked"{% endif %}>
+  <li class="active"><a class="view" href="/wiki/{{ page.name }}">{% trans "View" %}</a></li>
+  <li><a href="/w/edit?page={{ page.name }}">{% trans "Edit" %}</a></li>
+  <li><a href="/w/history?page={{ page.name }}">{% trans "History" %}</a></li>
+</ul>
+<div class="wtabs extl" id="pb">
+  {% if page.error %}
+    <h1>{{ page.name }}</h1>
+    <p>{{ page.error.message }}</p>
+    {% if page.offer_create %}
+      <form method="get" action="/w/edit">
+        <input type="hidden" name="page" value="{{ page.name|escape }}"/>
+        <input type="submit" value="{% trans "Create this page" %}"/>
+      </form>
+    {% endif %}
+  {% else %}
+    {{ page.body }}
+  {% endif %}
+  <div style="clear:both"></div>
+</div>
+{% endblock %}

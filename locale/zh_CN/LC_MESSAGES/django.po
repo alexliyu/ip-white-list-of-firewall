@@ -1,0 +1,1517 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CDM 0.501\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-08-05 23:40+0800\n"
+"PO-Revision-Date: 2010-07-22 11:07+0800\n"
+"Last-Translator: CDM <alexliyu2012@gmail.com>\n"
+"Language-Team: CDM <alexliyu2012@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: .\admin.py:98 .\admin.py:100 .\admin.py:109 .\admin.py:111
+msgid "This operate has not defined!"
+msgstr "操作未定义！"
+
+#: .\admin.py:118
+msgid "\"Cache cleared successful\""
+msgstr "\"缓存清除成功\""
+
+#: .\admin.py:126
+msgid "\"All comments updated\""
+msgstr "\"评论更新成功\""
+
+#: .\admin.py:150
+msgid "\"Link formated succeed\""
+msgstr "\"链接格式化成功\""
+
+#: .\admin.py:152
+msgid "\"Please input url format.\""
+msgstr "\"请输入URL格式.\""
+
+#: .\admin.py:163
+msgid "\"Init has succeed.\""
+msgstr "\"初始化成功.\""
+
+#: .\admin.py:176
+msgid "\"All tags for entry have been updated.\""
+msgstr "\"标签更新成功.\""
+
+#: .\admin.py:201
+msgid "\"All entries have been updated.\""
+msgstr "\"实体更新成功\""
+
+#: .\admin.py:473
+msgid "Please input title and content."
+msgstr "请输入标题和内容"
+
+#: .\admin.py:507
+#, fuzzy, python-format
+msgid "Saved ok. <a href=\"%(link)s\" target=\"_blank\">View it now!</a>"
+msgstr "保存成功. <a href=\"/%(link)s\" target=\"_blank\">马上查看!</a>"
+
+#: .\admin.py:509 .\admin.py:551
+msgid "Saved ok."
+msgstr "保存成功"
+
+#: .\admin.py:547
+#, fuzzy, python-format
+msgid "Saved ok. <a href=%(link)s target=_blank>View it now!</a>"
+msgstr "保存成功. <a href=\"/%(link)s\" target=\"_blank\">马上查看!</a>"
+
+#: .\admin.py:687
+msgid "Please input name and url."
+msgstr "请输入名称和URL"
+
+#: .\admin.py:707
+msgid "Error:Link cant been saved."
+msgstr "错误：链接保存失败！"
+
+#: .\admin.py:758 .\admin.py:774
+msgid "Please input name and slug."
+msgstr "请输入名称和Slug"
+
+#: .\admin.py:778
+msgid "A circle declaration found."
+msgstr "发现循环定义"
+
+#: .\admin.py:858
+msgid "Please input dispname and email."
+msgstr "请输入姓名，Email地址"
+
+#: .\admin.py:880
+msgid "Error:Author cant been saved."
+msgstr "错误：作者信息保存失败"
+
+#: .\admin.py:915 .\admin.py:936
+#, python-format
+msgid ""
+"<div>Plugin '%(name)s' havn't actived!</div><br><form method=\"post\" action="
+"\"/admin/plugins?action=activate&amp;plugin=%(iname)s&amp;return=/admin/"
+"plugins/%(iname)s\"><input type=\"submit\" value=\"Activate Now\"/></form>"
+msgstr ""
+"<div>插件 '%(name)s' 还没有激活!</div><br><form method=\"post\" action=\"/"
+"admin/plugins?action=activate&amp;plugin=%(iname)s&amp;return=/admin/plugins/"
+"%(iname)s\">\n"
+"<input type=\"submit\" value=\"现在激活\"/></form>"
+
+#: .\admin.py:1413 .\admin.py:1422
+#, fuzzy
+msgid "Please input name and value."
+msgstr "请输入名称和Slug"
+
+#: .\admin.py:1469
+#, fuzzy
+msgid "Please input name."
+msgstr "请输入名称和URL"
+
+#: .\base.py:195
+msgid "source URL does not exist"
+msgstr "源地址不存在"
+
+#: .\base.py:196
+msgid "The source URL does not contain a link to the target URL"
+msgstr "源地址并不包含目标地址"
+
+#: .\base.py:197
+msgid "The specified target URL does not exist"
+msgstr "目标地址不存在"
+
+#: .\base.py:198
+msgid "The specified target URL cannot be used as a target"
+msgstr ""
+
+#: .\base.py:199
+msgid "The pingback has already been registered"
+msgstr ""
+
+#: .\base.py:200
+msgid "Access Denied"
+msgstr "访问受限"
+
+#: .\base.py:237
+#, python-format
+msgid "An unknown server error (%s) occurred"
+msgstr "未知的服务器错误：(%s)"
+
+#: .\blog.py:622 .\blog.py:624 .\blog.py:628 .\blog.py:630 .\media.py:449
+#: .\media.py:451 .\media.py:456 .\media.py:458
+msgid "Your check code is invalid ."
+msgstr "验证码错误"
+
+#: .\blog.py:641 .\blog.py:643 .\media.py:469 .\media.py:471
+msgid "Please input name, email and comment ."
+msgstr "请输入姓名，Email地址和评论内容"
+
+#: .\blog.py:684 .\media.py:513
+msgid "Comment not allowed."
+msgstr "不允许评论"
+
+#: .\blog.py:686 .\media.py:515
+msgid "Comment not allowed ."
+msgstr "不允许评论"
+
+#: .\blog.py:767
+msgid "this is a test"
+msgstr "这是一个测试"
+
+#: .\model.py:560
+msgid "..more"
+msgstr "(..更多内容)"
+
+#: .\model.py:1302
+msgid "Hello world!"
+msgstr "欢迎使用cdm"
+
+#: .\model.py:1303
+#, fuzzy
+msgid ""
+"<p>Welcome to CDM SYSTEM. This is your first post. Edit or delete it, then "
+"start the CDM!</p>"
+msgstr ""
+"<p>欢迎使用cdm. 这是您的第一篇文章. 您可以修改或删除这篇文章，开始您精彩的独"
+"立个人门户网站之旅。</p>"
+
+#: .\model.py:1305
+msgid "ChinaCDM's website"
+msgstr "ChinaCDM的推广网站"
+
+#: .\plugins\feedblog\feedblog.py:94
+msgid "collect"
+msgstr "采集"
+
+#: .\plugins\pushblog\pushblog.py:81
+msgid "Push"
+msgstr "推送"
+
+#: .\plugins\sys_plugin\setup.html.py:4
+#: .\plugins\sys_plugin\setup2.html.py:31 .\views\admin\setup.html.py:153
+msgid "Enable comment notify by mail:"
+msgstr "允许将评论发送到你的邮箱:"
+
+#: .\plugins\sys_plugin\setup.html.py:7
+#: .\plugins\sys_plugin\setup2.html.py:34
+msgid "Message to me:"
+msgstr "发送给我的消息"
+
+#: .\plugins\sys_plugin\setup.html.py:11
+#: .\plugins\sys_plugin\setup2.html.py:38
+msgid "Message to commenter:"
+msgstr "发送给评论者的消息"
+
+#: .\plugins\sys_plugin\setup2.html.py:8 .\views\admin\import.html.py:32
+#: .\views\admin\setup.html.py:4 .\views\admin\setup_base.html.py:8
+#: .\views\admin\sitemap.html.py:4 .\views\admin\tools.html.py:67
+msgid "Basic"
+msgstr "基本配置"
+
+#: .\plugins\sys_plugin\setup2.html.py:9 .\views\admin\import.html.py:33
+#: .\views\admin\setup.html.py:5 .\views\admin\setup_base.html.py:9
+#: .\views\admin\sitemap.html.py:5 .\views\admin\tools.html.py:68
+msgid "Import/Export"
+msgstr "导入/导出"
+
+#: .\plugins\sys_plugin\setup2.html.py:10 .\views\admin\import.html.py:34
+#: .\views\admin\setup.html.py:6 .\views\admin\setup_base.html.py:10
+#: .\views\admin\sitemap.html.py:6 .\views\admin\tools.html.py:69
+msgid "Sitemap"
+msgstr "网站地图"
+
+#: .\plugins\sys_plugin\setup2.html.py:11 .\views\admin\import.html.py:35
+#: .\views\admin\setup.html.py:7 .\views\admin\setup_base.html.py:11
+#: .\views\admin\sitemap.html.py:7 .\views\admin\tools.html.py:70
+#: .\views\admin\tools.html.py:77
+msgid "Tools"
+msgstr "工具"
+
+#: .\plugins\sys_plugin\sys_plugin.py:84
+msgid "Notify"
+msgstr "提醒"
+
+#: .\plugins\wordpress\wpimport.html.py:56
+msgid "Please select a file which exported from wordpress to import!"
+msgstr "请选择一个从wordpress导出的格式化文件进行导入！"
+
+#: .\plugins\wordpress\wpimport.html.py:62
+msgid "Wordpress export file (WXR file):"
+msgstr "Wordpress 格式文件(WXR格式):"
+
+#: .\plugins\wordpress\wpimport.html.py:71 .\views\admin\import.html.py:59
+msgid "Import"
+msgstr "导入"
+
+#: .\themes\default\templates\wikiadmin_email.html.py:3
+msgid "Send Admin Email"
+msgstr "给管理员发送邮件"
+
+#: .\themes\default\templates\wikiadmin_email.html.py:5
+msgid "Send an email to the Wiki Admins"
+msgstr "给Wiki管理员发送邮件"
+
+#: .\themes\default\templates\wikiadmin_email.html.py:7
+msgid "Subject:"
+msgstr "主题"
+
+#: .\themes\default\templates\wikiadmin_email.html.py:8
+msgid "Body:"
+msgstr "正文"
+
+#: .\themes\default\templates\wikiadmin_email.html.py:9
+#, fuzzy
+msgid "Send Email"
+msgstr "邮件"
+
+#: .\themes\default\templates\wikibase.html.py:11
+#, fuzzy
+msgid "New Pages"
+msgstr "新建页面"
+
+#: .\themes\default\templates\wikibase.html.py:25
+#: .\themes\default\templates\wikiindex.html.py:3
+msgid "Index"
+msgstr "索引"
+
+#: .\themes\default\templates\wikibase.html.py:26
+#, fuzzy
+msgid "Changes"
+msgstr "变更记录"
+
+#: .\themes\default\templates\wikibase.html.py:28
+msgid "Users"
+msgstr "用户"
+
+#: .\themes\default\templates\wikibase.html.py:29
+#: .\themes\default\templates\wikisettings.html.py:6
+#: .\views\admin\setup.html.py:8 .\views\admin\setup_base.html.py:12
+msgid "Wiki Setting"
+msgstr "Wiki设置"
+
+#: .\themes\default\templates\wikibase.html.py:31
+msgid "Sign out"
+msgstr "退出"
+
+#: .\themes\default\templates\wikibase.html.py:33
+msgid "Log in"
+msgstr "登录"
+
+#: .\themes\default\templates\wikibase.html.py:43
+#: .\views\admin\entry.html.py:134
+msgid "New Page"
+msgstr "新建页面"
+
+#: .\themes\default\templates\wikichanges.html.py:3
+#: .\themes\default\templates\wikichanges.html.py:11
+#, fuzzy
+msgid "Recent changes"
+msgstr "最近的更改"
+
+#: .\themes\default\templates\wikichanges.html.py:6
+#: .\themes\default\templates\wikiedit.html.py:14
+#: .\themes\default\templates\wikihistory.html.py:6
+#: .\themes\default\templates\wikiview.html.py:10
+msgid "View"
+msgstr "查看"
+
+#: .\themes\default\templates\wikichanges.html.py:17
+#, fuzzy
+msgid "Page"
+msgstr "页面"
+
+#: .\themes\default\templates\wikichanges.html.py:18
+#, fuzzy
+msgid "Edited on"
+msgstr "修改者为"
+
+#: .\themes\default\templates\wikichanges.html.py:19
+#, fuzzy
+msgid "Editor"
+msgstr "编辑者"
+
+#: .\themes\default\templates\wikichanges.html.py:40
+msgid "Nothing was changed yet."
+msgstr "什么也没有更改"
+
+#: .\themes\default\templates\wikiconfirm_email.html.py:3
+#, fuzzy
+msgid "Confirmation"
+msgstr "设置"
+
+#: .\themes\default\templates\wikiconfirm_email.html.py:5
+msgid "Thank you for sending email to our admins!"
+msgstr ""
+
+#: .\themes\default\templates\wikiedit.html.py:3
+#, fuzzy
+msgid "Editing"
+msgstr "编辑"
+
+#: .\themes\default\templates\wikiedit.html.py:15
+#: .\themes\default\templates\wikihistory.html.py:7
+#: .\themes\default\templates\wikiview.html.py:11
+#: .\views\admin\photos.html.py:28
+#, fuzzy
+msgid "Edit"
+msgstr "编辑"
+
+#: .\themes\default\templates\wikiedit.html.py:16
+#: .\themes\default\templates\wikihistory.html.py:8
+#: .\themes\default\templates\wikiview.html.py:12
+msgid "History"
+msgstr "历史版本"
+
+#: .\themes\default\templates\wikiedit.html.py:19
+#, fuzzy
+msgid "New page"
+msgstr "新建页面"
+
+#: .\themes\default\templates\wikiedit.html.py:30
+msgid "You can use HTML and "
+msgstr "你能使用HTML和"
+
+#: .\themes\default\templates\wikiedit.html.py:30
+msgid "for formatting"
+msgstr "来格式化"
+
+#: .\themes\default\templates\wikiedit.html.py:30
+msgid "for linking"
+msgstr "来生成超链接"
+
+#: .\themes\default\templates\wikiedit.html.py:31
+#: .\views\admin\setup.html.py:191 .\views\admin\sitemap.html.py:49
+msgid "Save Changes"
+msgstr "保存更改"
+
+#: .\themes\default\templates\wikiedit.html.py:31
+#, fuzzy
+msgid "cancel"
+msgstr "放弃"
+
+#: .\themes\default\templates\wikiedit_user.html.py:5
+msgid "My User Profile"
+msgstr "我的用户档案"
+
+#: .\themes\default\templates\wikiedit_user.html.py:6
+#, fuzzy
+msgid "My Email:"
+msgstr "我的邮件"
+
+#: .\themes\default\templates\wikiedit_user.html.py:7
+#, fuzzy
+msgid "Articles By Me"
+msgstr "我的文章:"
+
+#: .\themes\default\templates\wikiedit_user.html.py:14
+msgid "Add a user picture:"
+msgstr "添加用户图片"
+
+#: .\themes\default\templates\wikiedit_user.html.py:15
+msgid "Enter your blogger feed URL:"
+msgstr "输入您的博客Feed地址"
+
+#: .\themes\default\templates\wikiedit_user.html.py:16
+#, fuzzy
+msgid "Upload User Information"
+msgstr "更新用户信息"
+
+#: .\themes\default\templates\wikihistory.html.py:20
+msgid "We have no records for this page."
+msgstr "我们没有这个页面的任何记录"
+
+#: .\themes\default\templates\wikiindex.html.py:11
+#, fuzzy
+msgid "Page index"
+msgstr "页面索引"
+
+#: .\themes\default\templates\wikiindex.html.py:22
+msgid "Nothing to see here."
+msgstr "这里什么也没有"
+
+#: .\themes\default\templates\wikiinterwiki.html.py:6
+msgid "Interwiki syntax"
+msgstr ""
+
+#: .\themes\default\templates\wikisettings.html.py:11
+#, fuzzy
+msgid "Wiki title:"
+msgstr "网站标题"
+
+#: .\themes\default\templates\wikisettings.html.py:16
+#, fuzzy
+msgid "Start page:"
+msgstr "开始页面:"
+
+#: .\themes\default\templates\wikisettings.html.py:18
+#: .\views\admin\posts.html.py:43
+msgid "edit"
+msgstr "编辑"
+
+#: .\themes\default\templates\wikisettings.html.py:21
+msgid "Admin email:"
+msgstr "管理员邮件"
+
+#: .\themes\default\templates\wikisettings.html.py:26
+msgid "Publicly readable:"
+msgstr "所有人都可以阅读"
+
+#: .\themes\default\templates\wikisettings.html.py:31
+msgid "Publicly editable:"
+msgstr "所有人都可以编辑"
+
+#: .\themes\default\templates\wikisettings.html.py:36
+msgid "Site verification code:"
+msgstr "网站验证码"
+
+#: .\themes\default\templates\wikisettings.html.py:41
+#, fuzzy
+msgid "Page footer:"
+msgstr "页面底部:"
+
+#: .\themes\default\templates\wikisettings.html.py:46
+msgid "Interwikis"
+msgstr ""
+
+#: .\themes\default\templates\wikisettings.html.py:55
+#: .\views\admin\category.html.py:24 .\views\admin\doc.html.py:24
+#: .\views\admin\entry.html.py:181 .\views\admin\link.html.py:24
+#: .\views\admin\photo.html.py:23
+msgid "Save"
+msgstr "保存"
+
+#: .\themes\default\templates\wikiview.html.py:21
+#: .\themes\default\templates\wikiview_diff.html.py:21
+msgid "Create this page"
+msgstr "建立这个页面"
+
+#: .\themes\default\templates\wikiview_diff.html.py:6
+msgid "View revision list"
+msgstr "查看历史版本清单"
+
+#: .\themes\default\templates\wikiview_diff.html.py:7
+#, fuzzy
+msgid "Version:"
+msgstr "版本"
+
+#: .\themes\default\templates\wikiview_diff.html.py:7
+msgid "Last Edited:"
+msgstr "最后修改"
+
+#: .\themes\default\templates\wikiview_diff.html.py:18
+msgid "Edit this page"
+msgstr "编辑这个页面"
+
+#: .\themes\default\templates\wikiview_revisionlist.html.py:9
+#, fuzzy
+msgid "Revision"
+msgstr "版本"
+
+#: .\themes\default\templates\wikiview_revisionlist.html.py:11
+msgid "View diff"
+msgstr "对比不同"
+
+#: .\views\admin\album.html.py:9
+msgid "Great A Albums"
+msgstr "新建一个相册"
+
+#: .\views\admin\articles.html.py:15 .\views\admin\blogs.html.py:15
+#: .\views\admin\comments.html.py:46 .\views\admin\downloads.html.py:15
+#: .\views\admin\otherdoc.html.py:28 .\views\admin\pages.html.py:15
+#: .\views\admin\posts.html.py:37
+msgid "Date"
+msgstr "日期"
+
+#: .\views\admin\articles.html.py:16 .\views\admin\blogs.html.py:16
+#: .\views\admin\downloads.html.py:16 .\views\admin\entry.html.py:221
+#: .\views\admin\pages.html.py:16 .\views\admin\posts.html.py:37
+msgid "Title"
+msgstr "标题"
+
+#: .\views\admin\articles.html.py:17 .\views\admin\blogs.html.py:17
+#: .\views\admin\comments.html.py:13 .\views\admin\comments.html.py:46
+#: .\views\admin\downloads.html.py:17 .\views\admin\pages.html.py:17
+#: .\views\admin\plugins.html.py:10 .\views\admin\posts.html.py:37
+msgid "Author"
+msgstr "作者"
+
+#: .\views\admin\articles.html.py:18 .\views\admin\blogs.html.py:18
+#: .\views\admin\downloads.html.py:18 .\views\admin\pages.html.py:18
+#, fuzzy
+msgid "Comments Count"
+msgstr "评论"
+
+#: .\views\admin\articles.html.py:19 .\views\admin\blogs.html.py:19
+#: .\views\admin\downloads.html.py:19 .\views\admin\pages.html.py:19
+msgid "Read times"
+msgstr "阅读次数"
+
+#: .\views\admin\articles.html.py:20 .\views\admin\blogs.html.py:20
+#: .\views\admin\downloads.html.py:20 .\views\admin\pages.html.py:20
+#: .\views\admin\posts.html.py:37
+msgid "Status"
+msgstr "状态"
+
+#: .\views\admin\articles.html.py:21 .\views\admin\blogs.html.py:21
+#: .\views\admin\downloads.html.py:21 .\views\admin\pages.html.py:21
+#, fuzzy
+msgid "Entry Type"
+msgstr "文章/页面"
+
+#: .\views\admin\articles.html.py:22 .\views\admin\blogs.html.py:22
+#: .\views\admin\downloads.html.py:22 .\views\admin\pages.html.py:22
+#, fuzzy
+msgid "Post Url"
+msgstr "文章"
+
+#: .\views\admin\articles.html.py:23 .\views\admin\blogs.html.py:23
+#: .\views\admin\downloads.html.py:25 .\views\admin\entry.html.py:194
+#: .\views\admin\posts.html.py:37
+msgid "allow comment"
+msgstr "允许评论"
+
+#: .\views\admin\articles.html.py:143 .\views\admin\articles.html.py:241
+#, fuzzy
+msgid "Manage Article"
+msgstr "管理文件"
+
+#: .\views\admin\articles.html.py:221 .\views\admin\authors.html.py:7
+#: .\views\admin\blogs.html.py:221 .\views\admin\categories.html.py:7
+#: .\views\admin\downloads.html.py:244 .\views\admin\links.html.py:7
+#: .\views\admin\otherdoc.html.py:7 .\views\admin\pages.html.py:243
+#: .\views\admin\posts.html.py:7
+msgid "add new"
+msgstr "新建"
+
+#: .\views\admin\author.html.py:11
+msgid "Edit Author"
+msgstr "修改作者"
+
+#: .\views\admin\author.html.py:11
+msgid "Add Author"
+msgstr "添加作者"
+
+#: .\views\admin\author.html.py:28 .\views\admin\category.html.py:28
+#: .\views\admin\doc.html.py:28 .\views\admin\entry.html.py:200
+#: .\views\admin\link.html.py:28 .\views\admin\photo.html.py:27
+msgid "Related"
+msgstr "相关操作"
+
+#: .\views\admin\author.html.py:31
+msgid "Manage All Authors"
+msgstr "管理作者"
+
+#: .\views\admin\author.html.py:40
+msgid "Display Name"
+msgstr "名称"
+
+#: .\views\admin\author.html.py:43
+msgid "The name is used to display."
+msgstr "用于显示的名字"
+
+#: .\views\admin\authors.html.py:7
+msgid "Manage Authors"
+msgstr "管理作者"
+
+#: .\views\admin\authors.html.py:8
+msgid "All Authors"
+msgstr "作者"
+
+#: .\views\admin\authors.html.py:14 .\views\admin\categories.html.py:14
+#: .\views\admin\comments.html.py:26 .\views\admin\links.html.py:12
+#: .\views\admin\otherdoc.html.py:14 .\views\admin\posts.html.py:15
+msgid "Delete"
+msgstr "删除"
+
+#: .\views\admin\authors.html.py:18 .\views\admin\categories.html.py:18
+#: .\views\admin\comments.html.py:30 .\views\admin\posts.html.py:20
+msgid "&laquo; prev"
+msgstr "&laquo; 前一页"
+
+#: .\views\admin\authors.html.py:22 .\views\admin\categories.html.py:22
+#: .\views\admin\comments.html.py:34 .\views\admin\posts.html.py:24
+msgid "next &raquo;"
+msgstr "后一页 &raquo;"
+
+#: .\views\admin\authors.html.py:23 .\views\admin\categories.html.py:24
+#: .\views\admin\comments.html.py:35 .\views\admin\posts.html.py:26
+#, python-format
+msgid "  Page %(pindex)s"
+msgstr "  第%(pindex)s页"
+
+#: .\views\admin\authors.html.py:34 .\views\admin\categories.html.py:37
+#: .\views\admin\category.html.py:40 .\views\admin\doc.html.py:40
+#: .\views\admin\link.html.py:40 .\views\admin\links.html.py:22
+#: .\views\admin\otherdoc.html.py:28 .\views\admin\photo.html.py:38
+#: .\views\admin\photo.html.py:44 .\views\admin\photo.html.py:51
+msgid "Name"
+msgstr "名称"
+
+#: .\views\admin\authors.html.py:34
+msgid "IsAdmin"
+msgstr "是否管理员"
+
+#: .\views\admin\base.html.py:52
+msgid "CDM Dashboard"
+msgstr "CDM 控制面板"
+
+#: .\views\admin\base.html.py:52
+msgid "Logout"
+msgstr "注销"
+
+#: .\views\admin\base.html.py:81
+msgid "Write"
+msgstr "写文章"
+
+#: .\views\admin\base.html.py:82
+msgid "Posts"
+msgstr "博客"
+
+#: .\views\admin\base.html.py:83
+msgid "Pages"
+msgstr "页面"
+
+#: .\views\admin\base.html.py:84
+msgid "Links"
+msgstr "链接"
+
+#: .\views\admin\base.html.py:85
+msgid "Categories"
+msgstr "目录"
+
+#: .\views\admin\base.html.py:86
+msgid "Comments"
+msgstr "评论"
+
+#: .\views\admin\base.html.py:87 .\views\admin\entry.html.py:111
+#: .\views\admin\upload.html.py:5 .\views\admin\uploadex.html.py:5
+msgid "Files"
+msgstr "文件"
+
+#: .\views\admin\base.html.py:88
+msgid "Albums"
+msgstr "相册"
+
+#: .\views\admin\base.html.py:89 .\views\admin\category.html.py:73
+#: .\views\admin\filemanager.html.py:17
+msgid "Download"
+msgstr "下载"
+
+#: .\views\admin\base.html.py:90 .\views\admin\category.html.py:74
+msgid "Article"
+msgstr "文章"
+
+#: .\views\admin\base.html.py:93
+msgid "Configuration"
+msgstr "设置"
+
+#: .\views\admin\base.html.py:94
+msgid "Plugins"
+msgstr "插件"
+
+#: .\views\admin\base.html.py:96
+msgid "Cache"
+msgstr "缓存"
+
+#: .\views\admin\base.html.py:97
+msgid "Authors"
+msgstr "作者"
+
+#: .\views\admin\base.html.py:98
+msgid "Other Doc"
+msgstr "其他文档"
+
+#: .\views\admin\base.html.py:103
+msgid "help"
+msgstr "帮助"
+
+#: .\views\admin\blogs.html.py:143 .\views\admin\blogs.html.py:241
+#: .\views\admin\posts.html.py:7
+msgid "Manage Posts"
+msgstr "管理文章"
+
+#: .\views\admin\categories.html.py:7
+msgid "Manage Categories"
+msgstr "管理目录"
+
+#: .\views\admin\categories.html.py:8
+msgid "All Categories"
+msgstr "所有目录"
+
+#: .\views\admin\categories.html.py:37 .\views\admin\category.html.py:47
+#: .\views\admin\downloads.html.py:23 .\views\admin\entry.html.py:277
+#: .\views\admin\pages.html.py:23
+msgid "Slug"
+msgstr "名称(slug)"
+
+#: .\views\admin\categories.html.py:37
+msgid "Cat type"
+msgstr "目录类型"
+
+#: .\views\admin\categories.html.py:37
+msgid "Parent"
+msgstr "上一级"
+
+#: .\views\admin\category.html.py:11
+msgid "Edit category"
+msgstr "编辑目录"
+
+#: .\views\admin\category.html.py:11
+msgid "Add category"
+msgstr "添加目录"
+
+#: .\views\admin\category.html.py:31
+msgid "Manage All Categories"
+msgstr "管理所有页面"
+
+#: .\views\admin\category.html.py:43
+msgid ""
+"The name is used to identify the category almost everywhere, for example "
+"under the post or in the category widget."
+msgstr "目录的名字，将会显示在页面上"
+
+#: .\views\admin\category.html.py:50
+msgid ""
+"The 'slug' is the URL-friendly version of the name. It is usually all "
+"lowercase and contains only letters, numbers, and hyphens."
+msgstr ""
+"\"slug\"是一个URL友好的名称，将会被用在生成的url链接里面，通常只包含英文，数"
+"字和下划线"
+
+#: .\views\admin\category.html.py:54
+msgid "Parent Category"
+msgstr "上级目录"
+
+#: .\views\admin\category.html.py:57
+msgid "None"
+msgstr "不存在"
+
+#: .\views\admin\category.html.py:69
+#, fuzzy
+msgid "Category type"
+msgstr "目录"
+
+#: .\views\admin\category.html.py:72
+msgid "Blog"
+msgstr "博客"
+
+#: .\views\admin\comments.html.py:7
+msgid "Manage Comments"
+msgstr "管理评论"
+
+#: .\views\admin\comments.html.py:8
+msgid "All Comments"
+msgstr "所有评论"
+
+#: .\views\admin\comments.html.py:11
+msgid "Filter:"
+msgstr "过滤："
+
+#: .\views\admin\comments.html.py:18
+msgid "Do"
+msgstr "确定"
+
+#: .\views\admin\comments.html.py:46
+msgid "Content"
+msgstr "内容"
+
+#: .\views\admin\comments.html.py:46
+msgid "Email"
+msgstr "邮件"
+
+#: .\views\admin\comments.html.py:46
+msgid "IP"
+msgstr ""
+
+#: .\views\admin\comments.html.py:46
+msgid "Entry"
+msgstr "文章/页面"
+
+#: .\views\admin\doc.html.py:11
+#, fuzzy
+msgid "Edit doc"
+msgstr "修改作者"
+
+#: .\views\admin\doc.html.py:11
+msgid "Add doc"
+msgstr "添加一个文档"
+
+#: .\views\admin\doc.html.py:31
+#, fuzzy
+msgid "Manage All Other Doc"
+msgstr "管理作者"
+
+#: .\views\admin\doc.html.py:43
+#, fuzzy
+msgid ""
+"The name is used to identify the doc almost everywhere, for example under "
+"the post or in the doc widget."
+msgstr "目录的名字，将会显示在页面上"
+
+#: .\views\admin\doc.html.py:47
+msgid "Doc Value"
+msgstr "文档内容"
+
+#: .\views\admin\doc.html.py:51
+#, fuzzy
+msgid "The value is used to the doc content."
+msgstr "请输入标题和内容"
+
+#: .\views\admin\downloads.html.py:24 .\views\admin\entry.html.py:320
+#, fuzzy
+msgid "Download Url"
+msgstr "下载"
+
+#: .\views\admin\downloads.html.py:166
+#, fuzzy
+msgid "All Download"
+msgstr "下载"
+
+#: .\views\admin\downloads.html.py:263
+#, fuzzy
+msgid "Manage Download"
+msgstr "下载"
+
+#: .\views\admin\editalbum.html.py:12
+#, fuzzy
+msgid "Edit Albums"
+msgstr "修改作者"
+
+#: .\views\admin\entry.html.py:134
+msgid "New Post"
+msgstr "新建文章"
+
+#: .\views\admin\entry.html.py:134
+#, fuzzy
+msgid "New Download"
+msgstr "添加下载"
+
+#: .\views\admin\entry.html.py:134
+#, fuzzy
+msgid "New Article"
+msgstr "添加文件"
+
+#: .\views\admin\entry.html.py:147
+msgid "Write Post"
+msgstr "写文章"
+
+#: .\views\admin\entry.html.py:150
+msgid "Write Page"
+msgstr "写页面"
+
+#: .\views\admin\entry.html.py:153
+#, fuzzy
+msgid "Write Download"
+msgstr "添加下载"
+
+#: .\views\admin\entry.html.py:156
+#, fuzzy
+msgid "Write Article"
+msgstr "写文章"
+
+#: .\views\admin\entry.html.py:166
+msgid "Category"
+msgstr "目录"
+
+#: .\views\admin\entry.html.py:183
+msgid "UnPublish"
+msgstr "取消发布"
+
+#: .\views\admin\entry.html.py:185
+msgid "Publish"
+msgstr "发布"
+
+#: .\views\admin\entry.html.py:192
+msgid "Sticky it."
+msgstr "置顶"
+
+#: .\views\admin\entry.html.py:196
+msgid "allow trackback"
+msgstr "允许 Trackback"
+
+#: .\views\admin\entry.html.py:203
+msgid "Manage All Posts"
+msgstr "管理所有文章"
+
+#: .\views\admin\entry.html.py:204
+msgid "Manage All Pages"
+msgstr "管理所有页面"
+
+#: .\views\admin\entry.html.py:205
+#, fuzzy
+msgid "Manage All Downloads"
+msgstr "管理所有文章"
+
+#: .\views\admin\entry.html.py:206
+#, fuzzy
+msgid "Manage All Articles"
+msgstr "管理作者"
+
+#: .\views\admin\entry.html.py:217
+msgid "Use as  external page"
+msgstr "用作外链接"
+
+#: .\views\admin\entry.html.py:234
+msgid "External page address"
+msgstr "外链接地址"
+
+#: .\views\admin\entry.html.py:238
+msgid "Target"
+msgstr "目标"
+
+#: .\views\admin\entry.html.py:285
+msgid "Tag"
+msgstr "标签"
+
+#: .\views\admin\entry.html.py:294
+msgid "Password"
+msgstr "密码"
+
+#: .\views\admin\entry.html.py:305
+msgid "Options"
+msgstr "选项"
+
+#: .\views\admin\entry.html.py:308
+msgid "Page level:"
+msgstr "页面级别:"
+
+#: .\views\admin\entry.html.py:310
+msgid "Page order:"
+msgstr "页面顺序:"
+
+#: .\views\admin\entry.html.py:328
+#, fuzzy
+msgid "Download Size"
+msgstr "文件大小"
+
+#: .\views\admin\entry.html.py:340
+msgid "Excerpt"
+msgstr "摘要"
+
+#: .\views\admin\entry.html.py:348
+msgid "Imageurl"
+msgstr "显示图片"
+
+#: .\views\admin\filemanager.html.py:17
+msgid "File Name"
+msgstr "文件名"
+
+#: .\views\admin\filemanager.html.py:17
+#, fuzzy
+msgid "Upload User"
+msgstr "上传日期"
+
+#: .\views\admin\filemanager.html.py:17 .\views\admin\upload.html.py:80
+#: .\views\admin\uploadex.html.py:97
+msgid "Size"
+msgstr "大小"
+
+#: .\views\admin\filemanager.html.py:17
+msgid "Upload Date"
+msgstr "上传日期"
+
+#: .\views\admin\filemanager.html.py:17
+msgid "Url"
+msgstr ""
+
+#: .\views\admin\filemanager.html.py:132
+#: .\views\admin\filemanager.html.py:230
+msgid "Manage Files"
+msgstr "管理文件"
+
+#: .\views\admin\filemanager.html.py:210 .\views\admin\test.html.py:15
+#: .\views\admin\uploads.html.py:15
+msgid "Upload a file"
+msgstr "上传一个文件"
+
+#: .\views\admin\import.html.py:41
+msgid "Export/Import for wordpress"
+msgstr "导入/导出"
+
+#: .\views\admin\import.html.py:42 .\views\admin\import.html.py:57
+msgid "Export"
+msgstr "导出"
+
+#: .\views\admin\import.html.py:43
+msgid "Export as  WordPress eXtended RSS file"
+msgstr "导出为 wordpress 文件格式"
+
+#: .\views\admin\import.html.py:45
+msgid "Export from Date:"
+msgstr "导出日期: 从"
+
+#: .\views\admin\import.html.py:46
+msgid "to Date:"
+msgstr "到"
+
+#: .\views\admin\import.html.py:46
+msgid "'s posts"
+msgstr "的博文"
+
+#: .\views\admin\import.html.py:56
+msgid "Export all posts"
+msgstr "导出所有文章"
+
+#: .\views\admin\link.html.py:11
+msgid "Edit link"
+msgstr "编辑链接"
+
+#: .\views\admin\link.html.py:11
+msgid "Add Link"
+msgstr "添加链接"
+
+#: .\views\admin\link.html.py:31
+msgid "Manage All Links"
+msgstr "管理所有链接"
+
+#: .\views\admin\link.html.py:43
+msgid "Example: Nifty blogging software"
+msgstr "例如：关于GAE的博客"
+
+#: .\views\admin\link.html.py:47
+msgid "Web Address"
+msgstr "网址"
+
+#: .\views\admin\link.html.py:50
+msgid ""
+"Example: <code>http://ccdm.tk</code> - don't forget the <code>http://</code>"
+msgstr "例如: <code>http://ccdm.tk</code> - 请不要忘记 <code>http://</code>"
+
+#: .\views\admin\link.html.py:54 .\views\admin\links.html.py:22
+msgid "LinkComment"
+msgstr "链接描述"
+
+#: .\views\admin\link.html.py:57
+msgid "Example: CDM's Blog"
+msgstr ""
+
+#: .\views\admin\links.html.py:7
+msgid "Manage Links"
+msgstr "管理链接"
+
+#: .\views\admin\links.html.py:22
+msgid "URL"
+msgstr "URL"
+
+#: .\views\admin\otherdoc.html.py:7
+#, fuzzy
+msgid "Manage Other Doc"
+msgstr "管理作者"
+
+#: .\views\admin\otherdoc.html.py:8
+#, fuzzy
+msgid "All otherdoc"
+msgstr "作者"
+
+#: .\views\admin\pages.html.py:24
+#, fuzzy
+msgid "Is EPage"
+msgstr "页面"
+
+#: .\views\admin\pages.html.py:25
+#, fuzzy
+msgid "External Address"
+msgstr "外链接地址"
+
+#: .\views\admin\pages.html.py:165
+msgid "All Pages"
+msgstr "所有页面"
+
+#: .\views\admin\pages.html.py:262
+msgid "Manage Pages"
+msgstr "管理页面"
+
+#: .\views\admin\photo.html.py:11
+#, fuzzy
+msgid "Edit Photo"
+msgstr "修改作者"
+
+#: .\views\admin\photo.html.py:30
+#, fuzzy
+msgid "Manage Album"
+msgstr "管理作者"
+
+#: .\views\admin\photo.html.py:41
+#, fuzzy
+msgid "The name is used to show the photo."
+msgstr "用于显示的名字"
+
+#: .\views\admin\photo.html.py:47 .\views\admin\photo.html.py:54
+msgid "The url is used to show the content of photo."
+msgstr "这个地址是用来显示相片的内容的"
+
+#: .\views\admin\photos.html.py:23
+msgid "Show Albums"
+msgstr "显示相册列表"
+
+#: .\views\admin\plugins.html.py:5
+msgid "Manage Plugins"
+msgstr "管理插件"
+
+#: .\views\admin\plugins.html.py:10
+msgid "Plugin"
+msgstr "插件"
+
+#: .\views\admin\plugins.html.py:10
+msgid "Version"
+msgstr "版本"
+
+#: .\views\admin\plugins.html.py:10
+msgid "Description"
+msgstr "描述"
+
+#: .\views\admin\plugins.html.py:10
+msgid "Active Status"
+msgstr "激活状态"
+
+#: .\views\admin\plugins.html.py:20
+msgid "Deactivate"
+msgstr "取消激活"
+
+#: .\views\admin\plugins.html.py:23
+msgid "Activate"
+msgstr "激活"
+
+#: .\views\admin\posts.html.py:9
+msgid "All Posts"
+msgstr "所有文章"
+
+#: .\views\admin\posts.html.py:46
+msgid "Published"
+msgstr "发布"
+
+#: .\views\admin\posts.html.py:46
+msgid "Unpublished"
+msgstr "未发布"
+
+#: .\views\admin\setup.html.py:15
+msgid "Setup and Configuraiton for this System"
+msgstr "网站设置/系统配置"
+
+#: .\views\admin\setup.html.py:19
+msgid "Website Title:"
+msgstr "网站标题"
+
+#: .\views\admin\setup.html.py:25
+msgid "Sub Title:"
+msgstr "子标题"
+
+#: .\views\admin\setup.html.py:28
+msgid "In a few words, explain what this blog is about."
+msgstr "关于这个博客的简单介绍"
+
+#: .\views\admin\setup.html.py:32
+msgid "Blog notice:"
+msgstr "公告"
+
+#: .\views\admin\setup.html.py:38
+msgid "Default Link Structure:"
+msgstr "默认结构化链接 "
+
+#: .\views\admin\setup.html.py:41 .\views\admin\setup.html.py:48
+msgid "Allowed variants: "
+msgstr "允许使用的变量:"
+
+#: .\views\admin\setup.html.py:45
+msgid "Permalink Structure:"
+msgstr "结构化链接(Permalink) "
+
+#: .\views\admin\setup.html.py:52
+msgid "Domain:"
+msgstr "域名:"
+
+#: .\views\admin\setup.html.py:58
+msgid "cdm Address(URL):"
+msgstr "网站网址(URL):"
+
+#: .\views\admin\setup.html.py:64
+msgid "RSS Feed URL:"
+msgstr "RSS/Atom Feed地址:"
+
+#: .\views\admin\setup.html.py:69
+msgid "Time delta:(Hours)"
+msgstr "时间差调整(单位:小时):"
+
+#: .\views\admin\setup.html.py:76
+msgid "Theme:"
+msgstr "应用主题:"
+
+#: .\views\admin\setup.html.py:88
+#, fuzzy
+msgid "Blogtype:"
+msgstr "系统风格类型"
+
+#: .\views\admin\setup.html.py:99
+msgid "Enable BlobStore:"
+msgstr "允许使用BlobStore存储上传数据"
+
+#: .\views\admin\setup.html.py:106
+msgid "If you don't pay for the blobstore,please chioce False"
+msgstr "如果您没有付费使用Blobstore服务，那么请选择False"
+
+#: .\views\admin\setup.html.py:110
+msgid "Posts per page:"
+msgstr "博文每页文章数:"
+
+#: .\views\admin\setup.html.py:115
+#, fuzzy
+msgid "Media Files per page:"
+msgstr "照片每页显示数:"
+
+#: .\views\admin\setup.html.py:120
+#, fuzzy
+msgid "Articles per page:"
+msgstr "文章每页显示数:"
+
+#: .\views\admin\setup.html.py:125
+#, fuzzy
+msgid "Albums per page:"
+msgstr "相册每页显示数:"
+
+#: .\views\admin\setup.html.py:130
+msgid "Comments order:"
+msgstr "评论顺序"
+
+#: .\views\admin\setup.html.py:132
+msgid "ASC"
+msgstr "升序"
+
+#: .\views\admin\setup.html.py:133
+msgid "DESC"
+msgstr "降序"
+
+#: .\views\admin\setup.html.py:137
+msgid "Comment Check Type:"
+msgstr "评论验证类型:"
+
+#: .\views\admin\setup.html.py:140
+msgid "Arithmetic"
+msgstr "算术"
+
+#: .\views\admin\setup.html.py:141
+msgid "Graph"
+msgstr "图形"
+
+#: .\views\admin\setup.html.py:142
+msgid "Client Arithmetic"
+msgstr "客户端算术题（兼容0.6以下版本)"
+
+#: .\views\admin\setup.html.py:146
+msgid "Comments per page:"
+msgstr "每页评论数:"
+
+#: .\views\admin\setup.html.py:158
+msgid "Enable memcache:"
+msgstr "启用缓存:"
+
+#: .\views\admin\setup.html.py:163
+msgid "Allow Trackback:"
+msgstr "允许 Trackback"
+
+#: .\views\admin\setup.html.py:169
+msgid "Allow Pingback:"
+msgstr "允许 Pingback"
+
+#: .\views\admin\setup.html.py:174
+msgid "Xmlrpc  setting"
+msgstr "客户端（Xmlrpc）调用设置："
+
+#: .\views\admin\setup.html.py:175
+msgid ""
+"Setup the username and password for RPC call. These will be used by client "
+"tools (e.g. Windows live writer). "
+msgstr ""
+"为了您可以通过客户端工具（如Windows live writer）进行写作，请在这里设置用户名"
+"和密码"
+
+#: .\views\admin\setup.html.py:178
+msgid "User name:"
+msgstr "用户名:"
+
+#: .\views\admin\setup.html.py:184
+msgid "Password:"
+msgstr "密码:"
+
+#: .\views\admin\sitemap.html.py:16
+msgid "Sitemap Setup"
+msgstr "设置Sitemap"
+
+#: .\views\admin\sitemap.html.py:20
+msgid "Entries in sitemap:"
+msgstr "文章或页面数量:"
+
+#: .\views\admin\sitemap.html.py:28
+msgid "Include category:"
+msgstr "包含目录:"
+
+#: .\views\admin\sitemap.html.py:34
+msgid "Include tag:"
+msgstr "包含标签(tag):"
+
+#: .\views\admin\sitemap.html.py:39
+msgid "Pinging Search Engine (Google):"
+msgstr "Ping搜索引擎(Google)"
+
+#: .\views\admin\status.html.py:23
+msgid "Cache status"
+msgstr "缓存状态"
+
+#: .\views\admin\status.html.py:25 .\views\admin\status.html.py:28
+msgid "Clear cache"
+msgstr "清除缓存"
+
+#: .\views\admin\status.html.py:28
+msgid "Clear cache data."
+msgstr "清除缓存数据"
+
+#: .\views\admin\status.html.py:31
+msgid "Environ"
+msgstr "环境"
+
+#: .\views\admin\test.html.py:20 .\views\admin\uploads.html.py:20
+msgid "Upload"
+msgstr "上传"
+
+#: .\views\admin\tools.html.py:79
+msgid "Careless use of it will be dangerous!"
+msgstr "该页面提供的工具请谨慎使用!"
+
+#: .\views\admin\tools.html.py:82 .\views\admin\tools.html.py:88
+#: .\views\admin\tools.html.py:95 .\views\admin\tools.html.py:103
+#: .\views\admin\tools.html.py:114
+msgid "Run"
+msgstr "执行"
+
+#: .\views\admin\tools.html.py:83
+msgid "Update tags"
+msgstr "更新标签"
+
+#: .\views\admin\tools.html.py:84
+msgid "It will refresh all tags for each entry."
+msgstr "该操作将会更新所有文章和页面的标签"
+
+#: .\views\admin\tools.html.py:90
+msgid "Init datas"
+msgstr "初始化数据"
+
+#: .\views\admin\tools.html.py:91
+msgid "It will delete  all posts, pages and comments."
+msgstr "该操作将会删除所有文章，页面和评论"
+
+#: .\views\admin\tools.html.py:97
+msgid "Update comments"
+msgstr "更新评论数"
+
+#: .\views\admin\tools.html.py:98
+msgid "It will refresh the number of comments for each entry."
+msgstr "该操作将会更新所有文章的评论数"
+
+#: .\views\admin\tools.html.py:105
+msgid "Rebuild URL"
+msgstr "重建文章链接"
+
+#: .\views\admin\tools.html.py:106
+msgid "The URL of all entries (post or page) will be rebuild."
+msgstr "该操作将会按照指定的Permalink重置所有文章的URL链接"
+
+#: .\views\admin\tools.html.py:108
+msgid "Permalink"
+msgstr "结构化链接(Permalink) "
+
+#: .\views\admin\tools.html.py:110
+msgid "Available parameters:"
+msgstr "可用的参数:"
+
+#: .\views\admin\tools.html.py:117
+msgid "Update archives"
+msgstr "更新归档"
+
+#: .\views\admin\tools.html.py:118
+msgid "It will update the monthyear of entries."
+msgstr "该操作将更新归档"
+
+#: .\views\admin\upload.html.py:74 .\views\admin\uploadex.html.py:91
+msgid "New file"
+msgstr "添加文件"
+
+#: .\views\admin\upload.html.py:80 .\views\admin\uploadex.html.py:97
+msgid "Filename"
+msgstr "文件名"
+
+#: .\views\admin\upload.html.py:80 .\views\admin\uploadex.html.py:97
+msgid "Operater"
+msgstr "操作"
+
+#: .\views\admin\upload.html.py:83 .\views\admin\uploadex.html.py:53
+#: .\views\admin\uploadex.html.py:100
+msgid "Add"
+msgstr "添加"
+
+#: .\views\admin\uploadex.html.py:29
+msgid "Error: invalid file extension"
+msgstr "错误：不支持的文件格式"
+
+#~ msgid "Error:Entry cant been saved."
+#~ msgstr "错误：文章保存失败。"
+
+#~ msgid "CDM's blog"
+#~ msgstr "CDM的博客"
+
+#~ msgid "All Files"
+#~ msgstr "所有文件"
+
+#~ msgid "Please input title and content or external_page_address."
+#~ msgstr "请输入标题和内容或扩展页面地址"
+
+#~ msgid "Saved ok"
+#~ msgstr "保存成功"
+
+#~ msgid ""
+#~ "New comment on your post \"%s\"\n"
+#~ "Author : %s\n"
+#~ "E-mail : %s\n"
+#~ "URL\t: %s\n"
+#~ "Comment:\n"
+#~ "%s\n"
+#~ "You can see all comments on this post here:\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "关于\"%s\"的新评论\n"
+#~ "作者 : %s\n"
+#~ "E-mail : %s\n"
+#~ "网址    : %s\n"
+#~ "内容:\n"
+#~ "%s\n"
+#~ "查看所有评论:\n"
+#~ "%s\n"
+
+#~ msgid ""
+#~ "Hi~ New reference on your comment for post \"%s\"\n"
+#~ "Author : %s\n"
+#~ "URL\t: %s\n"
+#~ "Comment:\n"
+#~ "%s\n"
+#~ "You can see all comments on this post here:\n"
+#~ "%s\n"
+#~ msgstr ""
+#~ "Hi~ New reference on your comment for post \"%s\"\n"
+#~ "Author : %s\n"
+#~ "URL\t: %s\n"
+#~ "Comment:\n"
+#~ "%s\n"
+#~ "You can see all comments on this post here:\n"
+#~ "%s\n"
+
+#~ msgid "Insert"
+#~ msgstr "插入"
+
+#, fuzzy
+#~ msgid "Web Comment"
+#~ msgstr "评论"

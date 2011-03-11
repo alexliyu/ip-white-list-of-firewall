@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.app.pages</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.app.pages</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>_WIKI_WORD</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#NotFoundException">NotFoundException</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#cache">cache</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wikifier">wikifier</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr>
+<td><a href="#get">get</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#get_title">get_title</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#put">put</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#quote">quote</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#unquote">unquote</a></td>
+<td></td>
+</tr>
+</table>
+<hr /><hr />
+<a NAME="NotFoundException" ID="NotFoundException"></a>
+<h2>NotFoundException</h2>
+
+<h3>Derived from</h3>
+acl.HTTPException
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#NotFoundException.__init__">NotFoundException</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="NotFoundException.__init__" ID="NotFoundException.__init__"></a>
+<h4>NotFoundException (Constructor)</h4>
+<b>NotFoundException</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="cache" ID="cache"></a>
+<h2>cache</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#cache.get">get</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#cache.get_key">get_key</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#cache.update">update</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="cache.get" ID="cache.get"></a>
+<h4>cache.get</h4>
+<b>get</b>(<i>name, revision=None, nocache=False, create=False, settings=None</i>)
+<a NAME="cache.get_key" ID="cache.get_key"></a>
+<h4>cache.get_key</h4>
+<b>get_key</b>(<i>name, revision</i>)
+<a NAME="cache.update" ID="cache.update"></a>
+<h4>cache.update</h4>
+<b>update</b>(<i>name</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="wikifier" ID="wikifier"></a>
+<h2>wikifier</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#wikifier.__init__">wikifier</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#wikifier.wikify">wikify</a></td>
+<td>Applies wiki markup to raw markdown text.</td>
+</tr><tr>
+<td><a href="#wikifier.wikify_one">wikify_one</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="wikifier.__init__" ID="wikifier.__init__"></a>
+<h4>wikifier (Constructor)</h4>
+<b>wikifier</b>(<i>settings</i>)
+<a NAME="wikifier.wikify" ID="wikifier.wikify"></a>
+<h4>wikifier.wikify</h4>
+<b>wikify</b>(<i>text</i>)
+<p>
+    Applies wiki markup to raw markdown text.
+</p><a NAME="wikifier.wikify_one" ID="wikifier.wikify_one"></a>
+<h4>wikifier.wikify_one</h4>
+<b>wikify_one</b>(<i>pat</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="get" ID="get"></a>
+<h2>get</h2>
+<b>get</b>(<i>name, revision=None, create=False</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="get_title" ID="get_title"></a>
+<h2>get_title</h2>
+<b>get_title</b>(<i>text</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="put" ID="put"></a>
+<h2>put</h2>
+<b>put</b>(<i>page</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="quote" ID="quote"></a>
+<h2>quote</h2>
+<b>quote</b>(<i>name, underscore=True</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="unquote" ID="unquote"></a>
+<h2>unquote</h2>
+<b>unquote</b>(<i>name</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

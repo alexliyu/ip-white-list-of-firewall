@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.plugins.pushblog.pushmodel</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.plugins.pushblog.pushmodel</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#PushList">PushList</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod">PushMethod</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushSet">PushSet</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushsList">PushsList</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<hr /><hr />
+<a NAME="PushList" ID="PushList"></a>
+<h2>PushList</h2>
+
+<h3>Derived from</h3>
+db.Model
+<h3>Class Attributes</h3>
+<table>
+<tr><td>acategory</td></tr><tr><td>category</td></tr><tr><td>last_retrieved</td></tr><tr><td>latest</td></tr><tr><td>name</td></tr><tr><td>password</td></tr><tr><td>pushnum</td></tr><tr><td>pushtime</td></tr><tr><td>pushurl</td></tr><tr><td>username</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="PushMethod" ID="PushMethod"></a>
+<h2>PushMethod</h2>
+
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#PushMethod.Do_Method">Do_Method</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.EncodePasswordWithVerifyCode">EncodePasswordWithVerifyCode</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.Get_False">Get_False</a></td>
+<td>if the result is False,we will do something to save the result,and return the False</td>
+</tr><tr>
+<td><a href="#PushMethod.Get_Method">Get_Method</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.Get_True">Get_True</a></td>
+<td>if the result is True,we will do something to save db, and return the True</td>
+</tr><tr>
+<td><a href="#PushMethod.Get_blog163">Get_blog163</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.Get_name">Get_name</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.Get_qq_msg_val">Get_qq_msg_val</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.Get_qq_msgs">Get_qq_msgs</a></td>
+<td>this method is used to get login to website,and put the content to the micro blog</td>
+</tr><tr>
+<td><a href="#PushMethod.Get_qzone">Get_qzone</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.Get_qzone2">Get_qzone2</a></td>
+<td>this method is used to get login to website,and put the content to the micro blog</td>
+</tr><tr>
+<td><a href="#PushMethod.Get_qzone2_val">Get_qzone2_val</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.Get_sina_msgs">Get_sina_msgs</a></td>
+<td>this method is used to get login to website,and put the content to the micro blog</td>
+</tr><tr>
+<td><a href="#PushMethod.Make_cookie_dict">Make_cookie_dict</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.Make_dict">Make_dict</a></td>
+<td>the content is a dict,but fetch.response is string,so we must change the string to dict</td>
+</tr><tr>
+<td><a href="#PushMethod.Tmp_skey_get">Tmp_skey_get</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.do_redirect">do_redirect</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.hex_md5hash">hex_md5hash</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.make_cookie_header">make_cookie_header</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.make_cookie_header2">make_cookie_header2</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.md5hash">md5hash</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.md5hash_3">md5hash_3</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.myhash">myhash</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PushMethod.send_qq_msgs">send_qq_msgs</a></td>
+<td>send sina msgs.</td>
+</tr><tr>
+<td><a href="#PushMethod.send_qzone2">send_qzone2</a></td>
+<td>send qzone blog.</td>
+</tr><tr>
+<td><a href="#PushMethod.send_sina_msgs">send_sina_msgs</a></td>
+<td>send sina msgs.</td>
+</tr>
+</table>
+<a NAME="PushMethod.Do_Method" ID="PushMethod.Do_Method"></a>
+<h4>PushMethod.Do_Method</h4>
+<b>Do_Method</b>(<i>method, **kwargs</i>)
+<a NAME="PushMethod.EncodePasswordWithVerifyCode" ID="PushMethod.EncodePasswordWithVerifyCode"></a>
+<h4>PushMethod.EncodePasswordWithVerifyCode</h4>
+<b>EncodePasswordWithVerifyCode</b>(<i>pwd, verifyCode</i>)
+<a NAME="PushMethod.Get_False" ID="PushMethod.Get_False"></a>
+<h4>PushMethod.Get_False</h4>
+<b>Get_False</b>(<i>model, pushitem, data=None</i>)
+<p>
+				if the result is False,we will do something to save the result,and
+				return the False
+</p><a NAME="PushMethod.Get_Method" ID="PushMethod.Get_Method"></a>
+<h4>PushMethod.Get_Method</h4>
+<b>Get_Method</b>(<i>key, **kwargs</i>)
+<a NAME="PushMethod.Get_True" ID="PushMethod.Get_True"></a>
+<h4>PushMethod.Get_True</h4>
+<b>Get_True</b>(<i>model, pushitem</i>)
+<p>
+				if the result is True,we will do something to save db,
+				and return the True
+</p><a NAME="PushMethod.Get_blog163" ID="PushMethod.Get_blog163"></a>
+<h4>PushMethod.Get_blog163</h4>
+<b>Get_blog163</b>(<i>model, pushitem, **kwargs</i>)
+<a NAME="PushMethod.Get_name" ID="PushMethod.Get_name"></a>
+<h4>PushMethod.Get_name</h4>
+<b>Get_name</b>(<i>key=None</i>)
+<a NAME="PushMethod.Get_qq_msg_val" ID="PushMethod.Get_qq_msg_val"></a>
+<h4>PushMethod.Get_qq_msg_val</h4>
+<b>Get_qq_msg_val</b>(<i>username, password</i>)
+<a NAME="PushMethod.Get_qq_msgs" ID="PushMethod.Get_qq_msgs"></a>
+<h4>PushMethod.Get_qq_msgs</h4>
+<b>Get_qq_msgs</b>(<i>model, pushitem, **kwargs</i>)
+<p>
+				this method is used to get login to website,and put the content to the micro blog
+</p><a NAME="PushMethod.Get_qzone" ID="PushMethod.Get_qzone"></a>
+<h4>PushMethod.Get_qzone</h4>
+<b>Get_qzone</b>(<i>model, pushitem, **kwargs</i>)
+<a NAME="PushMethod.Get_qzone2" ID="PushMethod.Get_qzone2"></a>
+<h4>PushMethod.Get_qzone2</h4>
+<b>Get_qzone2</b>(<i>model, pushitem, **kwargs</i>)
+<p>
+				this method is used to get login to website,and put the content to the micro blog
+</p><a NAME="PushMethod.Get_qzone2_val" ID="PushMethod.Get_qzone2_val"></a>
+<h4>PushMethod.Get_qzone2_val</h4>
+<b>Get_qzone2_val</b>(<i>username, password</i>)
+<a NAME="PushMethod.Get_sina_msgs" ID="PushMethod.Get_sina_msgs"></a>
+<h4>PushMethod.Get_sina_msgs</h4>
+<b>Get_sina_msgs</b>(<i>model, pushitem, **kwargs</i>)
+<p>
+				this method is used to get login to website,and put the content to the micro blog
+</p><a NAME="PushMethod.Make_cookie_dict" ID="PushMethod.Make_cookie_dict"></a>
+<h4>PushMethod.Make_cookie_dict</h4>
+<b>Make_cookie_dict</b>(<i>cookie</i>)
+<a NAME="PushMethod.Make_dict" ID="PushMethod.Make_dict"></a>
+<h4>PushMethod.Make_dict</h4>
+<b>Make_dict</b>(<i>content</i>)
+<p>
+				the content is a dict,but fetch.response is string,so
+				we must change the string to dict
+</p><a NAME="PushMethod.Tmp_skey_get" ID="PushMethod.Tmp_skey_get"></a>
+<h4>PushMethod.Tmp_skey_get</h4>
+<b>Tmp_skey_get</b>(<i>cookie</i>)
+<a NAME="PushMethod.do_redirect" ID="PushMethod.do_redirect"></a>
+<h4>PushMethod.do_redirect</h4>
+<b>do_redirect</b>(<i>url, cookie</i>)
+<a NAME="PushMethod.hex_md5hash" ID="PushMethod.hex_md5hash"></a>
+<h4>PushMethod.hex_md5hash</h4>
+<b>hex_md5hash</b>(<i>str</i>)
+<a NAME="PushMethod.make_cookie_header" ID="PushMethod.make_cookie_header"></a>
+<h4>PushMethod.make_cookie_header</h4>
+<b>make_cookie_header</b>(<i>cookie</i>)
+<a NAME="PushMethod.make_cookie_header2" ID="PushMethod.make_cookie_header2"></a>
+<h4>PushMethod.make_cookie_header2</h4>
+<b>make_cookie_header2</b>(<i>cookie</i>)
+<a NAME="PushMethod.md5hash" ID="PushMethod.md5hash"></a>
+<h4>PushMethod.md5hash</h4>
+<b>md5hash</b>(<i>str</i>)
+<a NAME="PushMethod.md5hash_3" ID="PushMethod.md5hash_3"></a>
+<h4>PushMethod.md5hash_3</h4>
+<b>md5hash_3</b>(<i>str</i>)
+<a NAME="PushMethod.myhash" ID="PushMethod.myhash"></a>
+<h4>PushMethod.myhash</h4>
+<b>myhash</b>(<i>tmpstr</i>)
+<a NAME="PushMethod.send_qq_msgs" ID="PushMethod.send_qq_msgs"></a>
+<h4>PushMethod.send_qq_msgs</h4>
+<b>send_qq_msgs</b>(<i>username, password, msg</i>)
+<p>
+			send sina msgs. use qq username, password.
+			the msgs parameter is a message list, not a single string.
+</p><a NAME="PushMethod.send_qzone2" ID="PushMethod.send_qzone2"></a>
+<h4>PushMethod.send_qzone2</h4>
+<b>send_qzone2</b>(<i>username, password, content, title, html</i>)
+<p>
+			send qzone blog. use  username, password,content,title,html.
+			the content parameter like html,but no html tag.
+</p><a NAME="PushMethod.send_sina_msgs" ID="PushMethod.send_sina_msgs"></a>
+<h4>PushMethod.send_sina_msgs</h4>
+<b>send_sina_msgs</b>(<i>username, password, msg</i>)
+<p>
+			send sina msgs. use sina username, password.
+			the msgs parameter is a message list, not a single string.
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="PushSet" ID="PushSet"></a>
+<h2>PushSet</h2>
+
+<h3>Derived from</h3>
+db.Model
+<h3>Class Attributes</h3>
+<table>
+<tr><td>check_db_num</td></tr><tr><td>chnitemi</td></tr><tr><td>defDate</td></tr><tr><td>defDir</td></tr><tr><td>defStat</td></tr><tr><td>delitemi</td></tr><tr><td>delitems</td></tr><tr><td>entryerri</td></tr><tr><td>entryerrs</td></tr><tr><td>fetch_db_num</td></tr><tr><td>imgchecked_num</td></tr><tr><td>last_checked</td></tr><tr><td>last_entry</td></tr><tr><td>last_feedslist</td></tr><tr><td>stat</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="PushsList" ID="PushsList"></a>
+<h2>PushsList</h2>
+
+<h3>Derived from</h3>
+db.Model
+<h3>Class Attributes</h3>
+<table>
+<tr><td>abconf</td></tr><tr><td>author_name</td></tr><tr><td>categorie_keys</td></tr><tr><td>content</td></tr><tr><td>date</td></tr><tr><td>end_target</td></tr><tr><td>excerpt</td></tr><tr><td>feed_link</td></tr><tr><td>fetch_stat</td></tr><tr><td>link</td></tr><tr><td>mid_target</td></tr><tr><td>start_target</td></tr><tr><td>tags</td></tr><tr><td>title</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

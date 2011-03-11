@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %} 下载——{{blog.title}} {% endblock %}
+{% block head_block %}
+<link href="/static/styles/galleryview.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/static/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/static/js/jquery.timers-1.2.js"></script>
+<script type="text/javascript" src="/static/js/jquery.galleryview-2.1.1.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#fader2').galleryView({
+			panel_width: 600,
+			panel_height: 350,
+			transition_speed: 1200,
+			background_color: 'none',
+			border: 'none',
+			easing: 'easeInOutBack',
+			pause_on_hover: true,
+
+		});
+	});
+
+	</script>
+
+{%endblock%}
+{% block content%}
+<div class="primary">
+            <div class="wrapper">
+                <div class="breadcrumbs"><a href="index.html">Home</a> / <a href="/download">Download</a></div>
+                <!--[if IE]>
+                    <br class="clearf" />
+                <![endif]-->
+                <div class="main_content">
+                    <h1>推荐下载</h1>
+                    <ul id="fader2">
+                        {%for i in cms.Sticky%}
+                        <li><a href="{{ i.Link_url }}" target="_blank"><img src="{{i.Images.0}}" title="{{i.title}}" alt="{{i.excerpt}}" style="height: 350px; width: 600px; position: relative; top: 0px; left: 0px; "/></a></li>
+                        {%endfor%}
+                  </ul>
+                    <div class="fader2_shadow"></div>
+                   {% for entry in cms.Entry %}
+                    <div class="box695 right_side">
+                       <h2><a href="{{ entry.Link_url }}" rel="bookmark" title="Permanent Link to {{ entry.title }}">{{ entry.title }}</a> {{ entry.date|datetz:"F jS, Y " }}</h2>
+                        <p><a class="imgleft" rel="imgurl" href="{{entry.Images.0}}" title="{{entry.title}}"><img class="borderify" src="{{entry.Simages}}" alt="{{entry.title}}" /></a>{{entry|excerpt_more:"(..More)"}}
+                        <!--[if lte IE 7]>
+                            <br class="clearf" />
+                        <![endif]-->
+                    </div>
+                    {%endfor%}
+
+                    <br class="clearf" />
+                    <ul class="pagination">
+                    {% if show_prev %}
+                        <li><a href="/download/page/{{ pageindex|add:"-1" }}">Prev</a></li>
+                        {%endif%}
+                    {% if show_next %}
+                        <li><a href="/download/page/{{ pageindex|add:"1" }}">Next</a></li>
+                        {% endif %}
+                    </ul>
+                    <br class="clearf" />
+                </div><!-- END MAIN CONTENT -->
+                <div class="sidebar">
+                    <h2>Categories</h2>
+                    <ul class="list_widget">
+                          {%for cate in dcategories%}
+  <li>	<a href="{{cate.Link_url}}">{{cate.name}}({{cate.Dcount}})</a></li>
+ 	{%endfor%}
+                    </ul>
+                    <br class="margin20" />
+                    <h2>Top Downloads</h2>
+                    <ul class="list_widget">
+                           {%for hot in cms.Show_hot%}
+  <li>	<a href="{{hot.link}}">{{hot.title}}({{hot.readtimes}})</a></li>
+ 	{%endfor%}
+                    </ul>
+                    <br class="margin20" />
+                    <h2 class="text_widget">Top Comments</h2>
+                    <ul class="more_projects">
+                        {% for comment in recent_comments %}
+        <li><a class="imgleft" href="{{comment.entry.Link_url}}#comment-{{comment.key.id}}"><img class="borderify" src="{{comment.gravatar_url}}" alt="{{comment.author}}" />{{comment.shortcontent}}...</a></li>
+        {%endfor%}
+
+                    </ul>
+                </div><!-- END SIDEBAR -->
+            </div><!-- END WRAPPER -->
+        </div><!-- END PRIMARY -->
+              {% endblock %}
+    </body>
+
+</html>

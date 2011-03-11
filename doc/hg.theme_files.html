@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.theme_files</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.theme_files</h1>
+
+<h3>Global Attributes</h3>
+<table>
+<tr><td>cwd</td></tr><tr><td>file_modifieds</td></tr><tr><td>max_age</td></tr><tr><td>theme_path</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#GetFile">GetFile</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#NotFound">NotFound</a></td>
+<td></td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr>
+<td><a href="#Cache_expires">Cache_expires</a></td>
+<td>Set expiration on this request.</td>
+</tr><tr>
+<td><a href="#Error404">Error404</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#format_date">format_date</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#main">main</a></td>
+<td></td>
+</tr>
+</table>
+<hr /><hr />
+<a NAME="GetFile" ID="GetFile"></a>
+<h2>GetFile</h2>
+
+<h3>Derived from</h3>
+webapp.RequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#GetFile.get">get</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="GetFile.get" ID="GetFile.get"></a>
+<h4>GetFile.get</h4>
+<b>get</b>(<i>prefix, name</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="NotFound" ID="NotFound"></a>
+<h2>NotFound</h2>
+
+<h3>Derived from</h3>
+webapp.RequestHandler
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#NotFound.get">get</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="NotFound.get" ID="NotFound.get"></a>
+<h4>NotFound.get</h4>
+<b>get</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Cache_expires" ID="Cache_expires"></a>
+<h2>Cache_expires</h2>
+<b>Cache_expires</b>(<i>response, seconds=0, mime_type=None, **kw</i>)
+<p>
+	Set expiration on this request.  This sets the response to
+	expire in the given seconds, and any other attributes are used
+	for cache_control (e.g., private=True, etc).
+</p><p>
+	this function is modified from webob.Response
+	it will be good if google.appengine.ext.webapp.Response inherits from this class...
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Error404" ID="Error404"></a>
+<h2>Error404</h2>
+<b>Error404</b>(<i>handler</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="format_date" ID="format_date"></a>
+<h2>format_date</h2>
+<b>format_date</b>(<i>dt</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="main" ID="main"></a>
+<h2>main</h2>
+<b>main</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

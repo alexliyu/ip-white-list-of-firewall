@@ -1,0 +1,1516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN'
+'http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd'>
+<html><head>
+<title>hg.plugins.feedblog.BeautifulSoup</title>
+<style>
+body {
+    background:white;
+    margin: 0em 1em 10em 1em;
+    color: black;
+}
+
+h1 { color: white; background: #4FA4FF; }
+h2 { color: white; background: #4FA4FF; }
+h3 { color: white; background: #00557F; }
+h4 { color: white; background: #00557F; }
+    
+a { color: #AA5500; }
+
+</style>
+</head>
+<body><a NAME="top" ID="top"></a>
+<h1>hg.plugins.feedblog.BeautifulSoup</h1>
+<p>
+Beautiful Soup
+Elixir and Tonic
+"The Screen-Scraper's Friend"
+http://www.crummy.com/software/BeautifulSoup/
+</p><p>
+Beautiful Soup parses a (possibly invalid) XML or HTML document into a
+tree representation. It provides methods and Pythonic idioms that make
+it easy to navigate, search, and modify the tree.
+</p><p>
+A well-formed XML/HTML document yields a well-formed data
+structure. An ill-formed XML/HTML document yields a correspondingly
+ill-formed data structure. If your document is only locally
+well-formed, you can use this library to find and process the
+well-formed part of it.
+</p><p>
+Beautiful Soup works with Python 2.2 and up. It has no external
+dependencies, but you'll have more success at converting data to UTF-8
+if you also install these three packages:
+</p><p>
+* chardet, for auto-detecting character encodings
+  http://chardet.feedparser.org/
+* cjkcodecs and iconv_codec, which add more encodings to the ones supported
+  by stock Python.
+  http://cjkpython.i18n.org/
+</p><p>
+Beautiful Soup defines classes for two main parsing strategies:
+</p><p>
+ * BeautifulStoneSoup, for parsing XML, SGML, or your domain-specific
+   language that kind of looks like XML.
+</p><p>
+ * BeautifulSoup, for parsing run-of-the-mill HTML code, be it valid
+   or invalid. This class has web browser-like heuristics for
+   obtaining a sensible parse tree in the face of common HTML errors.
+</p><p>
+Beautiful Soup also defines a class (UnicodeDammit) for autodetecting
+the encoding of an HTML or XML document, and converting it to
+Unicode. Much of this code is taken from Mark Pilgrim's Universal Feed Parser.
+</p><p>
+For more than you ever wanted to know about Beautiful Soup, see the
+documentation:
+http://www.crummy.com/software/BeautifulSoup/documentation.html
+</p><p>
+Here, have some legalese:
+</p><p>
+Copyright (c) 2004-2010, Leonard Richardson
+</p><p>
+All rights reserved.
+</p><p>
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+</p><p>
+  * Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+</p><p>
+  * Redistributions in binary form must reproduce the above
+    copyright notice, this list of conditions and the following
+    disclaimer in the documentation and/or other materials provided
+    with the distribution.
+</p><p>
+  * Neither the name of the the Beautiful Soup Consortium and All
+    Night Kosher Bakery nor the names of its contributors may be
+    used to endorse or promote products derived from this software
+    without specific prior written permission.
+</p><p>
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE, DAMMIT.
+</p>
+<h3>Global Attributes</h3>
+<table>
+<tr><td>DEFAULT_OUTPUT_ENCODING</td></tr><tr><td>__author__</td></tr><tr><td>__copyright__</td></tr><tr><td>__license__</td></tr><tr><td>__version__</td></tr>
+</table>
+<h3>Classes</h3>
+<table>
+<tr>
+<td><a href="#BeautifulSOAP">BeautifulSOAP</a></td>
+<td>This class will push a tag with only a single string child into the tag's parent as an attribute.</td>
+</tr><tr>
+<td><a href="#BeautifulSoup">BeautifulSoup</a></td>
+<td>This parser knows the following facts about HTML:</td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup">BeautifulStoneSoup</a></td>
+<td>This class contains the basic parser and search code.</td>
+</tr><tr>
+<td><a href="#CData">CData</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Comment">Comment</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Declaration">Declaration</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#ICantBelieveItsBeautifulSoup">ICantBelieveItsBeautifulSoup</a></td>
+<td>The BeautifulSoup class is oriented towards skipping over common HTML errors like unclosed tags.</td>
+</tr><tr>
+<td><a href="#MinimalSoup">MinimalSoup</a></td>
+<td>The MinimalSoup class is for parsing HTML that contains pathologically bad markup.</td>
+</tr><tr>
+<td><a href="#NavigableString">NavigableString</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement">PageElement</a></td>
+<td>Contains the navigational information for some part of the page (either a tag or a piece of text)</td>
+</tr><tr>
+<td><a href="#ProcessingInstruction">ProcessingInstruction</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#ResultSet">ResultSet</a></td>
+<td>A ResultSet is just a list that keeps track of the SoupStrainer that created it.</td>
+</tr><tr>
+<td><a href="#RobustHTMLParser">RobustHTMLParser</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#RobustInsanelyWackAssHTMLParser">RobustInsanelyWackAssHTMLParser</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#RobustWackAssHTMLParser">RobustWackAssHTMLParser</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#RobustXMLParser">RobustXMLParser</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SimplifyingSOAPParser">SimplifyingSOAPParser</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SoupStrainer">SoupStrainer</a></td>
+<td>Encapsulates a number of ways of matching a markup element (tag or text).</td>
+</tr><tr>
+<td><a href="#StopParsing">StopParsing</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag">Tag</a></td>
+<td>Represents a found HTML tag with its attributes and contents.</td>
+</tr><tr>
+<td><a href="#UnicodeDammit">UnicodeDammit</a></td>
+<td>A class for detecting the encoding of a *ML document and converting it to a Unicode string.</td>
+</tr>
+</table>
+<h3>Functions</h3>
+<table>
+<tr>
+<td><a href="#_match_css_class">_match_css_class</a></td>
+<td>Build a RE to match the given CSS class.</td>
+</tr><tr>
+<td><a href="#buildTagMap">buildTagMap</a></td>
+<td>Turns a list of maps, lists, or scalars into a single map.</td>
+</tr>
+</table>
+<hr /><hr />
+<a NAME="BeautifulSOAP" ID="BeautifulSOAP"></a>
+<h2>BeautifulSOAP</h2>
+<p>
+This class will push a tag with only a single string child into
+    the tag's parent as an attribute. The attribute's name is the tag
+    name, and the value is the string child. An example should give
+    the flavor of the change:
+</p><p>
+    <foo><bar>baz</bar></foo>
+     =>
+    <foo bar="baz"><bar>baz</bar></foo>
+</p><p>
+    You can then access fooTag['bar'] instead of fooTag.barTag.string.
+</p><p>
+    This is, of course, useful for scraping structures that tend to
+    use subelements instead of attributes, such as SOAP messages. Note
+    that it modifies its input, so don't print the modified version
+    out.
+</p><p>
+    I'm not sure how many people really want to use this class; let me
+    know if you do. Mainly I like the name.
+</p>
+<h3>Derived from</h3>
+BeautifulStoneSoup
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#BeautifulSOAP.popTag">popTag</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="BeautifulSOAP.popTag" ID="BeautifulSOAP.popTag"></a>
+<h4>BeautifulSOAP.popTag</h4>
+<b>popTag</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="BeautifulSoup" ID="BeautifulSoup"></a>
+<h2>BeautifulSoup</h2>
+<p>
+This parser knows the following facts about HTML:
+</p><p>
+    * Some tags have no closing tag and should be interpreted as being
+      closed as soon as they are encountered.
+</p><p>
+    * The text inside some tags (ie. 'script') may contain tags which
+      are not really part of the document and which should be parsed
+      as text, not tags. If you want to parse the text as tags, you can
+      always fetch it and parse it explicitly.
+</p><p>
+    * Tag nesting rules:
+</p><p>
+      Most tags can't be nested at all. For instance, the occurance of
+      a <p> tag should implicitly close the previous <p> tag.
+</p><p>
+       <p>Para1<p>Para2
+        should be transformed into:
+       <p>Para1</p><p>Para2
+</p><p>
+      Some tags can be nested arbitrarily. For instance, the occurance
+      of a <blockquote> tag should _not_ implicitly close the previous
+      <blockquote> tag.
+</p><p>
+       Alice said: <blockquote>Bob said: <blockquote>Blah
+        should NOT be transformed into:
+       Alice said: <blockquote>Bob said: </blockquote><blockquote>Blah
+</p><p>
+      Some tags can be nested, but the nesting is reset by the
+      interposition of other tags. For instance, a <tr> tag should
+      implicitly close the previous <tr> tag within the same <table>,
+      but not close a <tr> tag in another table.
+</p><p>
+       <table><tr>Blah<tr>Blah
+        should be transformed into:
+       <table><tr>Blah</tr><tr>Blah
+        but,
+       <tr>Blah<table><tr>Blah
+        should NOT be transformed into
+       <tr>Blah<table></tr><tr>Blah
+</p><p>
+    Differing assumptions about tag nesting rules are a major source
+    of problems with the BeautifulSoup class. If BeautifulSoup is not
+    treating as nestable a tag your page author treats as nestable,
+    try ICantBelieveItsBeautifulSoup, MinimalSoup, or
+    BeautifulStoneSoup before writing your own subclass.
+</p>
+<h3>Derived from</h3>
+BeautifulStoneSoup
+<h3>Class Attributes</h3>
+<table>
+<tr><td>CHARSET_RE</td></tr><tr><td>NESTABLE_BLOCK_TAGS</td></tr><tr><td>NESTABLE_INLINE_TAGS</td></tr><tr><td>NESTABLE_LIST_TAGS</td></tr><tr><td>NESTABLE_TABLE_TAGS</td></tr><tr><td>NESTABLE_TAGS</td></tr><tr><td>NON_NESTABLE_BLOCK_TAGS</td></tr><tr><td>PRESERVE_WHITESPACE_TAGS</td></tr><tr><td>QUOTE_TAGS</td></tr><tr><td>RESET_NESTING_TAGS</td></tr><tr><td>SELF_CLOSING_TAGS</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#BeautifulSoup.__init__">BeautifulSoup</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BeautifulSoup.rewrite">rewrite</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BeautifulSoup.start_meta">start_meta</a></td>
+<td>Beautiful Soup can detect a charset included in a META tag, try to convert the document to that charset, and re-parse the document from the beginning.</td>
+</tr>
+</table>
+<a NAME="BeautifulSoup.__init__" ID="BeautifulSoup.__init__"></a>
+<h4>BeautifulSoup (Constructor)</h4>
+<b>BeautifulSoup</b>(<i>*args, **kwargs</i>)
+<a NAME="BeautifulSoup.rewrite" ID="BeautifulSoup.rewrite"></a>
+<h4>BeautifulSoup.rewrite</h4>
+<b>rewrite</b>(<i></i>)
+<a NAME="BeautifulSoup.start_meta" ID="BeautifulSoup.start_meta"></a>
+<h4>BeautifulSoup.start_meta</h4>
+<b>start_meta</b>(<i>attrs</i>)
+<p>
+Beautiful Soup can detect a charset included in a META tag,
+        try to convert the document to that charset, and re-parse the
+        document from the beginning.
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="BeautifulStoneSoup" ID="BeautifulStoneSoup"></a>
+<h2>BeautifulStoneSoup</h2>
+<p>
+This class contains the basic parser and search code. It defines
+    a parser that knows nothing about tag behavior except for the
+    following:
+</p><p>
+      You can't close a tag without closing all the tags it encloses.
+      That is, "<foo><bar></foo>" actually means
+      "<foo><bar></bar></foo>".
+</p><p>
+    [Another possible explanation is "<foo><bar /></foo>", but since
+    this class defines no SELF_CLOSING_TAGS, it will never use that
+    explanation.]
+</p><p>
+    This class is useful for parsing XML or made-up markup languages,
+    or when BeautifulSoup makes an assumption counter to what you were
+    expecting.
+</p>
+<h3>Derived from</h3>
+Tag, SGMLParser
+<h3>Class Attributes</h3>
+<table>
+<tr><td>ALL_ENTITIES</td></tr><tr><td>HTML_ENTITIES</td></tr><tr><td>MARKUP_MASSAGE</td></tr><tr><td>NESTABLE_TAGS</td></tr><tr><td>PRESERVE_WHITESPACE_TAGS</td></tr><tr><td>QUOTE_TAGS</td></tr><tr><td>RESET_NESTING_TAGS</td></tr><tr><td>ROOT_TAG_NAME</td></tr><tr><td>SELF_CLOSING_TAGS</td></tr><tr><td>STRIP_ASCII_SPACES</td></tr><tr><td>XHTML_ENTITIES</td></tr><tr><td>XML_ENTITIES</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#BeautifulStoneSoup.__init__">BeautifulStoneSoup</a></td>
+<td>The Soup object is initialized as the 'root tag', and the provided markup (which can be a string or a file-like object) is fed into the underlying parser.</td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.__getattr__">__getattr__</a></td>
+<td>This method routes method call requests to either the SGMLParser superclass or the Tag superclass, depending on the method name.</td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup._feed">_feed</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup._popToTag">_popToTag</a></td>
+<td>Pops the tag stack up to and including the most recent instance of the given tag.</td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup._smartPop">_smartPop</a></td>
+<td>We need to pop up to the previous tag of this type, unless one of this tag's nesting reset triggers comes between this tag and the previous tag of this type, OR unless this tag is a generic nesting trigger and another generic nesting trigger comes between this tag and the previous tag of this type.</td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup._toStringSubclass">_toStringSubclass</a></td>
+<td>Adds a certain piece of text to the tree as a NavigableString subclass.</td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.convert_charref">convert_charref</a></td>
+<td>This method fixes a bug in Python's SGMLParser.</td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.endData">endData</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.handle_charref">handle_charref</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.handle_comment">handle_comment</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.handle_data">handle_data</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.handle_decl">handle_decl</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.handle_entityref">handle_entityref</a></td>
+<td>Handle entity references as data, possibly converting known HTML and/or XML entity references to the corresponding Unicode characters.</td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.handle_pi">handle_pi</a></td>
+<td>Handle a processing instruction as a ProcessingInstruction object, possibly one with a %SOUP-ENCODING% slot into which an encoding will be plugged later.</td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.isSelfClosingTag">isSelfClosingTag</a></td>
+<td>Returns true iff the given string is the name of a self-closing tag according to this parser.</td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.parse_declaration">parse_declaration</a></td>
+<td>Treat a bogus SGML declaration as raw data.</td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.popTag">popTag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.pushTag">pushTag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.reset">reset</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.unknown_endtag">unknown_endtag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#BeautifulStoneSoup.unknown_starttag">unknown_starttag</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="BeautifulStoneSoup.__init__" ID="BeautifulStoneSoup.__init__"></a>
+<h4>BeautifulStoneSoup (Constructor)</h4>
+<b>BeautifulStoneSoup</b>(<i>markup="", parseOnlyThese=None, fromEncoding=None, markupMassage=True, smartQuotesTo=XML_ENTITIES, convertEntities=None, selfClosingTags=None, isHTML=False</i>)
+<p>
+The Soup object is initialized as the 'root tag', and the
+        provided markup (which can be a string or a file-like object)
+        is fed into the underlying parser.
+</p><p>
+        sgmllib will process most bad HTML, and the BeautifulSoup
+        class has some tricks for dealing with some HTML that kills
+        sgmllib, but Beautiful Soup can nonetheless choke or lose data
+        if your data uses self-closing tags or declarations
+        incorrectly.
+</p><p>
+        By default, Beautiful Soup uses regexes to sanitize input,
+        avoiding the vast majority of these problems. If the problems
+        don't apply to you, pass in False for markupMassage, and
+        you'll get better performance.
+</p><p>
+        The default parser massage techniques fix the two most common
+        instances of invalid HTML that choke sgmllib:
+</p><p>
+         <br/> (No space between name of closing tag and tag close)
+         <! --Comment--> (Extraneous whitespace in declaration)
+</p><p>
+        You can pass in a custom list of (RE object, replace method)
+        tuples to get Beautiful Soup to scrub your input the way you
+        want.
+</p><a NAME="BeautifulStoneSoup.__getattr__" ID="BeautifulStoneSoup.__getattr__"></a>
+<h4>BeautifulStoneSoup.__getattr__</h4>
+<b>__getattr__</b>(<i>methodName</i>)
+<p>
+This method routes method call requests to either the SGMLParser
+        superclass or the Tag superclass, depending on the method name.
+</p><a NAME="BeautifulStoneSoup._feed" ID="BeautifulStoneSoup._feed"></a>
+<h4>BeautifulStoneSoup._feed</h4>
+<b>_feed</b>(<i>inDocumentEncoding=None, isHTML=False</i>)
+<a NAME="BeautifulStoneSoup._popToTag" ID="BeautifulStoneSoup._popToTag"></a>
+<h4>BeautifulStoneSoup._popToTag</h4>
+<b>_popToTag</b>(<i>name, inclusivePop=True</i>)
+<p>
+Pops the tag stack up to and including the most recent
+        instance of the given tag. If inclusivePop is false, pops the tag
+        stack up to but *not* including the most recent instqance of
+        the given tag.
+</p><a NAME="BeautifulStoneSoup._smartPop" ID="BeautifulStoneSoup._smartPop"></a>
+<h4>BeautifulStoneSoup._smartPop</h4>
+<b>_smartPop</b>(<i>name</i>)
+<p>
+We need to pop up to the previous tag of this type, unless
+        one of this tag's nesting reset triggers comes between this
+        tag and the previous tag of this type, OR unless this tag is a
+        generic nesting trigger and another generic nesting trigger
+        comes between this tag and the previous tag of this type.
+</p><p>
+        Examples:
+         <p>Foo<b>Bar *<p>* should pop to 'p', not 'b'.
+         <p>Foo<table>Bar *<p>* should pop to 'table', not 'p'.
+         <p>Foo<table><tr>Bar *<p>* should pop to 'tr', not 'p'.
+</p><p>
+         <li><ul><li> *<li>* should pop to 'ul', not the first 'li'.
+         <tr><table><tr> *<tr>* should pop to 'table', not the first 'tr'
+         <td><tr><td> *<td>* should pop to 'tr', not the first 'td'
+</p><a NAME="BeautifulStoneSoup._toStringSubclass" ID="BeautifulStoneSoup._toStringSubclass"></a>
+<h4>BeautifulStoneSoup._toStringSubclass</h4>
+<b>_toStringSubclass</b>(<i>text, subclass</i>)
+<p>
+Adds a certain piece of text to the tree as a NavigableString
+        subclass.
+</p><a NAME="BeautifulStoneSoup.convert_charref" ID="BeautifulStoneSoup.convert_charref"></a>
+<h4>BeautifulStoneSoup.convert_charref</h4>
+<b>convert_charref</b>(<i>name</i>)
+<p>
+This method fixes a bug in Python's SGMLParser.
+</p><a NAME="BeautifulStoneSoup.endData" ID="BeautifulStoneSoup.endData"></a>
+<h4>BeautifulStoneSoup.endData</h4>
+<b>endData</b>(<i>containerClass=NavigableString</i>)
+<a NAME="BeautifulStoneSoup.handle_charref" ID="BeautifulStoneSoup.handle_charref"></a>
+<h4>BeautifulStoneSoup.handle_charref</h4>
+<b>handle_charref</b>(<i>ref</i>)
+<a NAME="BeautifulStoneSoup.handle_comment" ID="BeautifulStoneSoup.handle_comment"></a>
+<h4>BeautifulStoneSoup.handle_comment</h4>
+<b>handle_comment</b>(<i>text</i>)
+<a NAME="BeautifulStoneSoup.handle_data" ID="BeautifulStoneSoup.handle_data"></a>
+<h4>BeautifulStoneSoup.handle_data</h4>
+<b>handle_data</b>(<i>data</i>)
+<a NAME="BeautifulStoneSoup.handle_decl" ID="BeautifulStoneSoup.handle_decl"></a>
+<h4>BeautifulStoneSoup.handle_decl</h4>
+<b>handle_decl</b>(<i>data</i>)
+<a NAME="BeautifulStoneSoup.handle_entityref" ID="BeautifulStoneSoup.handle_entityref"></a>
+<h4>BeautifulStoneSoup.handle_entityref</h4>
+<b>handle_entityref</b>(<i>ref</i>)
+<p>
+Handle entity references as data, possibly converting known
+        HTML and/or XML entity references to the corresponding Unicode
+        characters.
+</p><a NAME="BeautifulStoneSoup.handle_pi" ID="BeautifulStoneSoup.handle_pi"></a>
+<h4>BeautifulStoneSoup.handle_pi</h4>
+<b>handle_pi</b>(<i>text</i>)
+<p>
+Handle a processing instruction as a ProcessingInstruction
+        object, possibly one with a %SOUP-ENCODING% slot into which an
+        encoding will be plugged later.
+</p><a NAME="BeautifulStoneSoup.isSelfClosingTag" ID="BeautifulStoneSoup.isSelfClosingTag"></a>
+<h4>BeautifulStoneSoup.isSelfClosingTag</h4>
+<b>isSelfClosingTag</b>(<i>name</i>)
+<p>
+Returns true iff the given string is the name of a
+        self-closing tag according to this parser.
+</p><a NAME="BeautifulStoneSoup.parse_declaration" ID="BeautifulStoneSoup.parse_declaration"></a>
+<h4>BeautifulStoneSoup.parse_declaration</h4>
+<b>parse_declaration</b>(<i>i</i>)
+<p>
+Treat a bogus SGML declaration as raw data. Treat a CDATA
+        declaration as a CData object.
+</p><a NAME="BeautifulStoneSoup.popTag" ID="BeautifulStoneSoup.popTag"></a>
+<h4>BeautifulStoneSoup.popTag</h4>
+<b>popTag</b>(<i></i>)
+<a NAME="BeautifulStoneSoup.pushTag" ID="BeautifulStoneSoup.pushTag"></a>
+<h4>BeautifulStoneSoup.pushTag</h4>
+<b>pushTag</b>(<i>tag</i>)
+<a NAME="BeautifulStoneSoup.reset" ID="BeautifulStoneSoup.reset"></a>
+<h4>BeautifulStoneSoup.reset</h4>
+<b>reset</b>(<i></i>)
+<a NAME="BeautifulStoneSoup.unknown_endtag" ID="BeautifulStoneSoup.unknown_endtag"></a>
+<h4>BeautifulStoneSoup.unknown_endtag</h4>
+<b>unknown_endtag</b>(<i>name</i>)
+<a NAME="BeautifulStoneSoup.unknown_starttag" ID="BeautifulStoneSoup.unknown_starttag"></a>
+<h4>BeautifulStoneSoup.unknown_starttag</h4>
+<b>unknown_starttag</b>(<i>name, attrs, selfClosing=0</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="CData" ID="CData"></a>
+<h2>CData</h2>
+
+<h3>Derived from</h3>
+NavigableString
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#CData.__str__">__str__</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="CData.__str__" ID="CData.__str__"></a>
+<h4>CData.__str__</h4>
+<b>__str__</b>(<i>encoding=DEFAULT_OUTPUT_ENCODING</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Comment" ID="Comment"></a>
+<h2>Comment</h2>
+
+<h3>Derived from</h3>
+NavigableString
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#Comment.__str__">__str__</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="Comment.__str__" ID="Comment.__str__"></a>
+<h4>Comment.__str__</h4>
+<b>__str__</b>(<i>encoding=DEFAULT_OUTPUT_ENCODING</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Declaration" ID="Declaration"></a>
+<h2>Declaration</h2>
+
+<h3>Derived from</h3>
+NavigableString
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#Declaration.__str__">__str__</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="Declaration.__str__" ID="Declaration.__str__"></a>
+<h4>Declaration.__str__</h4>
+<b>__str__</b>(<i>encoding=DEFAULT_OUTPUT_ENCODING</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="ICantBelieveItsBeautifulSoup" ID="ICantBelieveItsBeautifulSoup"></a>
+<h2>ICantBelieveItsBeautifulSoup</h2>
+<p>
+The BeautifulSoup class is oriented towards skipping over
+    common HTML errors like unclosed tags. However, sometimes it makes
+    errors of its own. For instance, consider this fragment:
+</p><p>
+     <b>Foo<b>Bar</b></b>
+</p><p>
+    This is perfectly valid (if bizarre) HTML. However, the
+    BeautifulSoup class will implicitly close the first b tag when it
+    encounters the second 'b'. It will think the author wrote
+    "<b>Foo<b>Bar", and didn't close the first 'b' tag, because
+    there's no real-world reason to bold something that's already
+    bold. When it encounters '</b></b>' it will close two more 'b'
+    tags, for a grand total of three tags closed instead of two. This
+    can throw off the rest of your document structure. The same is
+    true of a number of other tags, listed below.
+</p><p>
+    It's much more common for someone to forget to close a 'b' tag
+    than to actually use nested 'b' tags, and the BeautifulSoup class
+    handles the common case. This class handles the not-co-common
+    case: where you can't believe someone wrote what they did, but
+    it's valid HTML and BeautifulSoup screwed up by assuming it
+    wouldn't be.
+</p>
+<h3>Derived from</h3>
+BeautifulSoup
+<h3>Class Attributes</h3>
+<table>
+<tr><td>I_CANT_BELIEVE_THEYRE_NESTABLE_BLOCK_TAGS</td></tr><tr><td>I_CANT_BELIEVE_THEYRE_NESTABLE_INLINE_TAGS</td></tr><tr><td>NESTABLE_TAGS</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="MinimalSoup" ID="MinimalSoup"></a>
+<h2>MinimalSoup</h2>
+<p>
+The MinimalSoup class is for parsing HTML that contains
+    pathologically bad markup. It makes no assumptions about tag
+    nesting, but it does know which tags are self-closing, that
+    <script> tags contain Javascript and should not be parsed, that
+    META tags may contain encoding information, and so on.
+</p><p>
+    This also makes it better for subclassing than BeautifulStoneSoup
+    or BeautifulSoup.
+</p>
+<h3>Derived from</h3>
+BeautifulSoup
+<h3>Class Attributes</h3>
+<table>
+<tr><td>NESTABLE_TAGS</td></tr><tr><td>RESET_NESTING_TAGS</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="NavigableString" ID="NavigableString"></a>
+<h2>NavigableString</h2>
+
+<h3>Derived from</h3>
+unicode, PageElement
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#NavigableString.__getattr__">__getattr__</a></td>
+<td>text.string gives you text.</td>
+</tr><tr>
+<td><a href="#NavigableString.__getnewargs__">__getnewargs__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#NavigableString.__new__">__new__</a></td>
+<td>Create a new NavigableString.</td>
+</tr><tr>
+<td><a href="#NavigableString.__str__">__str__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#NavigableString.__unicode__">__unicode__</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="NavigableString.__getattr__" ID="NavigableString.__getattr__"></a>
+<h4>NavigableString.__getattr__</h4>
+<b>__getattr__</b>(<i>attr</i>)
+<p>
+text.string gives you text. This is for backwards
+        compatibility for Navigable*String, but for CData* it lets you
+        get the string without the CData wrapper.
+</p><a NAME="NavigableString.__getnewargs__" ID="NavigableString.__getnewargs__"></a>
+<h4>NavigableString.__getnewargs__</h4>
+<b>__getnewargs__</b>(<i></i>)
+<a NAME="NavigableString.__new__" ID="NavigableString.__new__"></a>
+<h4>NavigableString.__new__</h4>
+<b>__new__</b>(<i>value</i>)
+<p>
+Create a new NavigableString.
+</p><p>
+        When unpickling a NavigableString, this method is called with
+        the string in DEFAULT_OUTPUT_ENCODING. That encoding needs to be
+        passed in to the superclass's __new__ or the superclass won't know
+        how to handle non-ASCII characters.
+</p><a NAME="NavigableString.__str__" ID="NavigableString.__str__"></a>
+<h4>NavigableString.__str__</h4>
+<b>__str__</b>(<i>encoding=DEFAULT_OUTPUT_ENCODING</i>)
+<a NAME="NavigableString.__unicode__" ID="NavigableString.__unicode__"></a>
+<h4>NavigableString.__unicode__</h4>
+<b>__unicode__</b>(<i></i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="PageElement" ID="PageElement"></a>
+<h2>PageElement</h2>
+<p>
+Contains the navigational information for some part of the page
+    (either a tag or a piece of text)
+</p>
+<h3>Derived from</h3>
+object
+<h3>Class Attributes</h3>
+<table>
+<tr><td>fetchNextSiblings</td></tr><tr><td>fetchParents</td></tr><tr><td>fetchPrevious</td></tr><tr><td>fetchPreviousSiblings</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#PageElement._findAll">_findAll</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement._findOne">_findOne</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement._lastRecursiveChild">_lastRecursiveChild</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement.append">append</a></td>
+<td>Appends the given tag to the contents of this tag.</td>
+</tr><tr>
+<td><a href="#PageElement.extract">extract</a></td>
+<td>Destructively rips this element out of the tree.</td>
+</tr><tr>
+<td><a href="#PageElement.findAllNext">findAllNext</a></td>
+<td>Returns all items that match the given criteria and appear after this Tag in the document.</td>
+</tr><tr>
+<td><a href="#PageElement.findAllPrevious">findAllPrevious</a></td>
+<td>Returns all items that match the given criteria and appear before this Tag in the document.</td>
+</tr><tr>
+<td><a href="#PageElement.findNext">findNext</a></td>
+<td>Returns the first item that matches the given criteria and appears after this Tag in the document.</td>
+</tr><tr>
+<td><a href="#PageElement.findNextSibling">findNextSibling</a></td>
+<td>Returns the closest sibling to this Tag that matches the given criteria and appears after this Tag in the document.</td>
+</tr><tr>
+<td><a href="#PageElement.findNextSiblings">findNextSiblings</a></td>
+<td>Returns the siblings of this Tag that match the given criteria and appear after this Tag in the document.</td>
+</tr><tr>
+<td><a href="#PageElement.findParent">findParent</a></td>
+<td>Returns the closest parent of this Tag that matches the given criteria.</td>
+</tr><tr>
+<td><a href="#PageElement.findParents">findParents</a></td>
+<td>Returns the parents of this Tag that match the given criteria.</td>
+</tr><tr>
+<td><a href="#PageElement.findPrevious">findPrevious</a></td>
+<td>Returns the first item that matches the given criteria and appears before this Tag in the document.</td>
+</tr><tr>
+<td><a href="#PageElement.findPreviousSibling">findPreviousSibling</a></td>
+<td>Returns the closest sibling to this Tag that matches the given criteria and appears before this Tag in the document.</td>
+</tr><tr>
+<td><a href="#PageElement.findPreviousSiblings">findPreviousSiblings</a></td>
+<td>Returns the siblings of this Tag that match the given criteria and appear before this Tag in the document.</td>
+</tr><tr>
+<td><a href="#PageElement.insert">insert</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement.nextGenerator">nextGenerator</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement.nextSiblingGenerator">nextSiblingGenerator</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement.parentGenerator">parentGenerator</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement.previousGenerator">previousGenerator</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement.previousSiblingGenerator">previousSiblingGenerator</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement.replaceWith">replaceWith</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement.replaceWithChildren">replaceWithChildren</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement.setup">setup</a></td>
+<td>Sets up the initial relations between this element and other elements.</td>
+</tr><tr>
+<td><a href="#PageElement.substituteEncoding">substituteEncoding</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#PageElement.toEncoding">toEncoding</a></td>
+<td>Encodes an object to a string in some encoding, or to Unicode.</td>
+</tr>
+</table>
+<a NAME="PageElement._findAll" ID="PageElement._findAll"></a>
+<h4>PageElement._findAll</h4>
+<b>_findAll</b>(<i>name, attrs, text, limit, generator, **kwargs</i>)
+<a NAME="PageElement._findOne" ID="PageElement._findOne"></a>
+<h4>PageElement._findOne</h4>
+<b>_findOne</b>(<i>method, name, attrs, text, **kwargs</i>)
+<a NAME="PageElement._lastRecursiveChild" ID="PageElement._lastRecursiveChild"></a>
+<h4>PageElement._lastRecursiveChild</h4>
+<b>_lastRecursiveChild</b>(<i></i>)
+<a NAME="PageElement.append" ID="PageElement.append"></a>
+<h4>PageElement.append</h4>
+<b>append</b>(<i>tag</i>)
+<p>
+Appends the given tag to the contents of this tag.
+</p><a NAME="PageElement.extract" ID="PageElement.extract"></a>
+<h4>PageElement.extract</h4>
+<b>extract</b>(<i></i>)
+<p>
+Destructively rips this element out of the tree.
+</p><a NAME="PageElement.findAllNext" ID="PageElement.findAllNext"></a>
+<h4>PageElement.findAllNext</h4>
+<b>findAllNext</b>(<i>name=None, attrs={}, text=None, limit=None, **kwargs</i>)
+<p>
+Returns all items that match the given criteria and appear
+        after this Tag in the document.
+</p><a NAME="PageElement.findAllPrevious" ID="PageElement.findAllPrevious"></a>
+<h4>PageElement.findAllPrevious</h4>
+<b>findAllPrevious</b>(<i>name=None, attrs={}, text=None, limit=None, **kwargs</i>)
+<p>
+Returns all items that match the given criteria and appear
+        before this Tag in the document.
+</p><a NAME="PageElement.findNext" ID="PageElement.findNext"></a>
+<h4>PageElement.findNext</h4>
+<b>findNext</b>(<i>name=None, attrs={}, text=None, **kwargs</i>)
+<p>
+Returns the first item that matches the given criteria and
+        appears after this Tag in the document.
+</p><a NAME="PageElement.findNextSibling" ID="PageElement.findNextSibling"></a>
+<h4>PageElement.findNextSibling</h4>
+<b>findNextSibling</b>(<i>name=None, attrs={}, text=None, **kwargs</i>)
+<p>
+Returns the closest sibling to this Tag that matches the
+        given criteria and appears after this Tag in the document.
+</p><a NAME="PageElement.findNextSiblings" ID="PageElement.findNextSiblings"></a>
+<h4>PageElement.findNextSiblings</h4>
+<b>findNextSiblings</b>(<i>name=None, attrs={}, text=None, limit=None, **kwargs</i>)
+<p>
+Returns the siblings of this Tag that match the given
+        criteria and appear after this Tag in the document.
+</p><a NAME="PageElement.findParent" ID="PageElement.findParent"></a>
+<h4>PageElement.findParent</h4>
+<b>findParent</b>(<i>name=None, attrs={}, **kwargs</i>)
+<p>
+Returns the closest parent of this Tag that matches the given
+        criteria.
+</p><a NAME="PageElement.findParents" ID="PageElement.findParents"></a>
+<h4>PageElement.findParents</h4>
+<b>findParents</b>(<i>name=None, attrs={}, limit=None, **kwargs</i>)
+<p>
+Returns the parents of this Tag that match the given
+        criteria.
+</p><a NAME="PageElement.findPrevious" ID="PageElement.findPrevious"></a>
+<h4>PageElement.findPrevious</h4>
+<b>findPrevious</b>(<i>name=None, attrs={}, text=None, **kwargs</i>)
+<p>
+Returns the first item that matches the given criteria and
+        appears before this Tag in the document.
+</p><a NAME="PageElement.findPreviousSibling" ID="PageElement.findPreviousSibling"></a>
+<h4>PageElement.findPreviousSibling</h4>
+<b>findPreviousSibling</b>(<i>name=None, attrs={}, text=None, **kwargs</i>)
+<p>
+Returns the closest sibling to this Tag that matches the
+        given criteria and appears before this Tag in the document.
+</p><a NAME="PageElement.findPreviousSiblings" ID="PageElement.findPreviousSiblings"></a>
+<h4>PageElement.findPreviousSiblings</h4>
+<b>findPreviousSiblings</b>(<i>name=None, attrs={}, text=None, limit=None, **kwargs</i>)
+<p>
+Returns the siblings of this Tag that match the given
+        criteria and appear before this Tag in the document.
+</p><a NAME="PageElement.insert" ID="PageElement.insert"></a>
+<h4>PageElement.insert</h4>
+<b>insert</b>(<i>position, newChild</i>)
+<a NAME="PageElement.nextGenerator" ID="PageElement.nextGenerator"></a>
+<h4>PageElement.nextGenerator</h4>
+<b>nextGenerator</b>(<i></i>)
+<a NAME="PageElement.nextSiblingGenerator" ID="PageElement.nextSiblingGenerator"></a>
+<h4>PageElement.nextSiblingGenerator</h4>
+<b>nextSiblingGenerator</b>(<i></i>)
+<a NAME="PageElement.parentGenerator" ID="PageElement.parentGenerator"></a>
+<h4>PageElement.parentGenerator</h4>
+<b>parentGenerator</b>(<i></i>)
+<a NAME="PageElement.previousGenerator" ID="PageElement.previousGenerator"></a>
+<h4>PageElement.previousGenerator</h4>
+<b>previousGenerator</b>(<i></i>)
+<a NAME="PageElement.previousSiblingGenerator" ID="PageElement.previousSiblingGenerator"></a>
+<h4>PageElement.previousSiblingGenerator</h4>
+<b>previousSiblingGenerator</b>(<i></i>)
+<a NAME="PageElement.replaceWith" ID="PageElement.replaceWith"></a>
+<h4>PageElement.replaceWith</h4>
+<b>replaceWith</b>(<i>replaceWith</i>)
+<a NAME="PageElement.replaceWithChildren" ID="PageElement.replaceWithChildren"></a>
+<h4>PageElement.replaceWithChildren</h4>
+<b>replaceWithChildren</b>(<i></i>)
+<a NAME="PageElement.setup" ID="PageElement.setup"></a>
+<h4>PageElement.setup</h4>
+<b>setup</b>(<i>parent=None, previous=None</i>)
+<p>
+Sets up the initial relations between this element and
+        other elements.
+</p><a NAME="PageElement.substituteEncoding" ID="PageElement.substituteEncoding"></a>
+<h4>PageElement.substituteEncoding</h4>
+<b>substituteEncoding</b>(<i>str, encoding=None</i>)
+<a NAME="PageElement.toEncoding" ID="PageElement.toEncoding"></a>
+<h4>PageElement.toEncoding</h4>
+<b>toEncoding</b>(<i>s, encoding=None</i>)
+<p>
+Encodes an object to a string in some encoding, or to Unicode.
+        .
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="ProcessingInstruction" ID="ProcessingInstruction"></a>
+<h2>ProcessingInstruction</h2>
+
+<h3>Derived from</h3>
+NavigableString
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#ProcessingInstruction.__str__">__str__</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="ProcessingInstruction.__str__" ID="ProcessingInstruction.__str__"></a>
+<h4>ProcessingInstruction.__str__</h4>
+<b>__str__</b>(<i>encoding=DEFAULT_OUTPUT_ENCODING</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="ResultSet" ID="ResultSet"></a>
+<h2>ResultSet</h2>
+<p>
+A ResultSet is just a list that keeps track of the SoupStrainer
+    that created it.
+</p>
+<h3>Derived from</h3>
+list
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#ResultSet.__init__">ResultSet</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="ResultSet.__init__" ID="ResultSet.__init__"></a>
+<h4>ResultSet (Constructor)</h4>
+<b>ResultSet</b>(<i>source</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="RobustHTMLParser" ID="RobustHTMLParser"></a>
+<h2>RobustHTMLParser</h2>
+
+<h3>Derived from</h3>
+BeautifulSoup
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="RobustInsanelyWackAssHTMLParser" ID="RobustInsanelyWackAssHTMLParser"></a>
+<h2>RobustInsanelyWackAssHTMLParser</h2>
+
+<h3>Derived from</h3>
+MinimalSoup
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="RobustWackAssHTMLParser" ID="RobustWackAssHTMLParser"></a>
+<h2>RobustWackAssHTMLParser</h2>
+
+<h3>Derived from</h3>
+ICantBelieveItsBeautifulSoup
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="RobustXMLParser" ID="RobustXMLParser"></a>
+<h2>RobustXMLParser</h2>
+
+<h3>Derived from</h3>
+BeautifulStoneSoup
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="SimplifyingSOAPParser" ID="SimplifyingSOAPParser"></a>
+<h2>SimplifyingSOAPParser</h2>
+
+<h3>Derived from</h3>
+BeautifulSOAP
+<h3>Class Attributes</h3>
+<table>
+<tr><td>chardet</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="SoupStrainer" ID="SoupStrainer"></a>
+<h2>SoupStrainer</h2>
+<p>
+Encapsulates a number of ways of matching a markup element (tag or
+    text).
+</p>
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#SoupStrainer.__init__">SoupStrainer</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SoupStrainer.__str__">__str__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SoupStrainer._matches">_matches</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SoupStrainer.search">search</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#SoupStrainer.searchTag">searchTag</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="SoupStrainer.__init__" ID="SoupStrainer.__init__"></a>
+<h4>SoupStrainer (Constructor)</h4>
+<b>SoupStrainer</b>(<i>name=None, attrs={}, text=None, **kwargs</i>)
+<a NAME="SoupStrainer.__str__" ID="SoupStrainer.__str__"></a>
+<h4>SoupStrainer.__str__</h4>
+<b>__str__</b>(<i></i>)
+<a NAME="SoupStrainer._matches" ID="SoupStrainer._matches"></a>
+<h4>SoupStrainer._matches</h4>
+<b>_matches</b>(<i>markup, matchAgainst</i>)
+<a NAME="SoupStrainer.search" ID="SoupStrainer.search"></a>
+<h4>SoupStrainer.search</h4>
+<b>search</b>(<i>markup</i>)
+<a NAME="SoupStrainer.searchTag" ID="SoupStrainer.searchTag"></a>
+<h4>SoupStrainer.searchTag</h4>
+<b>searchTag</b>(<i>markupName=None, markupAttrs={}</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="StopParsing" ID="StopParsing"></a>
+<h2>StopParsing</h2>
+
+<h3>Derived from</h3>
+Exception
+<h3>Class Attributes</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr><td>None</td></tr>
+</table>
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="Tag" ID="Tag"></a>
+<h2>Tag</h2>
+<p>
+Represents a found HTML tag with its attributes and contents.
+</p>
+<h3>Derived from</h3>
+PageElement
+<h3>Class Attributes</h3>
+<table>
+<tr><td>BARE_AMPERSAND_OR_BRACKET</td></tr><tr><td>XML_ENTITIES_TO_SPECIAL_CHARS</td></tr><tr><td>XML_SPECIAL_CHARS_TO_ENTITIES</td></tr><tr><td>fetch</td></tr><tr><td>findChild</td></tr><tr><td>findChildren</td></tr><tr><td>first</td></tr><tr><td>string</td></tr><tr><td>text</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#Tag.__init__">Tag</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.__call__">__call__</a></td>
+<td>Calling a tag like a function is the same as calling its findAll() method.</td>
+</tr><tr>
+<td><a href="#Tag.__contains__">__contains__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.__delitem__">__delitem__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.__eq__">__eq__</a></td>
+<td>Returns true iff this tag has the same name, the same attributes, and the same contents (recursively) as the given tag.</td>
+</tr><tr>
+<td><a href="#Tag.__getattr__">__getattr__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.__getitem__">__getitem__</a></td>
+<td>tag[key] returns the value of the 'key' attribute for the tag, and throws an exception if it's not there.</td>
+</tr><tr>
+<td><a href="#Tag.__iter__">__iter__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.__len__">__len__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.__ne__">__ne__</a></td>
+<td>Returns true iff this tag is not identical to the other tag, as defined in __eq__.</td>
+</tr><tr>
+<td><a href="#Tag.__nonzero__">__nonzero__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.__repr__">__repr__</a></td>
+<td>Renders this tag as a string.</td>
+</tr><tr>
+<td><a href="#Tag.__setitem__">__setitem__</a></td>
+<td>Setting tag[key] sets the value of the 'key' attribute for the tag.</td>
+</tr><tr>
+<td><a href="#Tag.__str__">__str__</a></td>
+<td>Returns a string or Unicode representation of this tag and its contents.</td>
+</tr><tr>
+<td><a href="#Tag.__unicode__">__unicode__</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag._convertEntities">_convertEntities</a></td>
+<td>Used in a call to re.sub to replace HTML, XML, and numeric entities with the appropriate Unicode characters.</td>
+</tr><tr>
+<td><a href="#Tag._getAttrMap">_getAttrMap</a></td>
+<td>Initializes a map representation of this tag's attributes, if not already initialized.</td>
+</tr><tr>
+<td><a href="#Tag._invert">_invert</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag._sub_entity">_sub_entity</a></td>
+<td>Used with a regular expression to substitute the appropriate XML entity for an XML special character.</td>
+</tr><tr>
+<td><a href="#Tag.childGenerator">childGenerator</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.clear">clear</a></td>
+<td>Extract all children.</td>
+</tr><tr>
+<td><a href="#Tag.decompose">decompose</a></td>
+<td>Recursively destroys the contents of this tree.</td>
+</tr><tr>
+<td><a href="#Tag.fetchText">fetchText</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.find">find</a></td>
+<td>Return only the first child of this Tag matching the given criteria.</td>
+</tr><tr>
+<td><a href="#Tag.findAll">findAll</a></td>
+<td>Extracts a list of Tag objects that match the given criteria.</td>
+</tr><tr>
+<td><a href="#Tag.firstText">firstText</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.get">get</a></td>
+<td>Returns the value of the 'key' attribute for the tag, or the value given for 'default' if it doesn't have that attribute.</td>
+</tr><tr>
+<td><a href="#Tag.getString">getString</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.getText">getText</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.has_key">has_key</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.index">index</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.prettify">prettify</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.recursiveChildGenerator">recursiveChildGenerator</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#Tag.renderContents">renderContents</a></td>
+<td>Renders the contents of this tag as a string in the given encoding.</td>
+</tr><tr>
+<td><a href="#Tag.setString">setString</a></td>
+<td>Replace the contents of the tag with a string</td>
+</tr>
+</table>
+<a NAME="Tag.__init__" ID="Tag.__init__"></a>
+<h4>Tag (Constructor)</h4>
+<b>Tag</b>(<i>parser, name, attrs=None, parent=None, previous=None</i>)
+<a NAME="Tag.__call__" ID="Tag.__call__"></a>
+<h4>Tag.__call__</h4>
+<b>__call__</b>(<i>*args, **kwargs</i>)
+<p>
+Calling a tag like a function is the same as calling its
+        findAll() method. Eg. tag('a') returns a list of all the A tags
+        found within this tag.
+</p><a NAME="Tag.__contains__" ID="Tag.__contains__"></a>
+<h4>Tag.__contains__</h4>
+<b>__contains__</b>(<i>x</i>)
+<a NAME="Tag.__delitem__" ID="Tag.__delitem__"></a>
+<h4>Tag.__delitem__</h4>
+<b>__delitem__</b>(<i>key</i>)
+<a NAME="Tag.__eq__" ID="Tag.__eq__"></a>
+<h4>Tag.__eq__</h4>
+<b>__eq__</b>(<i>other</i>)
+<p>
+Returns true iff this tag has the same name, the same attributes,
+        and the same contents (recursively) as the given tag.
+</p><p>
+        NOTE: right now this will return false if two tags have the
+        same attributes in a different order. Should this be fixed?
+</p><a NAME="Tag.__getattr__" ID="Tag.__getattr__"></a>
+<h4>Tag.__getattr__</h4>
+<b>__getattr__</b>(<i>tag</i>)
+<a NAME="Tag.__getitem__" ID="Tag.__getitem__"></a>
+<h4>Tag.__getitem__</h4>
+<b>__getitem__</b>(<i>key</i>)
+<p>
+tag[key] returns the value of the 'key' attribute for the tag,
+        and throws an exception if it's not there.
+</p><a NAME="Tag.__iter__" ID="Tag.__iter__"></a>
+<h4>Tag.__iter__</h4>
+<b>__iter__</b>(<i></i>)
+<a NAME="Tag.__len__" ID="Tag.__len__"></a>
+<h4>Tag.__len__</h4>
+<b>__len__</b>(<i></i>)
+<a NAME="Tag.__ne__" ID="Tag.__ne__"></a>
+<h4>Tag.__ne__</h4>
+<b>__ne__</b>(<i>other</i>)
+<p>
+Returns true iff this tag is not identical to the other tag,
+        as defined in __eq__.
+</p><a NAME="Tag.__nonzero__" ID="Tag.__nonzero__"></a>
+<h4>Tag.__nonzero__</h4>
+<b>__nonzero__</b>(<i></i>)
+<a NAME="Tag.__repr__" ID="Tag.__repr__"></a>
+<h4>Tag.__repr__</h4>
+<b>__repr__</b>(<i>encoding=DEFAULT_OUTPUT_ENCODING</i>)
+<p>
+Renders this tag as a string.
+</p><a NAME="Tag.__setitem__" ID="Tag.__setitem__"></a>
+<h4>Tag.__setitem__</h4>
+<b>__setitem__</b>(<i>key, value</i>)
+<p>
+Setting tag[key] sets the value of the 'key' attribute for the
+        tag.
+</p><a NAME="Tag.__str__" ID="Tag.__str__"></a>
+<h4>Tag.__str__</h4>
+<b>__str__</b>(<i>encoding=DEFAULT_OUTPUT_ENCODING, prettyPrint=False, indentLevel=0</i>)
+<p>
+Returns a string or Unicode representation of this tag and
+        its contents. To get Unicode, pass None for encoding.
+</p><p>
+        NOTE: since Python's HTML parser consumes whitespace, this
+        method is not certain to reproduce the whitespace present in
+        the original string.
+</p><a NAME="Tag.__unicode__" ID="Tag.__unicode__"></a>
+<h4>Tag.__unicode__</h4>
+<b>__unicode__</b>(<i></i>)
+<a NAME="Tag._convertEntities" ID="Tag._convertEntities"></a>
+<h4>Tag._convertEntities</h4>
+<b>_convertEntities</b>(<i>match</i>)
+<p>
+Used in a call to re.sub to replace HTML, XML, and numeric
+        entities with the appropriate Unicode characters. If HTML
+        entities are being converted, any unrecognized entities are
+        escaped.
+</p><a NAME="Tag._getAttrMap" ID="Tag._getAttrMap"></a>
+<h4>Tag._getAttrMap</h4>
+<b>_getAttrMap</b>(<i></i>)
+<p>
+Initializes a map representation of this tag's attributes,
+        if not already initialized.
+</p><a NAME="Tag._invert" ID="Tag._invert"></a>
+<h4>Tag._invert</h4>
+<b>_invert</b>(<i></i>)
+<a NAME="Tag._sub_entity" ID="Tag._sub_entity"></a>
+<h4>Tag._sub_entity</h4>
+<b>_sub_entity</b>(<i>x</i>)
+<p>
+Used with a regular expression to substitute the
+        appropriate XML entity for an XML special character.
+</p><a NAME="Tag.childGenerator" ID="Tag.childGenerator"></a>
+<h4>Tag.childGenerator</h4>
+<b>childGenerator</b>(<i></i>)
+<a NAME="Tag.clear" ID="Tag.clear"></a>
+<h4>Tag.clear</h4>
+<b>clear</b>(<i></i>)
+<p>
+Extract all children.
+</p><a NAME="Tag.decompose" ID="Tag.decompose"></a>
+<h4>Tag.decompose</h4>
+<b>decompose</b>(<i></i>)
+<p>
+Recursively destroys the contents of this tree.
+</p><a NAME="Tag.fetchText" ID="Tag.fetchText"></a>
+<h4>Tag.fetchText</h4>
+<b>fetchText</b>(<i>text=None, recursive=True, limit=None</i>)
+<a NAME="Tag.find" ID="Tag.find"></a>
+<h4>Tag.find</h4>
+<b>find</b>(<i>name=None, attrs={}, recursive=True, text=None, **kwargs</i>)
+<p>
+Return only the first child of this Tag matching the given
+        criteria.
+</p><a NAME="Tag.findAll" ID="Tag.findAll"></a>
+<h4>Tag.findAll</h4>
+<b>findAll</b>(<i>name=None, attrs={}, recursive=True, text=None, limit=None, **kwargs</i>)
+<p>
+Extracts a list of Tag objects that match the given
+        criteria.  You can specify the name of the Tag and any
+        attributes you want the Tag to have.
+</p><p>
+        The value of a key-value pair in the 'attrs' map can be a
+        string, a list of strings, a regular expression object, or a
+        callable that takes a string and returns whether or not the
+        string matches for some custom definition of 'matches'. The
+        same is true of the tag name.
+</p><a NAME="Tag.firstText" ID="Tag.firstText"></a>
+<h4>Tag.firstText</h4>
+<b>firstText</b>(<i>text=None, recursive=True</i>)
+<a NAME="Tag.get" ID="Tag.get"></a>
+<h4>Tag.get</h4>
+<b>get</b>(<i>key, default=None</i>)
+<p>
+Returns the value of the 'key' attribute for the tag, or
+        the value given for 'default' if it doesn't have that
+        attribute.
+</p><a NAME="Tag.getString" ID="Tag.getString"></a>
+<h4>Tag.getString</h4>
+<b>getString</b>(<i></i>)
+<a NAME="Tag.getText" ID="Tag.getText"></a>
+<h4>Tag.getText</h4>
+<b>getText</b>(<i>separator=u""</i>)
+<a NAME="Tag.has_key" ID="Tag.has_key"></a>
+<h4>Tag.has_key</h4>
+<b>has_key</b>(<i>key</i>)
+<a NAME="Tag.index" ID="Tag.index"></a>
+<h4>Tag.index</h4>
+<b>index</b>(<i>element</i>)
+<a NAME="Tag.prettify" ID="Tag.prettify"></a>
+<h4>Tag.prettify</h4>
+<b>prettify</b>(<i>encoding=DEFAULT_OUTPUT_ENCODING</i>)
+<a NAME="Tag.recursiveChildGenerator" ID="Tag.recursiveChildGenerator"></a>
+<h4>Tag.recursiveChildGenerator</h4>
+<b>recursiveChildGenerator</b>(<i></i>)
+<a NAME="Tag.renderContents" ID="Tag.renderContents"></a>
+<h4>Tag.renderContents</h4>
+<b>renderContents</b>(<i>encoding=DEFAULT_OUTPUT_ENCODING, prettyPrint=False, indentLevel=0</i>)
+<p>
+Renders the contents of this tag as a string in the given
+        encoding. If encoding is None, returns a Unicode string..
+</p><a NAME="Tag.setString" ID="Tag.setString"></a>
+<h4>Tag.setString</h4>
+<b>setString</b>(<i>string</i>)
+<p>
+Replace the contents of the tag with a string
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="UnicodeDammit" ID="UnicodeDammit"></a>
+<h2>UnicodeDammit</h2>
+<p>
+A class for detecting the encoding of a *ML document and
+    converting it to a Unicode string. If the source encoding is
+    windows-1252, can replace MS smart quotes with their HTML or XML
+    equivalents.
+</p>
+<h3>Derived from</h3>
+None
+<h3>Class Attributes</h3>
+<table>
+<tr><td>CHARSET_ALIASES</td></tr><tr><td>EBCDIC_TO_ASCII_MAP</td></tr><tr><td>MS_CHARS</td></tr><tr><td>soup</td></tr>
+</table>
+<h3>Methods</h3>
+<table>
+<tr>
+<td><a href="#UnicodeDammit.__init__">UnicodeDammit</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#UnicodeDammit._codec">_codec</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#UnicodeDammit._convertFrom">_convertFrom</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#UnicodeDammit._detectEncoding">_detectEncoding</a></td>
+<td>Given a document, tries to detect its XML encoding.</td>
+</tr><tr>
+<td><a href="#UnicodeDammit._ebcdic_to_ascii">_ebcdic_to_ascii</a></td>
+<td></td>
+</tr><tr>
+<td><a href="#UnicodeDammit._subMSChar">_subMSChar</a></td>
+<td>Changes a MS smart quote character to an XML or HTML entity.</td>
+</tr><tr>
+<td><a href="#UnicodeDammit._toUnicode">_toUnicode</a></td>
+<td>Given a string and its encoding, decodes the string into Unicode.</td>
+</tr><tr>
+<td><a href="#UnicodeDammit.find_codec">find_codec</a></td>
+<td></td>
+</tr>
+</table>
+<a NAME="UnicodeDammit.__init__" ID="UnicodeDammit.__init__"></a>
+<h4>UnicodeDammit (Constructor)</h4>
+<b>UnicodeDammit</b>(<i>markup, overrideEncodings=[], smartQuotesTo='xml', isHTML=False</i>)
+<a NAME="UnicodeDammit._codec" ID="UnicodeDammit._codec"></a>
+<h4>UnicodeDammit._codec</h4>
+<b>_codec</b>(<i>charset</i>)
+<a NAME="UnicodeDammit._convertFrom" ID="UnicodeDammit._convertFrom"></a>
+<h4>UnicodeDammit._convertFrom</h4>
+<b>_convertFrom</b>(<i>proposed</i>)
+<a NAME="UnicodeDammit._detectEncoding" ID="UnicodeDammit._detectEncoding"></a>
+<h4>UnicodeDammit._detectEncoding</h4>
+<b>_detectEncoding</b>(<i>xml_data, isHTML=False</i>)
+<p>
+Given a document, tries to detect its XML encoding.
+</p><a NAME="UnicodeDammit._ebcdic_to_ascii" ID="UnicodeDammit._ebcdic_to_ascii"></a>
+<h4>UnicodeDammit._ebcdic_to_ascii</h4>
+<b>_ebcdic_to_ascii</b>(<i>s</i>)
+<a NAME="UnicodeDammit._subMSChar" ID="UnicodeDammit._subMSChar"></a>
+<h4>UnicodeDammit._subMSChar</h4>
+<b>_subMSChar</b>(<i>orig</i>)
+<p>
+Changes a MS smart quote character to an XML or HTML
+        entity.
+</p><a NAME="UnicodeDammit._toUnicode" ID="UnicodeDammit._toUnicode"></a>
+<h4>UnicodeDammit._toUnicode</h4>
+<b>_toUnicode</b>(<i>data, encoding</i>)
+<p>
+Given a string and its encoding, decodes the string into Unicode.
+        %encoding is a string recognized by encodings.aliases
+</p><a NAME="UnicodeDammit.find_codec" ID="UnicodeDammit.find_codec"></a>
+<h4>UnicodeDammit.find_codec</h4>
+<b>find_codec</b>(<i>charset</i>)
+
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="_match_css_class" ID="_match_css_class"></a>
+<h2>_match_css_class</h2>
+<b>_match_css_class</b>(<i>str</i>)
+<p>
+Build a RE to match the given CSS class.
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr /><hr />
+<a NAME="buildTagMap" ID="buildTagMap"></a>
+<h2>buildTagMap</h2>
+<b>buildTagMap</b>(<i>default, *args</i>)
+<p>
+Turns a list of maps, lists, or scalars into a single map.
+    Used to build the SELF_CLOSING_TAGS, NESTABLE_TAGS, and
+    NESTING_RESET_TAGS maps out of lists and partial maps.
+</p>
+<div align="right"><a href="#top">Up</a></div>
+<hr />
+</body></html>

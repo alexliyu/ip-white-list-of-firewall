@@ -1,0 +1,23 @@
+{% load i18n %}
+{% extends "wikibase.html" %}
+{% block title %}{{ page_title }}{% endblock %}
+{% block content %}
+<ul id="tabs">
+  <li><a href="/wiki/{{ page_title }}">{% trans "View" %}</a></li>
+  <li><a href="/w/edit?page={{ page_title }}">{% trans "Edit" %}</a></li>
+  <li class="active"><a href="/w/history?page={{ page_title }}">{% trans "History" %}</a></li>
+</ul>
+<div id="pb" class="wtabs">
+<h1>{{ page_title }}</h1>
+
+{% if revisions %}
+  {% for revision in revisions %}
+      <ul>
+        <li><a class="int" href="/wiki/{{ page_name }}?r={{ revision.version_number }}">Revision {{ revision.version_number }}</a>&nbsp;&nbsp;&nbsp;&nbsp;{{ revision.created|date:"d.m.y, H:i"}}</li>
+      </ul>
+  {% endfor %}
+{% else %}
+<p>{% trans "We have no records for this page." %}</p>
+{% endif %}
+</div>
+{% endblock %}

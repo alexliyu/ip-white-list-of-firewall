@@ -1,0 +1,47 @@
+﻿{% extends "base.html" %}
+{% block title %} {{entry.title}} - {{blog.title}} {% endblock %}
+{% block content%}
+        <div class="primary">
+            <div class="wrapper">
+                <div class="breadcrumbs"><a href="index.html">Home</a> / {{category.name}}</div>
+                <!--[if IE]>
+                    <br class="clearf" />
+                <![endif]-->
+      
+                <div class="main_content">
+                        {% for entry in entries %}
+               <div id="post-{{entry.key}}">
+                    <div class="nifty"><h2><a href="/{{ entry.Link_url }}" rel="bookmark" title="Permanent Link to {{entry.title}}">{{entry.title}}</a> <span class="date">{{entry.date|datetz:"F jS, Y"}}</span></h2></div>
+
+
+
+{{entry.content_excerpt}}
+
+
+<div class="meta">{% if entry.strtags %}Tags: {%for tag in entry.tags%}<a href="/tag/{{tag|urlencode}}">{{tag}}</a> {%endfor%}<br><br>{%endif%}  Posted in {%for cate in entry.categories%} <a href="/category/{{cate.slug}}">{{cate.name}}</a> {%endfor%} | {%if self.is_admin%}<a href="{{entry.edit_url}}">Edit</a> | {%endif%}  <a href="/{{entry.Link_url}}#comments">Comments({{entry.commentcount}})&#187;</a></div>
+</div>
+
+
+<div class="cbottom"></div>
+<div class="space"></div>
+{% endfor %}
+
+
+<div class="ctop"></div>
+<div class="box">
+<div class="alignleft">{% if show_next %}<a href="/page/{{ pageindex|add:"1" }}"> {{Older Entries}}</a>{%endif%}</div>
+<div class="alignright">{% if show_prev %}<a href="/page/{{ pageindex|add:"-1" }}">{{Newer Entries}}</a>{%endif%}</div>
+<div class="clear"></div></div>
+<div class="cbottom"></div>
+<div class="space"></div>
+
+
+                </div><!-- END MAIN CONTENT -->
+               {% include "bsidebar.html" %}
+            </div><!-- END WRAPPER -->
+        </div><!-- END PRIMARY -->
+
+           {% endblock %}
+    </body>
+
+</html>

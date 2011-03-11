@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head profile="http://gmpg.org/xfn/11">
+{%mf head%}
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8;" />
+<title>{% block title %} {{ blog.title}}{% endblock %}</title>
+<link rel="stylesheet" href="/themes/{{ blog.theme_name }}/style.css" type="text/css" media="screen" />
+<link href="/static/styles/base.css" rel="stylesheet" type="text/css" />
+<link href="/static/styles/shareList.css" rel="stylesheet" type="text/css" />
+<link media="screen" rel="stylesheet" href="/static/styles/colorbox.css" />
+<link rel="alternate" type="application/rss+xml" title="{{ blog.title }} RSS Feed" href="{{ blog.feedurl }}" />
+<link href="/static/wlwmanifest.xml" type="application/wlwmanifest+xml" rel="wlwmanifest"/>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.lazyload.mini.js"></script>
+<script type="text/javascript" src="/static/js/jquery.shareList.js">
+</script>
+<script type="text/javascript" src="/static/js/jquery.colorbox-min.js">
+</script>
+{% block head_block %}{% endblock %}
+<script type="text/JavaScript">
+jQuery(document).ready(function($){
+$("#loading div").animate({width:"100px"},function(){
+	$('span:eq(0)').replaceWith('<span>加载完成<\/span>');
+	$("#loading").fadeOut(1000);
+});
+$(function() {
+    $(".post_content img").lazyload({
+        placeholder : "/themes/{{ blog.theme_name }}/images/grey.gif",
+        effect : "fadeIn",
+		failurelimit : 50
+        });
+    });
+var slider=1;
+setInterval(function(){
+        slider=slider===5?0:slider;
+        var t=-slider*380;
+        slider++;
+        $("#children").animate({top:t},600);
+},3000);
+});
+
+$(function(){
+	$("#share").shareList();
+});
+function change_option(number,index){
+ for (var i = 1; i <= number; i++) {
+      document.getElementById('current' + i).className = '';
+      document.getElementById('content' + i).style.display = 'none';
+ }
+  document.getElementById('current' + index).className = 'on';
+  document.getElementById('content' + index).style.display = 'block';
+};
+function ftab(num){
+	for(var id = 0;id<=7;id++)
+	{
+		if(id==num)
+		{
+			document.getElementById("subnav"+id).style.display="block";
+			document.getElementById("nav"+id).className="nav_on";
+		}
+		else
+		{
+			document.getElementById("subnav"+id).style.display="none";
+			document.getElementById("nav"+id).className="";
+		}
+	}
+};
+</script>
+
+{%endmf%}
+</head>
+
+<body>
+<div id="loading"><div><span>正在加载...</span></div></div>
+<div id="header">
+<div class="head_info">
+<h1><a href="{{blog.baseurl}}" title="{{blog.title}}"><span class="exp">{{blog.title}}</span></a></h1>
+</div>
+{% include "searchform.html" %}
+<div id="menu_in">
+<div id="menu">
+<ul id="nav">
+<li><a  href="/" onmouseover="javascript:ftab(0)"  id="nav0"  class="nav_on"><span>首 页</span></a></li><li class="menu_line"></li>
+<li><a href="{{blog.blogurl}}" onmouseover="javascript:ftab(7)" id="nav7"  class="nav_off"><span>新鲜博客</span></a></li>
+<li><a href="{{blog.articleurl}}" onmouseover="javascript:ftab(1)" id="nav1"  class="nav_off"><span>新鲜资讯</span></a></li><li class="menu_line"></li>
+<li><a href="{{blog.downloadurl}}" onmouseover="javascript:ftab(2)" id="nav2"  class="nav_off"><span>新鲜下载</span></a></li><li class="menu_line"></li>
+<li><a href="{{blog.albumurl}}" onmouseover="javascript:ftab(3)" id="nav3"  class="nav_off"><span>新鲜图片</span></a></li><li class="menu_line"></li>
+<li><a href="/wiki" onmouseover="javascript:ftab(4)" id="nav4"  class="nav_off"><span>新鲜WIKI</span></a></li><li class="menu_line"></li>
+<li><a href="/links" onmouseover="javascript:ftab(5)" id="nav5"  class="nav_off"><span>支持我们</span></a></li><li class="menu_line"></li>
+<li><a href="/about" onmouseover="javascript:ftab(6)" id="nav6"  class="nav_off"><span>关于我们</span></a></li><li class="menu_line"></li>
+</ul>
+<div id="subnav">
+<div id="subnav0" style="display: block">
+<ul>
+<li><span class="text">欢迎访问{{blog.title}}！</span></li>
+</ul>
+</div>
+<div id="subnav1" style="display: none">
+<ul>
+{%for cate in acategories%}
+  <li><a href="{{cate.Link_url}}"><span>{{cate.name}}</span></a></li>
+<li class="menu_line2"></li>
+{%endfor%}
+
+</ul>
+</div>
+<div id="subnav2" style="display: none">
+<ul>
+{%for cate in dcategories%}
+  <li><a href="{{cate.Link_url}}"><span>{{cate.name}}</span></a></li>
+<li class="menu_line2"></li>
+{%endfor%}
+
+</ul>
+</div>
+<div id="subnav3" style="display: none">
+
+<ul>
+  <li><span class="text">本站图片集中地。</span></li>
+</ul>
+</div>
+<div id="subnav4" style="display: none">
+<ul>
+  <li><span class="text">您想做什么？您想看什么？为您指引方向！</span></li>
+</ul>
+</div>
+<div id="subnav5" style="display: none">
+<ul>
+  <li><a href="http://www.51203344.tk/page/juanzeng"><span>捐赠</span></a></li>
+
+ <li class="menu_line2"></li>
+  <li><a href="http://www.51203344.tk/page/hezuo"><span>合作</span></a></li>
+</ul></div>
+<div id="subnav6" style="display: none">
+<ul>
+  <li><a href="http://www.51203344.tk/page/liyu"><span>关于我们</span></a></li>
+
+ <li class="menu_line2"></li>
+
+  <li><a href="http://www.51203344.tk/page/about_liyu"><span>关于李昱</span></a></li>
+  <li class="menu_line2"></li>
+  <li><a href="/contact"><span>联系我们</span></a></li>
+</ul>
+</div>
+<div id="subnav7" style="display: none">
+<ul>
+{%for cate in categories%}
+  <li><a href="{{cate.Link_url}}"><span>{{cate.name}}</span></a></li>
+<li class="menu_line2"></li>
+{%endfor%}
+
+</ul>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="container">
+
+{%block content %}{%endblock%}
+
+{%mf footer%}
+	</div>
+<div class="copyright">
+Copyright &copy; 2010 - {{blog.title}} - Powered by <a href="http://www.ccdm.tk">CDM SYSTEM</a> - Theme by <a href="http://www.ixinxian.com">Felix</a>
+</div>
+{%endmf%}
+</body>
+</html>
